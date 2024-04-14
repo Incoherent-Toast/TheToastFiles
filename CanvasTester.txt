@@ -1,0 +1,166 @@
+//CanvasTester
+/* v1.0 by Ket
+
+A tool to test various canvas blend modes and foreground/background colors
+
+How to use:
+import UI/CanvasTester
+
+Depends on DragController being in the Lib/DragController folder
+
+*/
+
+var drag = import Lib/DragController
+
+var mainPanel
+var canvas
+var sliders = []
+var FGcolor = "#FFFFFF"
+var BGcolor = "#FFFFFF"
+var FGtext
+var BGtext
+var modetext
+var topstyle = ui.AddStyle("┌─┐│#│└↓┘")
+var bottomstyle = ui.AddStyle("┌↑┐│#│└─┘")
+var middlestyle = ui.AddStyle("┌↑┐│#│└↓┘")
+
+?totaltime = 1
+  Setup()
+Update()
+
+func CreateSlider(text,x)
+  var slider = ui.AddPanel()
+  var min = 0
+  var max = mainPanel.h-3
+  var textcomp = ui.AddText(text)
+  textcomp.h = 1
+  textcomp.w = 1
+  slider.h = 3
+  slider.w = 3
+  slider.x = x
+  slider.dock = "top_center"
+  slider.anchor = "top_center"
+  slider.style = 1
+  mainPanel.Add(slider)
+  slider.Add(textcomp)
+  drag.Add(slider)
+  return [slider,x,min,max]
+  
+func CreateButton(mode,x,y)
+  var button
+  button = ui.AddButton()
+  button.dock = "top_center"
+  button.anchor = "top_center"
+  button.w = 10
+  button.h = 3
+  button.x = x
+  button.y = y
+  button.style = -6
+  button.text = mode
+  button.SetPressed(SetBlend)
+  return button
+  
+func SetBlend(btn)
+  canvas.blend = btn.text
+  modetext.text = btn.text
+
+func Setup()
+  mainPanel = ui.AddPanel()
+  mainPanel.w = 34
+  mainPanel.h = 19
+  mainPanel.style = -6
+  mainPanel.dock = "center_center"
+  mainPanel.anchor = "center_center"
+  drag.Add(mainPanel)
+  
+  canvas = ui.AddCanvas()
+  canvas.w = mainPanel.w-2
+  canvas.h = mainPanel.h-2
+  canvas.dock = "center_center"
+  canvas.anchor = "center_center"
+  canvas.blend = "Opaque"
+  mainPanel.Add(canvas)
+  
+  FGtext = ui.AddText("FG:"+FGcolor)
+  FGtext.x = 0
+  FGtext.w = 11
+  FGtext.dock = "top_right"
+  FGtext.anchor = "top_right"
+  FGtext.align = "center"
+  mainPanel.Add(FGtext)
+
+  BGtext = ui.AddText("BG:"+BGcolor)
+  BGtext.x = 1
+  BGtext.w = 11
+  BGtext.dock = "top_left"
+  BGtext.anchor = "top_left"
+  BGtext.align = "center"
+  mainPanel.Add(BGtext)
+  
+  modetext = ui.AddText("Opaque")
+  modetext.w = 8
+  modetext.dock = "top_center"
+  modetext.anchor = "top_center"
+  modetext.align = "center"
+  mainPanel.Add(modetext)
+  
+
+  mainPanel.Add(CreateButton("Multiply",-21,-3))
+  mainPanel.Add(CreateButton("Divide",-11,-3))
+  mainPanel.Add(CreateButton("Opaque",0,-3))
+  mainPanel.Add(CreateButton("Add",11,-3))
+  mainPanel.Add(CreateButton("Subtract",21,-3))
+
+  sliders.Add(CreateSlider("R",-(mainPanel.w/2+8)))
+  sliders.Add(CreateSlider("G",-(mainPanel.w/2+5)))
+  sliders.Add(CreateSlider("B",-(mainPanel.w/2+2)))
+  sliders.Add(CreateSlider("R",mainPanel.w/2+1))
+  sliders.Add(CreateSlider("G",mainPanel.w/2+4))
+  sliders.Add(CreateSlider("B",mainPanel.w/2+7))
+
+func Update()
+  drag.Update()
+  for slider : sliders
+    slider[0].x = slider[1]
+    slider[0].y = clamp(slider[0].y,
+                  ^slider[2],slider[3])
+    ?slider[0].y = slider[2]
+      slider[0].style = topstyle
+    :?slider[0].y = slider[3]
+      slider[0].style = bottomstyle
+    :
+      slider[0].style = middlestyle
+    
+  BGcolor = color.FromRGB(
+   ^ColorFromSlider(sliders[0]),
+   ^ColorFromSlider(sliders[1]),
+   ^ColorFromSlider(sliders[2]))
+  FGcolor = color.FromRGB(
+   ^ColorFromSlider(sliders[3]),
+   ^ColorFromSlider(sliders[4]),
+   ^ColorFromSlider(sliders[5]))
+  canvas.SetBG(BGcolor)
+  canvas.SetFG(FGcolor)
+  BGtext.text = "BG:"+BGcolor
+  BGtext.color = BGcolor
+  FGtext.text = "FG:"+FGcolor
+  FGtext.color = FGcolor
+  
+func ColorFromSlider(slider)
+  var current = slider[0].y + 0.0
+  var min = slider[2]
+  var max = slider[3]
+  var percent = (current-min) / (max-min)
+  return math.RoundToInt(lerp(255,0,percent))
+
+//Stonescript version of math.lerp
+func lerp(a, b, t)
+  return a + (b - a) * clamp(t,0.0,1.0)
+  
+//Stonescript math.clamp for better performance.
+func clamp(num,min,max)
+  ?num < min
+    return min
+  ?num > max
+    return max
+  return num
