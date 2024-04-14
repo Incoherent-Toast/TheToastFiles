@@ -1,0 +1,33 @@
+
+var stars=loc.stars
+var col=white
+var posx=0
+var posy=0
+
+?loc.stars>10
+  col=yellow
+:?loc.stars>5
+  col=cyan
+?stars > 9
+  var offset = 4*math.pi/stars
+  offset = 4*math.pi/stars
+  for i = 8..stars
+    posx=math.Floor(math.sin(time/10.0+i*offset)*16)
+    posy=2+math.Floor(math.cos(time/10.0+i*offset)*4.4)
+    >h@posx@,@posy@,#@col@,☆
+:
+  var offset = 2*math.pi/stars
+
+for i = 1..4
+  var OffsetInner = 2*math.pi/9
+  var a
+  var b
+  var c
+  var d
+  a = math.sin(time/10.0+i*OffsetInner)
+  b = math.cos(-1*time/10.0+i*OffsetInner)
+  c = 10
+  d = 5
+  posx=math.Floor(a*a*c-c/2.0)
+  posy=2+math.Floor(b*b*d-d/2.0)
+  >h@posx@,@posy@,#@col@,☆
