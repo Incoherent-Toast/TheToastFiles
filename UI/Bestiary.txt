@@ -1,0 +1,48 @@
+/*============================
+Bestiary by Incoherent_Toast
+
+This is a book that lists many of the entities found in-game. To execute it you type "import UI/BookMain"
+There aren't any buttons involved yet so it only uses the arrow keys. 
+Up and down will open and close the book. Left and right will switch pages.
+
+version 1.02
+===============================*/
+
+var Cover = import UI/BookData/BookOpeningV1_02
+var PageInfo = import UI/BookData/PagesV1_02
+var NotOpening = true
+var NotClosing = true
+var BookIcon = ascii
+══════════╗
+´\‾‾‾‾‾\  ║
+'´\  Ф  \ ║
+ '´\_____\║
+  '(_____(║
+══════════╝
+asciiend
+var IconX = 0
+
+?Cover.BookY = -10 
+  ?NotClosing & NotOpening
+    var PageScript = import UI/BookData/PageFlipV1_02
+    PageScript.DoAllOfTheThings()
+  :
+    >`45,2,@PageInfo.Number[1][0]@
+
+?key = UpBegin | !NotOpening
+  ui.Clear()
+  NotOpening = Cover.Open()
+
+:?key = DownBegin | !NotClosing | (key = PrimaryBegin & (input.x<=8 | input.x>=78))
+  ui.Clear()
+  NotClosing = Cover.Close()
+
+IconX = Cover.BookY/3 - 7
+
+?IconX > -10
+  >`@IconX@,5,@BookIcon@
+
+?input.x<11 & input.y>4 & input.y<11
+  ?key = PrimaryBegin
+    ui.Clear()
+    NotOpening = Cover.Open()

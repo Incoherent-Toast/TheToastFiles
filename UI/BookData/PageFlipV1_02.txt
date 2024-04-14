@@ -1,0 +1,319 @@
+var PageInfo = import UI/BookData/PagesV1_02
+var CurrentPage = 0
+var NewPanels = true
+var Dir = [0]
+var A
+var B
+var C
+var D
+var AText = []
+var BText = []
+var CText = []
+var DText = []
+var PageCount = PageInfo.Number.Count()-1
+var HintsToggle = false
+var EtymolToggle = false
+var InputXY = [0,0]
+var hyperlink = -1
+var TempB 
+var TempC
+var TempD
+var TempE
+var TempList
+var BackList = []
+var PageJump = false
+
+func AddText(Pg)
+  TempList = []
+  for i=0..(Pg.Count()/2)-1
+    TempList.Add(ui.AddText(Pg[2*i]))
+    TempList.Add(Pg[2*i+1])   
+  return TempList
+
+func PanelSet(PageA,PageB,PageC,PageD)
+  ui.Clear()
+  A = ui.AddPanel()
+  C = ui.AddPanel()
+  AText = AddText(PageInfo.Number[PageA])
+  CText = AddText(PageInfo.Number[PageC])
+  ?CurrentPage/2 < (PageInfo.Number.Count()/2)-1
+    B = ui.AddPanel()
+    D = ui.AddPanel()
+    BText = AddText(PageInfo.Number[PageB])
+    DText = AddText(PageInfo.Number[PageD])
+    AlignPanel(B,BText,0,0)
+    AlignPanel(D,DText,1,0)
+
+  AlignPanel(A,AText,0,30)
+  AlignPanel(C,CText,1,30)
+
+var Flip = import UI/BookData/BookOpeningV1_02
+
+
+var RateOfChangeL = [0,0,0,0,0,0,2,15,19,24,27,30,30,30]
+var RateOfChangeR = [1,2,4,8,11,28,30,30,30,30,30,30,30,30]
+var FlipFrame = [0]
+var customStyle = ui.AddStyle("
+^###
+^###
+^###")
+
+func AlignPanel(p,t,XOffset,StartWidth)
+  // XOffset refers to "0" as left page and "1" as right page
+  p.dock = top_left
+  p.y = 2 //-11
+  p.h = 22
+  p.style = customStyle
+  p.clip = true
+  p.w = StartWidth
+  p.anchor = top_left
+
+  ?XOffset
+    p.x = 45
+  :
+    p.x = 13
+
+  for i=0..(t.Count()/2)-1
+    p.Add(t[2*i])
+    t[2*i].dock = top_left
+    t[2*i].anchor = top_left
+    t[2*i].w = 32
+    t[2*i].color = t[2*i+1]
+
+
+func main()
+  B.w = 30 - RateOfChangeL[FlipFrame[FlipFrame.Count()-1]]
+  D.w = 30 - RateOfChangeR[FlipFrame[FlipFrame.Count()-1]]
+
+
+  ?Dir[0] = -1 // & CurrentPage >= 0
+    FlipFrame.Emplace(0, FlipFrame[0]-1)
+  :?Dir[0] = 1 // & CurrentPage <= PageInfo.Number.Count()
+    FlipFrame.Emplace(0, FlipFrame[0]+1)
+
+  ?FlipFrame[0] <= 0 | FlipFrame[0] >= Flip.FlipPage.Count()-1
+    Dir.Emplace(0,0)
+
+func PageBackwards(n)
+  EtymolToggle = false
+  HintsToggle = false
+  Dir.Emplace(0,-1)
+  FlipFrame.Emplace(0,Flip.FlipPage.Count()-1)
+  CurrentPage -= n
+  PanelSet(CurrentPage+n,CurrentPage,CurrentPage+n+1,CurrentPage+1)
+  hyperlink = -1
+  ?n > 5
+    PageJump = true
+    ?n > 15
+      for i=0..(n/15)-1
+        FlipFrame.Add(13)
+        Dir.Add(-1)
+  :
+    PageJump = false
+
+func PageForwards(n)
+  EtymolToggle = false
+  HintsToggle = false
+  Dir.Emplace(0,1)
+  FlipFrame.Emplace(0,0)
+  PanelSet(CurrentPage+n,CurrentPage,CurrentPage+n+1,CurrentPage+1)
+  CurrentPage += n
+  hyperlink = -1
+  ?n > 5
+    PageJump = true
+    ?n > 15
+      for i=0..(n/15)-1
+        FlipFrame.Add(0)
+        Dir.Add(1)
+  :
+    PageJump = false
+
+
+
+
+func CheckMouseOnLink(Links,Buttons,Number)
+  // I've split the search onto 2 if statements to speed up the search because it can skip the second check if the first check fails. 
+  // I also have a return statement so it can exit the loop as soon as it finds a matching link.
+  ?(HintsToggle | EtymolToggle) & Buttons.Count()>0
+    ?input.y >= Buttons[0][2] & input.y <= Buttons[0][3] & input.x >= Buttons[0][0] & input.x <= Buttons[0][1]
+      hyperlink = [Number,0,1]
+    return true
+  ?Links.Count()>0
+    for i = 0..Links.Count()-1
+      ?input.y >= Links[i][2] & input.y <= Links[i][3]
+        ?input.x >= Links[i][0] & input.x <= Links[i][1]
+          hyperlink = [Number,i,-1]
+          return false
+  ?Buttons.Count()>0
+    for i = 0..Buttons.Count()-1
+      ?input.y >= Buttons[i][2] & input.y <= Buttons[i][3]
+        ?input.x >= Buttons[i][0] & input.x <= Buttons[i][1]
+          hyperlink = [Number,i,i]
+          return false
+  return true
+
+func DoAllOfTheThings()
+
+
+  ?PageCount = PageInfo.Number.Count()-1
+    for j=0..PageInfo.Index.Count()-1
+      PageInfo.Number.Add(PageInfo.Index[j])
+
+  ?key = LeftBegin & CurrentPage > 0
+    PageBackwards(2)
+
+  :?key = RightBegin & CurrentPage/2 < (PageInfo.Number.Count()/2)-1
+    PageForwards(2)
+
+  :?key = PrimaryBegin 
+    ?input.x>8 & input.x<15 & CurrentPage > 0
+        PageBackwards(2)
+
+    :?input.x<78 & input.x>73 & CurrentPage/2 < (PageInfo.Number.Count()/2)-1
+        PageForwards(2)
+
+  ?NewPanels & Dir[0] = 0
+    PanelSet(CurrentPage,CurrentPage+2,CurrentPage+1,CurrentPage+3)
+    NewPanels = false
+
+  ?CurrentPage = 0 | (CurrentPage = 2 & Dir[0]=1)
+    >`10,-4,@Flip.FlipFirstPage[0]@
+  :?CurrentPage = 2  | (CurrentPage = 4 & Dir[0]=1)
+    >`10,-4,@Flip.FlipFirstPage[Flip.FlipFirstPage.Count()-1]@
+  :
+    >`10,-4,@Flip.FlipPage[Flip.FlipPage.Count()-1]@
+
+  ?Dir[0]!0
+    main()
+    ?PageJump
+      >`10,-4,@Flip.FlipManyPages[FlipFrame[0]]@
+    :?CurrentPage > 0
+      >`10,-4,@Flip.FlipPage[FlipFrame[0]]@
+    :
+      >`10,-4,@Flip.FlipFirstPage[FlipFrame[0]]@
+  :
+    PanelSet(CurrentPage,CurrentPage+2,CurrentPage+1,CurrentPage+3)
+
+  ?FlipFrame.Count()>1
+    for i=FlipFrame.Count()-1..1
+      ?Dir[i]=1
+        ?FlipFrame[i] >= Flip.FlipPage.Count()-1
+           FlipFrame.RemoveAt(i)
+           Dir.RemoveAt(i)
+        :?Math.Abs(FlipFrame[i]-FlipFrame[i-1]) > 0 | FlipFrame[i] >= 10
+            >`10,-4,@Flip.FlipManyPages[FlipFrame[i]]@
+            ?FlipFrame[0] > FlipFrame[i] | Dir[i] = 1
+              FlipFrame.Emplace(i,FlipFrame[i]+1)
+            :?FlipFrame[0] < FlipFrame[i] | Dir[i] = -1
+              FlipFrame.Emplace(i,FlipFrame[i]-1)
+      :?Dir[i]=-1
+        ?FlipFrame[i] <= 0
+           FlipFrame.RemoveAt(i)
+           Dir.RemoveAt(i)
+
+        :?Math.Abs(FlipFrame[i]-FlipFrame[i-1]) > 0 | FlipFrame[i] <= 3
+            >`10,-4,@Flip.FlipManyPages[FlipFrame[i]]@
+            ?FlipFrame[0] > FlipFrame[i] | Dir[i] = 1
+              FlipFrame.Emplace(i,FlipFrame[i]-1)
+            :?FlipFrame[0] < FlipFrame[i] | Dir[i] = -1
+              FlipFrame.Emplace(i,FlipFrame[i]-1)
+
+  ?(input.x ! InputXY[0]) | (input.y ! InputXY[1]) & FlipFrame[0] = 0 | FlipFrame[0] = 13
+    InputXY = [input.x,input.y]
+    TempC = true
+    TempD = true
+    ?input.x < 45
+      TempC = CheckMouseOnLink(PageInfo.Data[CurrentPage],PageInfo.Buttons[CurrentPage],0)
+    ?input.x >= 45
+      TempD = CheckMouseOnLink(PageInfo.Data[CurrentPage+1],PageInfo.Buttons[CurrentPage+1],1)
+    ?TempC & TempD
+      hyperlink = -1
+
+  ?HintsToggle
+    ?PageInfo.Buttons[CurrentPage].Count()>0
+      >`13,2,@PageInfo.Hints[PageInfo.Buttons[CurrentPage][HintsToggle-1][4]]@
+    ?PageInfo.Buttons[CurrentPage+1].Count()>0
+      >`45,2,@PageInfo.Hints[PageInfo.Buttons[CurrentPage+1][HintsToggle-1][4]]@
+    ?key = PrimaryBegin
+      HintsToggle = false
+
+
+  ?EtymolToggle
+    ?PageInfo.Buttons[CurrentPage].Count()>0
+      >`13,2,@PageInfo.Etymology[PageInfo.Buttons[CurrentPage][EtymolToggle-1][4]]@
+    ?PageInfo.Buttons[CurrentPage+1].Count()>0
+      >`45,2,@PageInfo.Etymology[PageInfo.Buttons[CurrentPage+1][EtymolToggle-1][4]]@
+    ?key = PrimaryBegin
+      EtymolToggle = false
+
+  ?hyperlink ! -1
+    ?hyperlink[2]>=0
+      TempB = PageInfo.Buttons[CurrentPage+hyperlink[0]]
+      ?TempB[hyperlink[1]][5] = 0
+        >`@TempB[hyperlink[1]][0]+2@,@TempB[hyperlink[1]][2]+1@,#blue,Hints
+      :?TempB[hyperlink[1]][5] = 1
+        >`@TempB[hyperlink[1]][0]+2@,@TempB[hyperlink[1]][2]+1@,#blue,Etymology
+      ?key = PrimaryBegin 
+        ?TempB[hyperlink[1]][5] = 0
+          HintsToggle = hyperlink[2]+1
+        :
+          EtymolToggle = hyperlink[2]+1
+    :
+      TempB = PageInfo.Data[CurrentPage+hyperlink[0]]
+      >`@TempB[hyperlink[1]][0]@,@TempB[hyperlink[1]][2]@,#blue,@TempB[hyperlink[1]][6]@
+      ?key = PrimaryBegin
+        BackList.Add(CurrentPage)
+        TempE = PageInfo.Chapters[TempB[hyperlink[1]][4]]
+        ?TempB[hyperlink[1]][4] >= 0
+          TempB = (TempE + TempB[hyperlink[1]][5]) /2 *2 - CurrentPage
+        :
+          TempB = (Math.Abs(TempB[hyperlink[1]][4])+PageCount) /2 *2 - CurrentPage
+        ?TempB > 0
+          PageForwards(TempB)
+        :
+          PageBackwards(-TempB)
+
+  ?BackList.Count() > 0
+    ?BackList[BackList.Count()-1] = CurrentPage
+      BackList.RemoveAt(BackList.Count()-1)
+    ?input.x >=6 & input.x <= 14 & input.y <= 2
+      ?key = PrimaryBegin
+        ?BackList[BackList.Count()-1] > CurrentPage
+          PageForwards(BackList[BackList.Count()-1]-CurrentPage)
+        :
+          PageBackwards(-BackList[BackList.Count()-1]+CurrentPage)
+        BackList.RemoveAt(BackList.Count()-1)
+      >`6,0,#blue,ascii
+#,——————.
+(← Back |
+#`——————'
+asciiend
+    :
+      >`6,0,ascii
+#,——————.
+(← Back |
+#`——————'
+asciiend
+
+  ?CurrentPage = 86
+    >`@25-string.Size(player.name)/2@,2,§ @player.name@ §
+    draw.Player()
+  ?CurrentPage = 88 & false
+    >`45,2,#8B4513,@PageInfo.Number[89][0]@
+    >`45,2,#@PageInfo.Number[89][3]@,@PageInfo.Number[89][2]@
+
+
+/*
+  ?AText.Count() > 0
+    >`0,7,@(AText.Count()/2)-1@
+    >`0,8,@AText.Count()@
+  ?BText.Count() > 0
+    >`0,10,@(BText.Count()/2)-1@
+    >`0,11,@BText.Count()@
+  ?CText.Count() > 0
+    >`0,13,@(CText.Count()/2)-1@
+    >`0,14,@CText.Count()@
+  ?DText.Count() > 0
+    >`0,16,@(DText.Count()/2)-1@
+    >`0,17,@DText.Count()@
+*/
