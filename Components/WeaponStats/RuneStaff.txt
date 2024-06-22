@@ -1,0 +1,182 @@
+var Damage = [3,5,6,7,8,9,10,11,13,14,15,19,23,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,100]
+
+var Range =  [10,11,12,13,14,15,16,17,18,19,20,21,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22]
+var Splash = [9,13,17,21,25,29,33,37,41,46,50,54,58,62,66,70,74,78,82,87,91,95,99,103,107,111,115,119,123,128,132,136]
+
+var Lifesteal =  [9,11,12,14,15,17,18,20,21,23,24,26,27,29,30,32,33,35,36,38,39,41,42,44,45,47,48,50,51,53,54,56]
+var Lifesteal2 = [20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,165,170,175]
+
+var Weaken =  [-1,-1,-2,-2,-2,-3,-3,-3,-4,-4,-4,-5,-5,-5,-6,-6,-6,-7,-7,-7,-8,-8,-8,-9,-9,-9,-10,-10,-10,-11,-11,-11]
+var Empower = [1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4,4.1]
+
+var Unmake =  [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34]
+var Unmake2 = [10,13,16,19,22,25,28,31,34,37,39,42,45,48,51,54,57,60,63,66,68,71,74,77,80,83,86,89,92,95,97,100]
+
+var Fire =  [9,15,21,27,33,39,45,51,57,63,69,75,81,87,93,99,105,111,117,123,129,135,141,147,153,159,165,171,177,183,189,195]
+var Fire2 = [12,20,28,36,44,52,60,68,76,84,92,100,108,116,124,132,140,148,156,164,172,180,188,196,204,212,220,228,236,244,252,260]
+
+var Chill =  [2,2.4,2.8,3.2,3.6,4,4.4,4.8,5.2,5.6,6,6.6,7.2,7.8,8.4,9,9.6,10.2,10.8,11.4,12,12.6,13.2,13.8,14.4,15,15.6,16.2,16.8,17.4,18,18.6]
+var Chill2 = [4,4.8,5.6,6.4,7.2,8,8.8,9.6,10.4,11.2,12,13.2,14.4,15.6,16.8,18,19.2,20.4,21.6,22.8,24,25.2,26.4,27.6,28.8,30,31.2,32.4,33.6,34.8,36,37.2]
+
+var Lesser_Elemental_Damage = [2,2,3,4,4,5,6,6,7,8,9,14,19,24,30,35,40,46,51,56,62,67,72,77,83,88,93,99,104,109,115,120]
+var Pure_Elemental_Damage =   [7,9,10,12,14,15,17,19,20,22,24,29,35,40,46,52,57,63,68,74,79,85,90,96,102,107,113,118,124,129,135,140]
+
+var Lesser_Engage_Armour = [0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1,1.05,1.1,1.15,1.2,1.25,1.3,1.35,1.4,1.45,1.5,1.55,1.6,1.65,1.7,1.75,1.8]
+var Pure_Engage_Armour =   [1,1.2,1.4,1.6,1.8,2,2.2,2.4,2.6,2.8,3,3.2,3.4,3.6,3.8,4,4.2,4.4,4.6,4.8,5,5.2,5.4,5.6,5.8,6,6.2,6.4,6.6,6.8,7,7.2]
+
+var Max_Armour =   [2,2.4,2.8,3.2,3.6,4,4.4,4.8,5.2,5.6,6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.2,9.6,10,10.4,10.8,11.2,11.6,12,12.4,12.8,13.2,13.6,14,14.4]
+var Armour_Regen = [0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1,1.05,1.1,1.15,1.2,1.25,1.3,1.35,1.4,1.45,1.5,1.55,1.6,1.65,1.7,1.75]
+
+var AS_Reduction = [2,3,4,5,7,8,9,10,12,13,14,16,17,18,20,21,22,23,25,26,27,29,30,31,33,34,35,36,38,39,40,42]
+var Base_AS = [16,8,0]
+
+
+/*
+Enchantment numbers:
+  0 = Dmg 
+  1 = dual Armour stats 
+  2 = dual Armour stats 
+  3 = AS
+  4 = range 
+  5 = splash
+  6 = Elemental Dmg / Engage Armour
+  7 = Debuff / Reflective Debuff
+*/
+
+
+var WeaponArt = [ascii
+
+####
+asciiend,ascii
+
+###/
+##/
+#/
+asciiend]
+
+func ReturnWeaponArt(Element)
+  return WeaponArt[0]+Element+WeaponArt[1]
+
+var EnchTypeList = ["0- Damage         ","1- Dual Armour    ","2- Dual Armour    ","3- Attack Speed   ","4- Range          ","5- Splash Chance  ","hi"]
+func ReturnWeaponArt(Element)
+  return WeaponArt[0]+Element+WeaponArt[1]
+
+func Add(String)
+  ?EnchTypeList.Count() = 8
+    EnchTypeList[7] = String
+  :
+    EnchTypeList.Add(String)
+
+func ReturnEnchTypeList(Affix)
+  //var FirstIsCapital =string.Equals( string.Capitalize(Affix) , Affix )
+  ?string.size(Affix)>1
+    var SecondIsCapital = string.Equals( string.ToUpper(string.Capitalize(Affix)) , string.Capitalize(Affix) )
+  :
+    ?Affix = "D"
+      EnchTypeList[6] = "6- Elemental Dmg  "
+    :
+      EnchTypeList[6] = "6- Engage Armour  "
+    ?EnchTypeList.Count() > 7
+      EnchTypeList.RemoveAt(7)
+    return EnchTypeList
+
+  ?Affix = "d"
+      EnchTypeList[6] = "6- Weak Element Dmg"
+  :
+      EnchTypeList[6] = "6- Weak Engage    "
+
+  ?Affix = "F"
+    ?SecondIsCapital
+      Add("7- Fire Dot On Hit ")
+    :
+      Add("7- Fire Dot_2      ")
+  :?Affix = "I"
+    Add("7- Chill Duration  ")
+  :?Affix = "P"
+    ?SecondIsCapital
+      Add("7- Poison Debuff   ")
+    :
+      Add("7- Poison Buff Self")
+  :?Affix = "L"
+    Add("7- Lifesteal Chance")
+  :?Affix = "h"
+    Add("7- Heal When Hit % ")
+  :?Affix = "U"
+    ?SecondIsCapital
+      Add("7- Unmaking Chance ")
+  :?EnchTypeList.Count()=8 & false
+    EnchTypeList.RemoveAt(7)
+  return EnchTypeList
+
+/*
+Enchantment numbers:
+  0 = Dmg 
+  1 = dual Armour stats 
+  2 = dual Armour stats 
+  3 = AS
+  4 = range 
+  5 = splash
+  6 = Elemental Dmg / Engage Armour
+  7 = Debuff / Reflective Debuff
+*/
+
+func DisplayStats(Affix,ElePointer,Star,EnchantLevel,EnchTypePointer,f)
+  var BasePointer = [Star,Star,Star,Star,Star,Star,Star,Star]
+
+  ?EnchTypePointer = 1 | EnchTypePointer = 2
+    BasePointer[1] += EnchantLevel
+    BasePointer[2] += EnchantLevel
+  :
+    BasePointer[EnchTypePointer] += EnchantLevel
+
+  var AS_List = f.GetAS(Base_AS, AS_Reduction[BasePointer[2]])
+  var AS = AS_List[0] + AS_List[1] + AS_List[2]
+
+  var BonusInfo = ""
+  ?string.Equals(Affix,"D")
+    var Elemental = Pure_Elemental_Damage[BasePointer[6]]
+  :
+    ?Affix = "d"
+      var Elemental = Lesser_Elemental_Damage[BasePointer[6]]
+    :
+      var Elemental = 0
+    var SecondIsCapital = string.Equals( string.ToUpper(string.Capitalize(Affix)) , string.Capitalize(Affix) )
+
+    ?Affix = "F"
+      ?SecondIsCapital
+        BonusInfo += "Burns target for "+ Fire[BasePointer[7]] +" damage\n"
+      :
+        BonusInfo += "Burns attacker for "+ Fire2[BasePointer[7]] +" damage\n"
+    :?Affix = "P"
+      ?SecondIsCapital
+        BonusInfo += "Weakens attacks by "+ Weaken[BasePointer[7]] +" damage\n"
+      :
+        BonusInfo += "Gain +1 dmg for "+ Empower[BasePointer[7]] +"s when hit\n"
+    :?Affix = "I"
+      ?SecondIsCapital
+        BonusInfo += "Chills target for "+ Chill[BasePointer[7]] +"s\n"
+      :
+        BonusInfo += "Chills attacker for "+ Chill2[BasePointer[7]] +"s\n"
+    :?Affix = "U"
+      ?SecondIsCapital
+        BonusInfo += Unmake[BasePointer[7]] +"% chance to unmake target\n"
+      :
+        BonusInfo += Unmake2[BasePointer[7]] +"% chance to unmake attacker\n"
+    :?Affix = "L"
+      BonusInfo += Lifesteal[BasePointer[7]] +"% chance to heal 1 hp\nAverage Heal per second: " + f.HealOnStrike(AS, Lifesteal[BasePointer[7]] ) + "\n"
+    :?Affix = "h"
+      BonusInfo += Lifesteal2[BasePointer[7]] +"% chance to heal when hit\n"
+
+  ?ElePointer = 5
+    Elemental = 0
+
+  var Dps = f.CalcDPS(Damage[BasePointer[0]], Elemental, AS, 0, 1, 1)
+
+  var DPS_String = string.Format("
+^Damage: {0} + {1}\n
+^Attack Frames: {2}\n
+^{3}
+^\nDPS: {4}",
+^Damage[BasePointer[0]], Elemental , AS , BonusInfo , Dps)
+
+  return DPS_String

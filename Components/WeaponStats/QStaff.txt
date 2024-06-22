@@ -1,0 +1,27 @@
+
+
+
+
+
+var WeaponArt = ascii
+
+####,
+###/
+##/
+#/
+asciiend
+
+func ReturnWeaponArt(Element)
+  return WeaponArt
+
+
+
+
+/*
+Quarterstaff:
+  0 - Dmg
+  1 - Dual Armour
+  2 - Dual Armour
+  3 - AS
+  4 - Dash Cooldown
+*/

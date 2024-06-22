@@ -1,0 +1,49 @@
+
+var Damage = [3,4,6,7,9,13,16,19,21,23,25,29,32,35,39,42,45,49,52,55,58,62,65,68,72,75,78,82,85,88,91,95]
+var Armour_Damage_Mult = [2,2,2.1,2.1,2.2,2.2,2.2,2.3,2.3,2.4,2.4,2.6,2.8,3,3.2,3.4,3.6,3.8,4,4.2,4.4,4.6,4.8,5,5.2,5.4,5.6,5.8,6,6.2,6.4,6.6]
+
+//Rare stat
+var AS_Reduction = [0,3,6,6,8,8,8,9,9,9,9,10,10,10,10,10,11,11,11,11,12,12]
+
+var Base_AS = [12,5,5]
+
+var WeaponArt = ascii
+
+
+#<´]
+##║
+##'
+asciiend
+
+func ReturnWeaponArt(Element)
+  return WeaponArt
+
+func ReturnEnchTypeList(Affix)
+  return EnchTypeList
+
+var EnchTypeList = ["0- Damage         ","1- Bonus Health   ","2- Attack Speed   ","3- Armour Damage  "]
+
+
+/*
+War Hammer:
+  0 = dmg
+  1 = health
+  2 = AS
+  3 = Armour Mult
+*/
+
+func DisplayStats(Affix,ElePointer,Star,EnchantLevel,EnchTypePointer,f)
+  var BasePointer = [Star,0,0,Star]
+  BasePointer[EnchTypePointer] += EnchantLevel
+  var AS_List = f.GetAS(Base_AS, AS_Reduction[BasePointer[2]])
+  var AS = AS_List[0] + AS_List[1] + AS_List[2]
+  var Dps = f.CalcDPS(Damage[BasePointer[0]], 0, AS, 0, 1, 1)
+  var DpsArmour = Dps * Armour_Damage_Mult[BasePointer[3]]
+
+  var DPS_String = string.Format("
+^Damage: {0} x{1} vs Armour\n
+^Attack Frames: {2}\n
+^\nDPS: {3} ({4})",
+^Damage[BasePointer[0]], Armour_Damage_Mult[BasePointer[3]] , AS , Dps, DpsArmour)
+
+  return DPS_String

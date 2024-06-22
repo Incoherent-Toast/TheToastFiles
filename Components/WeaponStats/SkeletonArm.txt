@@ -1,0 +1,37 @@
+
+var Damage = [20,32,44,56,68,80]
+
+var AS_Reduction = [0,1,2,3,4,6,7,8,9,10,12,13,14,15,16,18,19,20,21,22,24,25]
+
+var Base_AS = [13,12,0]
+
+var WeaponArt = ascii
+
+
+
+´‾‾\_,=
+#####`‾
+asciiend
+
+func ReturnWeaponArt(Element)
+  return WeaponArt
+
+
+func ReturnEnchTypeList(Affix)
+  return EnchTypeList
+
+var EnchTypeList = ["0- Attack Speed   "]
+
+
+func DisplayStats(Affix,ElePointer,Star,EnchantLevel,EnchTypePointer,f)
+  var AS_List = f.GetAS(Base_AS, AS_Reduction[EnchantLevel])
+  var AS = AS_List[0] + AS_List[1] + AS_List[2]
+  var Dps = f.CalcDPS(Damage[Star-5], 0, AS, 0, 1, 1)
+
+  var DPS_String = string.Format("
+^       Damage: {0}\n
+^Attack Frames: {1}\n
+^\nDPS: {2}",
+^Damage[Star-5], AS, Dps)
+
+  return DPS_String

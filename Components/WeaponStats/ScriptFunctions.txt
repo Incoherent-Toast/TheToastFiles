@@ -1,0 +1,139 @@
+///////////////////////////Variables////////////////////////////////////
+
+var TextNumberingLong = "Lvl:  0  1  2  3  4  5  6  7  8  9  10 [color=#00F0F0]1 [/color] [color=#FFFF48]2  3 [/color] [color=#32D032]4  5  6 [/color] [color=#4040FF]7  8  9  10[/color] [color=#FF1616]11 12 13 14 15[/color] [color=#C000FF]16 17 18 19 20 21[/color]\n"
+var TextNumberingShort = "Lvl:  0  [color=#00F0F0]1[/color]  [color=#FFFF48]2  3[/color]  [color=#32D032]4  5  6[/color]  [color=#4040FF]7  8  9  10[/color] [color=#FF1616]11 12 13 14 15[/color] [color=#C000FF]16 17 18 19 20 21[/color]\n"
+var TextA = ""
+var TextB = ""
+var TextC = ""
+var TextD
+
+var AAC   = false
+var Burst = false
+var WeaponSwap = false
+
+var Berserk = 0
+var Chill = 0
+var Moon = 0
+
+var LuckyCrit = false
+var LuckyMult = false
+
+var Weapon = false
+//var EnchantLevel = 0
+var EnchantNumber = 0
+//var Affix = ""
+
+var RuneWand = import Components/WeaponStats/RuneWand
+var RuneStaff = import Components/WeaponStats/RuneStaff
+var RuneBow = import Components/WeaponStats/RuneCrossbow
+var HeavyBow = import Components/WeaponStats/HeavyCrossbow
+var Repeater = import Components/WeaponStats/Repeater
+var Crossbow = import Components/WeaponStats/Crossbow
+
+var RuneSword = import Components/WeaponStats/ShortRuneSword
+var RuneLongSword = import Components/WeaponStats/BigRuneSword
+var Bardiche = import Components/WeaponStats/Bardiche
+var RuneHammer = import Components/WeaponStats/RuneHammer
+var HeavyHammer = import Components/WeaponStats/HeavyHammer
+var WarHammer = import Components/WeaponStats/WarHammer
+var Skeleton = import Components/WeaponStats/SkeletonArm
+
+////////////////////////////Functions////////////////////////////////
+
+func HealOnStrike(AS,HealChance)
+  ?HealChance > 100
+    var Chance1 = (200 - HealChance) / 100.0
+    var Chance2 = (HealChance - 100) / 100.0
+    return math.Round(3000.0/AS * (Chance1 * 1 + Chance2 * 2))/100
+  :
+    return math.Round(30.0/AS * 1 * HealChance)/100
+
+func SubToMax(Num, Subtract)
+  ?Num = 0
+    return 0
+  return math.Max(Num-Subtract,1)
+
+func CalcDPS(Dmg, EleDmg, AS, CritChance, CritMult, ArmourMult)
+  ?LuckyCrit
+    CritChance = 100
+  ?LuckyMult
+    CritMult += 1.8
+  var TotDmg = Dmg + EleDmg
+  var CrtChnc = CritChance / 100.0
+  var BaseDps = (TotDmg * (1-CrtChnc) * 30) / AS
+  var CritDps = (TotDmg * CrtChnc * CritMult * 30) / AS
+
+  return math.Round( (BaseDps + CritDps)*100 * ArmourMult)/100
+
+func GetAS( Base, Reduction )
+  Reduction = Reduction + Berserk + Chill + Moon
+  var Third = Reduction/3
+  var Remainder = Reduction%3
+
+  ?Remainder = 0
+    var Cast = SubToMax(Base[0] , Third )
+  :
+    var Cast = SubToMax(Base[0] , Third + 1 )
+
+  ?Remainder = 2
+    var Perf = SubToMax(Base[1] , Third + 1 )
+  :
+    var Perf = SubToMax(Base[1] , Third )
+  ?Reduction >= 0
+    var Cool = SubToMax(Base[2] , Third )
+  :
+    var Cool = math.Max(Base[2]-Third,1)
+
+  ?AAC
+    Perf = 0
+  :?WeaponSwap
+    Perf = 0
+    ?Cool > 0
+      Cool = 1
+  :?Burst
+    Perf = 0
+    Cool = 0
+
+  return [Cast,Perf,Cool]
+
+func GetChart()
+  ?Weapon = false
+    return
+  TextA = "Cast: "
+  TextB = "Perf: "
+  TextC = "Cool: "
+  TextD = "Total "
+  var ReductionOffsets = Berserk + Chill + Moon
+  var c
+  for a = 0..Weapon.AS_Reduction.Count()-1
+    var b = GetAS( Weapon.Base_AS, Weapon.AS_Reduction[a])
+    //var b = GetAS(a,0,Weapon,Berserk + Chill + Moon)
+
+    ?b[0] < 10
+      TextA += b[0] + "##"
+    :
+      TextA += b[0] + "#"
+    ?b[1] < 10
+      TextB += b[1] + "##"
+    :
+      TextB += b[1] + "#"
+    ?b[2] < 10
+      TextC += b[2] + "##"
+    :
+      TextC += b[2] + "#"
+    c = b[0] + b[1] + b[2]
+    ?c < 10
+      TextD += c + "##"
+    :
+      TextD += c + "#"
+
+  ?Weapon.AS_Reduction.Count() < 32
+    return TextNumberingShort + TextA + "\n" + TextB + "\n" + TextC + "\n\n" + TextD
+  :
+    return TextNumberingLong + TextA + "\n" + TextB + "\n" + TextC + "\n\n" + TextD
+
+var Informationisms = "
+^======  WELCOME  ======\n
+^This is version {0} of my DPS calculator. This is still new and potentially buggy so if you see any numbers that seem odd or incorrect please be sure to inform me.\n
+^I'm going to list any of the FAQ questions that I may expect to recieve here.\n\n======  Attack Frames?  ======\nThe attack speed calculations here are measured in frames. There are 30 frames per second and the DPS number is measured in seconds. The DPS also does not account for dual equips.\n\n======  AAC / Swap / Burst ======\nThese toggles represent 3 types of AAC (animation cancelling).\nThe first is just the basic AAC that everyone is already familiar with where you simply re-equip a weapon when it hits phase 3 and it will skip the 'cast' phase.\nSwap refers to weapon swapping. When a weapon goes into it's cooldown phase it will continue to tick down even while unequipped, down to a minimum of 1 frames, so by swapping to a new weapon you can have the old one cooldown in the meantime. You may find in many cases that this yeilds the same result as basic AAC.\nBurst is similar to weapon swapping but with the key difference that you do it in bursts. It's possible to rapid fire a series of weapons and then during a moment of downtime you equip each one for a frame to reload them.
+^"

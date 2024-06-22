@@ -1,0 +1,23 @@
+
+
+
+var WeaponArt = ascii
+
+
+#┼———
+asciiend
+
+func ReturnWeaponArt(Element)
+  return WeaponArt
+
+
+
+
+
+
+/*
+Basic Sword:
+  0 - Damage
+  1 - Hp
+  2 - AS
+*/

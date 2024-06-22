@@ -1,0 +1,52 @@
+
+var Damage = [2,2,2,2,3,3,3,4,4,5,5,6,7,7,8,9,10,11,11,12,12,13,14,14,15,15,16,16,17,17,18,20]
+var Crit_Chance = [10,11,12,13,14,15,16,17,18,19,20,24,28,32,36,40,43,47,51,55,59,63,67,71,75,79,82,86,90,94,98,100]
+var Crit_Mult   = [1.5,1.7,1.9,2.1,2.3,2.5,2.7,2.9,3.1,3.3,3.5,3.6,3.8,3.9,4.1,4.2,4.4,4.5,4.7,4.8,5,5.1,5.2,5.4,5.5,5.7,5.8,6,6.1,6.3,6.4,6.5]
+
+
+var AS_Reduction = [0,1,3,5,7,8,10,12,14,16,17]
+
+var Base_AS = [7,7,1]
+
+/*
+Repeater:
+  2 = Crit
+
+(Missing: dmg, crit2)
+*/
+
+var WeaponArt = ascii
+
+
+
+#╤═}═
+asciiend
+
+func ReturnWeaponArt(Element)
+  return WeaponArt
+
+func ReturnEnchTypeList(Affix)
+  return EnchTypeList
+
+var EnchTypeList = ["0- Damage         ","1- Dual Crit      ","2- Dual Crit      "]
+
+func DisplayStats(Affix,ElePointer,Star,EnchantLevel,EnchTypePointer,f)
+  var BasePointer = [Star,Star,Star]
+  ?EnchTypePointer > 0
+    BasePointer[1] += EnchantLevel
+    BasePointer[2] += EnchantLevel
+  :
+    BasePointer[EnchTypePointer] += EnchantLevel
+
+  var AS_List = f.GetAS(Base_AS, AS_Reduction[Star])
+  var AS = AS_List[0] + AS_List[1] + AS_List[2]
+  var Dps = f.CalcDPS(Damage[BasePointer[0]], 0, AS, Crit_Chance[BasePointer[1]], Crit_Mult[BasePointer[2]], 1)
+
+  var DPS_String = string.Format("
+^Damage: {0}\n
+^Attack Frames: {1}\n
+^{2}% chance to crit for {3}x damage\n
+^\nDPS: {4}",
+^Damage[BasePointer[0]], AS , Crit_Chance[BasePointer[1]], Crit_Mult[BasePointer[2]], Dps)
+
+  return DPS_String
