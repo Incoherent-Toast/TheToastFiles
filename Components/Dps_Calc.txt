@@ -280,6 +280,7 @@ func WeaponDisplayStats()
     WeaponStats.text = f.Weapon.DisplayStats("","",StarPointer,EnchantLevel,EnchTypePointer,f)
 
 func CloseMenus()
+  >fish
   ?EnchTypeDisplayToggle
     EnchTypeDisplayToggle = false
     EnchTypeDropDown.Recycle()
