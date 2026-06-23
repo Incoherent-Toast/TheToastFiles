@@ -280,27 +280,33 @@ func WeaponDisplayStats()
     WeaponStats.text = f.Weapon.DisplayStats("","",StarPointer,EnchantLevel,EnchTypePointer,f)
 
 func CloseMenus()
-  >fish
   ?EnchTypeDisplayToggle
     EnchTypeDisplayToggle = false
     EnchTypeDropDown.Recycle()
+    return false
   :?EleDisplayToggle
     EleDisplayToggle = false
     EleDropDown.Recycle()
+    return false
   :?EnchantDisplayToggle
     EnchantDisplayToggle = false
     NumberButtons.Clear()
     EnchantDropDown.Recycle()
     EnchantDisplay.text = "#+" + EnchantLevel
+    return false
   :?StarDisplayToggle
     StarDisplayToggle = false
     StarDropDown.Recycle()
+    return false
   :?AffixDisplayToggle
     AffixDisplayToggle = false
     AffixDropDown.Recycle()
+    return false
   :?DropDownToggle
     WeaponDropdown.text = "-Select Weapon-  ▼"
     RecycleWeapMenu()
+    return false
+  return true
 
 func SelectEnchType(btn)
   for a = 0..EnchTypeOptionList.Count()-1
@@ -313,14 +319,10 @@ func SelectEnchType(btn)
       return
 
 func EnchTypeDropMenu()
-  CloseMenus()
   ?f.Weapon = false
     >Select a weapon first!
     return
-  ?EnchTypeDisplayToggle
-    EnchTypeDisplayToggle = false
-    EnchTypeDropDown.Recycle()
-  :
+  ?CloseMenus()
     EnchTypeDisplayToggle = true
     EnchTypeDropDown = CreateUI(38,3, 21, 1, ui.AddPanel())
     EnchTypeDropDown.style = DropDownBorder
@@ -380,10 +382,7 @@ func EleDropMenu()
   ?AffixOptionList.Count() = 0
     >No element options for selected weapon
     return
-  ?EleDisplayToggle
-    EleDisplayToggle = false
-    EleDropDown.Recycle()
-  :
+  ?CloseMenus()
     EleDisplayToggle = true
     EleDropDown = CreateUI(21,3, 3, 1, ui.AddPanel())
     EleDropDown.style = DropDownBorder
@@ -443,12 +442,7 @@ func CreateNumberButton(UI,x,y)
 
 func EnchantDropMenu()
   CloseMenus()
-  ?EnchantDisplayToggle
-    EnchantDisplayToggle = false
-    NumberButtons.Clear()
-    EnchantDropDown.Recycle()
-    EnchantDisplay.text = "#+" + EnchantLevel
-  :
+  ?CloseMenus()
     EnchantDisplayToggle = true
     PressCount = 0
     TemporaryNumberCount = 0
@@ -479,10 +473,7 @@ func SelectStar(btn)
 
 func StarDropMenu()
   CloseMenus()
-  ?StarDisplayToggle
-    StarDisplayToggle = false
-    StarDropDown.Recycle()
-  :
+  ?CloseMenus()
     StarDisplayToggle = true
     StarDropDown = CreateUI(27,3, 7, 1, ui.AddPanel())
     StarDropDown.style = DropDownBorder
@@ -524,10 +515,7 @@ func AffixDropMenu()
   ?AffixOptionList.Count() = 0
     >No affix options for selected weapon
     return
-  ?AffixDisplayToggle
-    AffixDisplayToggle = false
-    AffixDropDown.Recycle()
-  :
+  ?CloseMenus()
     AffixDisplayToggle = true
     AffixDropDown = CreateUI(24,3, 4, 1, ui.AddPanel())
     AffixDropDown.style = DropDownBorder
@@ -536,14 +524,8 @@ func AffixDropMenu()
 
 func WeaponDropMenu()
   CloseMenus()
-  ?DropDownToggle
-    WeaponDropdown.text = "-Select Weapon-  ▼"
-    RecycleWeapMenu()
-  :
-    WeaponDropdown.text = "-Select Weapon-  ▲"
-    ?AffixDisplayToggle
-      AffixDisplayToggle = false
-      AffixDropDown.Recycle()
+  ?CloseMenus()
+    WeaponDropdown.text = "-Select Weapon-  ▲"
     CreateWeapMenu()
     GenerateButtonList(["Right Hand","Bardiche","Big Sword","Sword","- Crossbows - ▼","Staff","Wand","- Hammers - ▼","Skeleton Arm"],SelectWeapon,DropDownBox)
 
