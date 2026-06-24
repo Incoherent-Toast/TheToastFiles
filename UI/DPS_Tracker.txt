@@ -1,0 +1,15 @@
+var foehp  = 999999
+var hits = 0
+var timer = 0
+
+
+?foehp > foe.hp + foe.armor + 3
+  hits++
+foehp = foe.hp + foe.armor
+
+?key = PrimaryBegin
+  foehp = foe.hp + foe.armor
+  hits = 0
+  timer = totaltime
+
+>`70,15,Hits: @hits@\nTime:@totaltime - timer@\nFrames per hit=@(totaltime-timer)/(hits*1.0)@

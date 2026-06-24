@@ -1,0 +1,882 @@
+﻿//*******************************
+// BossGauge
+//*******************************
+// Version: 1.0
+//
+// Designed and verified on
+// SSRPG v4.20.2
+//
+// Author:
+// Created by TeumessianSven
+// on the Stone Story RPG
+// Discord
+//
+//
+// Description:
+// ------------
+// Love video games where the Big Bad
+// gets that massive health bar to let
+// you know you're in for a hell of a 
+// fight? Then add some gravitas and 
+// intensity to every boss battle with
+// this cinematic Boss Gauge!
+// 
+// Big Bosses and their Mini-Boss 
+// counterparts trigger this gauge to
+// display, showcasing their health and
+// armor visually for you to whittle
+// down slowly or blast away in chunks.
+// Add some drama by using the Boss Gauge
+// in default mode, hiding the Boss's 
+// stats as you fight, or set the Gauge 
+// to show their info so you know exactly
+// what you're up against; the choice is 
+// up to you! Additionally, the Gauge can
+// be positioned anywhere on the screen 
+// and colors customized to really tailor
+// your experience. 
+//
+//
+// Quickstart Instructions:
+// ------------------------
+// Copy this code and paste
+// into your mindstone, and
+// that's it!
+//
+// Advanced Instructions:
+// ----------------------
+// The following variables 
+// can be modified and the 
+// following functions used 
+// to tailor your Boss Gauge 
+// experience:
+//
+//
+// Configurables:
+// ----------------------
+//
+// BarColor:    Color of the gauge frame
+//
+// HealthColor: Color to represent Health
+//
+// ArmorColor:  Color to represent Armor 
+//
+// ShowInfo:    Toggle whether boss health
+//              armor and buffs/debuffs are
+//              shown
+//              1 = Shown
+//              0 = Hidden (Default)
+//
+//
+// Functions for Tailoring:
+// ------------------------
+//
+// PositionBar(position, x, y)
+//
+// Resize(auto, width)
+//
+//
+//
+// Enjoy!
+//
+//
+//*******************************
+// Version Information
+//*******************************
+//
+// 1.0: Initial Release
+//
+//*******************************
+
+//*******************************
+// User Configurable Variables 
+//*******************************
+
+var BarColor    = #D4AF37 //Gold
+var HealthColor = #AA0000 //Red
+var ArmorColor  = #0063FF //Blue
+var ShowInfo	= false   //
+
+
+//*******************************
+// User Configurable Functions
+//*******************************
+
+//*******************************
+// PositionBar(position, x, y)
+//
+// Used to customize where the
+// Boss Gauge is displayed on
+// the screen. Position specifies
+// general location and x & y are
+// used to tailor further.
+//
+// Position: Specifies location
+//           on screen using the 
+//           anchor/dock values
+//           (e.g. top_center,
+//           (bottom_right, etc)
+//
+// x:        Moves the Gauge in
+//           the horizontal axis
+//
+// y:        Moves the Gauge in 
+//           the vertical axis         
+//
+//*******************************
+func PositionBar(position, x, y)
+  barP.anchor = position
+  barP.dock = position
+  barP.x = x
+  barP.y = y
+//
+
+
+//*******************************
+// Resize(auto, width)
+//
+// Used to customize the width of
+// the Boss Gauge to a manual 
+// width or to reset it to best
+// fit the screen. 
+//
+// auto:  Togles whether manually
+//        or automatically sized
+//    1:  Automatically Resizes
+//    0:  Manually sets to width
+//
+// width: Used if auto is set to 
+//        0 and sets the width of
+//        the Gauge. 
+//        Note: the minimum width
+//        of the Gauge is 32 to 
+//        account for all lengths 
+//        of boss names 
+//
+//*******************************
+func Resize(auto, width)
+  ?auto
+    var mod = 0
+    mod = (screen.w - 58)/2
+    mod = mod - mod%2
+    barWidth = minBarWidth + mod
+  :
+    ?width ! null & width > minBarWidth
+      barWidth = width
+//
+
+
+//*******************************
+// ASCII Art
+//*******************************
+
+var barStyle = ui.AddStyle("
+^#_#
+^│ │
+^#¯#")
+
+var barInvis = ui.AddStyle("
+^###
+^###
+^###")
+
+var barLSide = ascii
+#.)´
+:(  
+#`;
+asciiend
+
+var barRSide = ascii
+`(,
+  ):
+#:´
+asciiend
+
+
+//*******************************
+// Global Variables
+//*******************************
+
+var initialized = 0
+var minBarWidth = 32 //Longest Name: 29 chars + spacing
+var barWidth = 32
+
+var RESET    = 0
+var READY    = 1
+var DISPLAY  = 2
+var EXPAND   = 3
+var SHIELD   = 4
+var TEXT     = 5
+var UPDATE   = 6
+var barState = RESET
+
+var NOBOSS   = 0
+var PAWNS    = 1
+var MINIBOSS = 2
+var PHASE1   = 3
+var PHASE2   = 4
+var PHASE3   = 5
+
+// Morel has a glitch where his
+// max armor is reported as zero
+var morelmaxarmor = [
+40,50,100,150,200,250,300,200,
+250,300,350,400,450,500,550,600,650]
+
+var bossflag = 0
+var bossname = ""
+var bosscolor = #white
+var bossmaxarmor = 0
+var bossmaxhp = 0
+var bossarmor = 0
+var bosshp = 0
+
+var count = 0
+var shimx = 0
+
+var barP        = null
+var barHealthC  = null
+var barArmorC   = null
+var barText     = null
+var barOutlineP = null
+var barBlankP   = null
+var barLA       = null
+var barRA       = null
+var barShimmerC = null
+var bossInfoT   = null
+
+
+//*******************************
+// Functions
+//*******************************
+
+//*******************************
+// InitBar()
+//
+// Creates and assigns all the 
+// ui components needed to display
+// the Boss Gauge
+//
+//*******************************
+func InitBar()
+  Resize(1,null)
+
+  barP = ui.AddPanel()
+  barP.anchor = bottom_center
+  barP.dock = bottom_center
+  barP.w = 8 //Just Side Deco Showing
+  barP.h = 4
+  barP.style = barInvis
+  barP.visible = false
+
+  barBlankP = ui.AddPanel()
+  barBlankP.anchor = bottom_center
+  barBlankP.dock = bottom_center
+  barBlankP.w = 0
+  barBlankP.h = 4
+  barBlankP.style = 0
+  barP.Add(barBlankP)
+
+  barOutlineP = ui.AddPanel()
+  barOutlineP.anchor = bottom_center
+  barOutlineP.dock = bottom_center
+  barOutlineP.w = 2
+  barOutlineP.h = 3
+  barOutlineP.color = BarColor
+  barOutlineP.style = barStyle
+  barP.Add(barOutlineP)
+
+  barHealthC= ui.AddCanvas()
+  barHealthC.anchor = center_left
+  barHealthC.dock = center_left
+  barHealthC.x = 1
+  barHealthC.w = 0
+  barHealthC.h = 1
+  barHealthC.SetFG(HealthColor)
+  barHealthC.Set("#")
+  barOutlineP.Add(barHealthC)
+
+  barArmorC = ui.AddCanvas()
+  barArmorC.anchor = center_left
+  barArmorC.dock = center_left
+  barArmorC.x = 1
+  barArmorC.w = 0
+  barArmorC.h = 1
+  barArmorC.SetFG(ArmorColor)
+  barArmorC.Set("#")
+  barOutlineP.Add(barArmorC)
+
+  barText = ui.AddText()
+  barText.w = 0
+  barText.align = center
+  barText.text = ""
+  barP.Add(barText)
+
+  var stars = loc.stars
+  ?stars <= 5
+    bosscolor = #FFFFFF //White
+  :?stars <= 10
+    bosscolor = #02E5FF //Cyan
+  :?stars <= 15
+    bosscolor = #A9A919 //#FFFF62 //Yellow (Pulled from game)
+  :?stars <= 20
+    bosscolor = #32DA5A //Green
+  :?stars <= 25
+    bosscolor = #0063FF //Blue
+  :?stars <= 30
+    bosscolor = #FF2222 //Red
+  :
+    bosscolor = #white
+
+  barLA = ui.AddAnim(barLSide)
+  barLA.anchor = center_right
+  barLA.dock = center_left
+  barLA.x = 4
+  barLA.y = -1
+  barLA.color = BarColor
+  barP.Add(barLA)
+
+  barRA = ui.AddAnim(barRSide)
+  barRA.anchor = center_left
+  barRA.dock = center_right
+  barRA.x = -4
+  barRA.y = -1
+  barRA.color = BarColor
+  barP.Add(barRA)
+
+  barShimmerC = ui.AddCanvas()
+  barShimmerC.anchor = center_center
+  barShimmerC.dock = center_center
+  barShimmerC.w = 8
+  barShimmerC.h = 4
+  barShimmerC.SetFG(#000000)
+  barShimmerC.blend = add
+  barP.Add(barShimmerC)
+
+  bossInfoT = ui.AddText() 
+  bossInfoT.anchor = bottom_right
+  bossInfoT.dock = bottom_right
+  bossInfoT.x = -1
+  bossInfoT.y = 0
+  bossInfoT.text = ""
+  bossInfoT.w = 20
+  bossInfoT.h = 1
+  bossInfoT.align = right
+  bossInfoT.visible = false
+//
+
+
+//*******************************
+// Run()
+//
+// Runs the initialization and 
+// display of the Boss Gauge 
+//
+//*******************************
+func Run()
+  ?totaltime <= 1 | !initialized
+    InitBar()
+    initialized = 1 
+  :
+    BossCheck()
+    BarStateController()
+    //PrintState() //Used for Troubleshooting/Curiosity
+//
+
+
+//*******************************
+// BossCheck()
+//
+// Determines if the foe is a 
+// boss and handles states where
+// the boss has minions or dies
+// before the screen is cleared
+//
+//*******************************
+func BossCheck()
+  var enemy     = foe
+  var dist      = foe.distance
+  var numfoes   = foe.count
+
+  ?(enemy = boss) | (enemy = wasp_nest) //Only grabs boss info if needed
+    bossname     = foe.name
+    bossmaxarmor = foe.maxarmor
+    bossmaxhp    = foe.maxhp
+    bossarmor    = foe.armor
+    bosshp       = foe.hp 
+
+  ?enemy = phase3
+    ?bossflag = PHASE2
+      barState = RESET
+      ResetBar()
+    bossflag = PHASE3
+ 
+  :?enemy = phase2
+    ?bossflag = PHASE1
+      barState = RESET
+      ResetBar()
+    bossflag = PHASE2
+    ?enemy = morel
+      bossmaxarmor = morelmaxarmor[foe.level+1]
+
+  :?enemy = phase1 & dist <50
+    bossflag = PHASE1
+
+  :?(enemy = boss | enemy = wasp_nest) & (dist < 50)
+    bossflag = MINIBOSS
+
+  :?numfoes > 0 & dist < 999
+    ?bossflag > PAWNS
+      bossflag = PAWNS
+
+    :?bossflag = PAWNS
+      ?numfoes < 2 & (enemy ! boss | enemy ! wasp_nest) //Killed boss but pawns still exist
+        bossarmor = 0
+        bosshp    = 0
+  :
+    bossflag = NOBOSS
+    ?barState ! READY
+      barState = RESET
+    bossname     = ""
+    bossmaxarmor = 0
+    bossmaxhp    = 0
+    bossarmor    = 0
+    bosshp       = 0
+//
+
+
+//*******************************
+// BarStateController()
+//
+// Controls the display and 
+// updates of the the Boss Gauge
+//
+//*******************************
+func BarStateController()
+  ?barState > READY
+    disable hud rf
+    ShimmerBar()
+    ?ShowInfo
+      UpdateBossInfo()
+
+  ?barState = RESET
+    ResetBar()
+    barState = READY
+  :?barState = READY
+    ?bossflag > NOBOSS & ai.enabled
+      barState = DISPLAY
+  :?barState = DISPLAY
+    ?DisplayBar()
+      barState = EXPAND
+  :?barState = EXPAND
+    ?ExpandBar()
+      barState = SHIELD
+  :?barState = SHIELD
+    ?ExpandArmor()
+      barState = TEXT
+  :?barState = TEXT
+    ?ShowText()
+      barState = UPDATE
+  :?barState = UPDATE
+    UpdateBar()
+  :
+    barState = RESET
+//
+
+
+//*******************************
+// ResetBar()
+//
+// Hides the Boss Gauge and sets 
+// it ready for the next boss
+//
+//*******************************
+func ResetBar()
+  barP.visible = false
+  barP.w = 8
+  barBlankP.w = 0
+  barOutlineP.w = 2
+  barOutlineP.color = BarColor
+  barHealthC.w = 0
+  barHealthC.SetFG(HealthColor)
+  barArmorC.w = 0
+  barArmorC.SetFG(ArmorColor)
+  barText.w = 0
+  barText.text = ""
+  barLA.color = BarColor
+  barRA.color = BarColor
+  barShimmerC.w = 8
+  barShimmerC.SetFG(#000000)
+  bossInfoT.visible = false
+  count = 0
+  shimx = 0
+//
+
+
+//*******************************
+// DisplayBar()
+//
+// Displays the initial state of
+// the bar (The inital showing of
+// the edges of the Gauge)
+//
+//*******************************
+func DisplayBar()
+  barP.visible = true
+  ?ShowInfo
+    bossInfoT.visible = true
+  ?count < 10
+    count++
+    return 0
+  :
+    count = 0
+    return 1
+//
+
+
+//*******************************
+// ExpandBar()
+//
+// Expands the Boss Gauge to full
+// size and populates the health
+//
+//*******************************
+func ExpandBar()
+  barHealthC.Set("◘")
+  var inc = 6
+  var state = 1
+
+  ?barP.w < barWidth + 6
+    barP.w = barP.w + inc
+    ?barP.w >= barWidth + 6
+      barP.w = barWidth + 6
+    :
+      state = 0
+
+  ?barHealthC.w < barWidth - 2
+    barHealthC.w = barHealthC.w + inc
+    ?barHealthC.w >= barWidth - 2
+      barHealthC.w = barWidth - 2
+    :
+      state = 0
+    
+  ?barText.w < barWidth - 2
+    barText.w = barText.w + inc
+    ?barText.w >= barWidth - 2
+      barText.w = barWidth - 2
+    :
+      state = 0
+
+  ?barOutlineP.w < barWidth
+    barOutlineP.w = barOutlineP.w + inc
+    ?barOutlineP.w >= barWidth
+      barOutlineP.w = barWidth
+    :
+      state = 0
+
+  ?barBlankP.w < barWidth - 2
+    barBlankP.w = barBlankP.w + inc
+    ?barBlankP.w > barWidth - 2
+      barBlankP.w = barWidth - 2
+    :
+      state = 0
+
+  ?barShimmerC.w < barWidth + 6
+    barShimmerC.w = barShimmerC.w + inc
+    ?barShimmerC.w >= barWidth + 6
+      barShimmerC.w = barWidth + 6
+    :
+      state = 0
+    
+  return state
+//
+
+
+//*******************************
+// ExpandArmor()
+//
+// Expands the armor to fill in
+// the Boss Gauge
+//
+//*******************************
+func ExpandArmor()
+  var inc = 4
+  var state = 1
+
+  ?bossmaxarmor > 0
+    barArmorC.Set("◘")
+    var ArmorPerSquare = (1.0*bossmaxarmor / (barWidth-2))
+    var numSquares = (1.0*bossarmor / ArmorPerSquare)
+    numSquares = math.RoundToInt(numSquares)
+    ?numSquares > (barWidth-2)
+      numSquares = barWidth-2
+
+    ?barArmorC.w < numSquares
+      barArmorC.w = barArmorC.w + inc
+      ?barArmorC.w >= numSquares
+        barArmorC.w = numSquares
+      :
+        state = 0
+  :
+    barArmorC.w = 0
+
+  return state
+//
+
+
+//*******************************
+// ShowText()
+//
+// Displays the name of the Boss
+// over the Gauge
+//
+//*******************************
+func ShowText()
+  var disptime = 3
+  ?count < disptime
+    count++
+    barText.text = string.ToUpper(bossname)
+    //barText.text = bossname
+    barText.color = color.Lerp(#000000,bosscolor,1.0*count/disptime)
+    return 0
+  :
+    count = 0
+    return 1
+//
+
+
+//*******************************
+// UpdateBar()
+//
+// Updates the Gauge with the 
+// latest health, armor, and name
+// of the boss
+//
+//*******************************
+func UpdateBar()
+
+  //Updates In case target switches 
+  barText.text = string.ToUpper(bossname)
+  //barText.text = bossname
+
+  // Armor Bar
+  ?bossmaxarmor > 0
+    var ArmorPerSquare = (1.0*bossmaxarmor / (barWidth-2))
+    var numArmorSquares = (1.0*bossarmor / ArmorPerSquare)
+    var armorLastSquare = 1.0
+
+    ?numArmorSquares < (barWidth-2)
+      armorLastSquare = numArmorSquares - math.Floor(numArmorSquares)
+      numArmorSquares = math.CeilToInt(numArmorSquares)
+    :
+      numArmorSquares = barWidth-2
+
+    barArmorC.w = numArmorSquares
+    barArmorC.SetFG(ArmorColor)
+    barArmorC.SetFG(barArmorC.w-1,0,color.Lerp(#000000,ArmorColor,armorLastSquare))
+  :
+    barArmorC.w = 0
+
+
+  // Health Bar
+  var healthPerSquare = (1.0*bossmaxhp / (barWidth-2))
+  var numHealthSquares = (1.0*bosshp / healthPerSquare)
+  var healthLastSquare = 1.0
+
+  ?numHealthSquares < (barWidth-2)
+    healthLastSquare = numHealthSquares - math.Floor(numHealthSquares)
+    numHealthSquares = math.CeilToInt(numHealthSquares)
+  :
+    numHealthSquares = barWidth-2
+
+  barHealthC.w = numHealthSquares
+  barHealthC.SetFG(HealthColor)
+  barHealthC.SetFG(barHealthC.w-1,0,color.Lerp(#000000,HealthColor,healthLastSquare))
+//
+
+
+//*******************************
+// ShimmerBar()
+//
+// Adds a shimmering effect that
+// shines across the Gauge
+//
+//*******************************
+func ShimmerBar()
+  for i = 0..barShimmerC.w-1
+    for j = 0..barShimmerC.h-1
+      barShimmerC.SetFG(i,j,#000000)
+
+  // Shimmers from Bottom Left to Top Right
+  shimx++
+  ?shimx > barShimmerC.w + 60 //Determines how often shimmers happens
+    shimx = 0
+
+  for y = 0..barShimmerC.h-1
+    for x = 0..13
+      ?shimx - x + y < barShimmerC.w-1 & shimx - x + y >= 0
+        barShimmerC.SetFG(shimx- x + y,y,#111111)
+
+    for x = 2..11
+      ?shimx - x + y < barShimmerC.w-1 & shimx - x + y >= 0
+        barShimmerC.SetFG(shimx- x + y,y,#333333)
+
+    for x = 4..9
+      ?shimx - x + y < barShimmerC.w-1 & shimx - x + y >= 0
+        barShimmerC.SetFG(shimx- x + y,y,#555555)
+
+    for x = 6..7
+      ?shimx - x + y < barShimmerC.w-1 & shimx - x + y >= 0
+        barShimmerC.SetFG(shimx- x + y,y,#777777)
+
+
+  // Cuts out Canvas to fit around decorative sides
+  barShimmerC.SetFG(0, 0,#000000)
+  barShimmerC.SetFG(0, barShimmerC.h-2,#000000)
+  barShimmerC.SetFG(0, barShimmerC.h-1,#000000)
+  barShimmerC.SetFG(1, barShimmerC.h-1,#000000)
+  barShimmerC.SetFG(2, barShimmerC.h-1,#000000)
+  barShimmerC.SetFG(3, barShimmerC.h-1,#000000)
+  barShimmerC.SetFG(barShimmerC.w-1, 0,#000000)
+  barShimmerC.SetFG(barShimmerC.w-1, barShimmerC.h-2,#000000)
+  barShimmerC.SetFG(barShimmerC.w-2, barShimmerC.h-1,#000000)
+  barShimmerC.SetFG(barShimmerC.w-3, barShimmerC.h-1,#000000)
+  barShimmerC.SetFG(barShimmerC.w-4, barShimmerC.h-1,#000000)
+//
+
+
+//*******************************
+// UpdateBossInfo()
+//
+// Composes the current armor &
+// health of the boss into a 
+// string for displaying
+//
+//*******************************
+func UpdateBossInfo()
+  var str = ""
+
+  str = ComposeBossStatus()
+  str = str + " "
+
+  ?bossarmor > 0
+    str = str + "[color=" + ArmorColor  + "][" + bossarmor  + "][/color]"
+  ?bosshp > 0
+    str = str + "[color=" + HealthColor + "]" + bosshp + "/" + bossmaxhp + "[/color]"
+  bossInfoT.text = str
+//
+
+
+//*******************************
+// ComposeBossStatus()
+//
+// Composes the current buffs &
+// debuffs of the boss into a 
+// string for displaying
+//
+//*******************************
+func ComposeBossStatus()
+  var str = ""
+
+  var buffcount   = foe.buffs.count
+  var buffstring = ""
+  var abuffinfo = []
+  
+  var debuffcount = foe.debuffs.count
+  var debuffstring = ""
+  var adebuffinfo = []
+
+
+  ?buffcount > 0
+    str = str + "[color=" + ArmorColor  + "]"
+
+    buffstring = foe.buffs.string
+    var abuffs = string.Split(buffstring,",")
+    for i = 0..abuffs.Count()-1
+      abuffinfo.Add(string.Split(abuffs[i],":"))
+    for i = abuffs.Count()-1..0 //Reversed order to match game
+      ?abuffinfo[i][2] = "2"
+        str = str + abuffinfo[i][0]
+      :?abuffinfo[i][2] ! "1"
+        str = str + abuffinfo[i][2]
+      str = str + abuffinfo[i][0]
+
+    str = str + "[/color]"
+
+
+  ?debuffcount > 0
+    str = str + "[color=" + HealthColor + "]"
+
+    debuffstring = foe.debuffs.string
+    var adebuffs = string.Split(debuffstring,",")
+    for i = 0..adebuffs.Count()-1
+      adebuffinfo.Add(string.Split(adebuffs[i],":"))
+    for i = adebuffs.Count()-1..0 //Reversed order to match game
+      ?adebuffinfo[i][2] = "2"
+        str = str + adebuffinfo[i][0]
+      :?adebuffinfo[i][2] ! "1"
+        str = str + adebuffinfo[i][2]
+      str = str + adebuffinfo[i][0]
+
+    str = str + "[/color]" 
+    
+
+  return str
+//
+
+
+//*******************************
+// PrintState()
+//
+// A debug function used to
+// display the current state and
+// flags of the Boss Gauge 
+//
+//*******************************
+func PrintState()
+  var flag = ""
+  var state = ""
+
+  ?bossflag = NOBOSS
+    flag = "NOBOSS"
+  :?bossflag = PAWNS
+    flag = "PAWNS"
+  :?bossflag = MINIBOSS
+    flag = "MINIBOSS"
+  :?bossflag = PHASE1
+    flag = "PHASE1"
+  :?bossflag = PHASE2
+    flag = "PHASE2"
+  :?bossflag = PHASE3
+    flag = "PHASE3"
+
+  ?barState = RESET
+    state = "RESET"
+  ?barState = READY
+    state = "READY"
+  ?barState = DISPLAY
+    state = "DISPLAY"
+  ?barState = EXPAND
+    state = "EXPAND"
+  ?barState = SHIELD
+    state = "SHIELD"
+  ?barState = TEXT
+    state = "TEXT"
+  ?barState = UPDATE
+    state = "UPDATE"
+
+  >`0,1,#green,State: @state@\n
+              ^Flag:  @flag@
+//
+
+
+//*******************************
+// Drawing Code 
+//*******************************
+
+Run()
+
+
+//*******************************
+// End of File
+//*******************************

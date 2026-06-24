@@ -1,0 +1,39 @@
+var PageInfo = import UI/BookData/Pages
+var PageCount = PageInfo.Number.Count()-1
+var Flip = import UI/BookData/BookOpening
+
+var CurrentPage = 0
+
+var TurningPages = []
+var TurningPageClips = []
+
+var BackList = []
+
+var HintsToggle = false
+var EtymolToggle = false
+
+var Invis = ui.AddStyle("#########")
+
+
+var RateOfChangeL = [0,0,0,0,0,0,2,15,19,24,27,30,30,30]
+var RateOfChangeR = [1,2,4,8,11,28,30,30,30,30,30,30,30,30]
+
+
+var LeftPage
+var RightPage
+var BookFrame
+var MotherPan
+
+func CreateUI(UI,X,Y,W,H)
+  UI.x = X
+  UI.y = Y
+  UI.w = W
+  UI.h = H
+  MotherPan.Add(UI)
+  return UI
+
+func Init()
+  MotherPan = ui.AddPanel()
+  MotherPan.style = Invis
+
+  LeftPage = CreateUI(ui.AddText(),0,0,30,15)

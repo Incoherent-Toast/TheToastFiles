@@ -1,0 +1,50 @@
+
+var Main
+var Text
+
+var TextAscii = ascii
+[color=#110099]Current Action:[/color]
+   {0}
+{1}
+asciiend
+
+func Make(UI, X, Y, W, H)
+  UI.x = X
+  UI.y = Y
+  UI.w = W
+  UI.h = H
+  UI.dock = top_left
+  UI.anchor = top_left
+  return UI
+
+func Init()
+  Main = Make( ui.AddPanel(), 10, 1, 20, 5)
+  Main.color = "#330044"
+  Text = Make(  ui.AddText("[color=#AA5500]Current Action:[/color]"), 1, 0, 20, 5)
+  Text.align = "left"
+  
+  Main.Add(Text)
+
+?Main = null | loc.loop
+  Init()
+
+
+func TextRender(Title, List, Left, Right)
+  
+  var WeaponsList = ""
+  for a : List
+    ?a = Left
+      WeaponsList += "[color=#AA5500] L → [/color]"
+    :?a = Right
+      ?Left = -1
+        WeaponsList += "[color=#AA00AA]LR → [/color]"
+      :
+        WeaponsList += "[color=#110099] R → [/color]"
+    :
+      WeaponsList += "     "
+    WeaponsList += a + "\n"
+  
+  
+  Main.h = List.Count() + 3
+  Text.h = List.Count() + 3
+  Text.text = String.Format(TextAscii, Title, WeaponsList)

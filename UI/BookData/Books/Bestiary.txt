@@ -1,0 +1,4061 @@
+var Chapters = [1,4,14,24,36,46,56,66,78,88,107]
+
+var Number = //Inside Cover
+^[[ascii
+───────────────────────────. 
+                           ' 
+,··························, 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+:                          : 
+'··························' 
+                             #
+asciiend,white], //Page 1
+^[ascii
+     -  «  CONTENTS  »  -     #
+疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊疊
+                             #
+    2  - Introduction        #
+    4  - Deadwood Forest     #
+    14 - Caves of Fear       #
+    24 - Mushroom Forest     #
+    36 - Haunted Halls       #
+    46 - Boiling Mines       #
+    56 - Icy Ridge           #
+    66 - The Temple          #
+    78 - Rocky Plateau       #
+    88 - Other Entities      #
+                             #
+                             #
+   107 - Index               #
+                             #
+                             #
+                             #
+                             #
+                             #
+                            1#
+asciiend,white], //Page 2
+^[ascii
+    §   INTRODUCTION   §     #
+§エ王エ王エ王エ王エ王エ王エ王エ王エ王エ王エ王エ王エ王エ§#
+                             #
+This book focuses on listing #
+all the foes you may find at #
+each location.               #
+ One thing to note is that I #
+don't list every tag. Each   #
+foe has 2 tags for their name#
+which I don't list and each  #
+elemental foe will have a tag#
+for their element i.e. "ice" #
+Tags such as "unpushable" are#
+listed under immunities but  #
+most other immunities have   #
+the format of "immune_to_X"  #
+and immunity to unmaking is  #
+actually tied with the boss  #
+tag and doesn't exist as its #
+own tag.                     #
+                             #
+2                            #
+asciiend,white], //Page 3
+^[ascii
+                             #
+I've provided a hint box for #
+bosses and other some other  #
+foes to provide useful info  #
+about fighting them but I    #
+encourge you to first try and#
+find your own strategies.    #
+                             #
+I've also included some other#
+characters and areas of      #
+interest in the late sections#
+of this book.                #
+As many of the these entries #
+don't yet exist in game they #
+will be based on either      #
+in-game references or sourced#
+from discord based on what   #
+Standard Combo has said but  #
+this info might be subject to#
+change when they eventually  #
+do appear in game.           #
+                            3#
+asciiend,white], //Page 4
+^[ascii
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+4                            #
+asciiend,white], //Page 5
+^[ascii
+                             #
+ 《》`·····················´《》 #
+  :                       :  #
+  :    DEADWOOD CANYON    :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :          \,-          :  #
+  :     ,-\  `|    /      :  #
+  :     _  \/`|/¯\/,      :  #
+  :      `--\o|o)/_/      :  #
+  :          \^ /         :  #
+  :      \,  }V\{  |/     :  #
+  :      ¯¯\_{\/}--'¯     :  #
+  :          }  {         :  #
+  :         //\`\         :  #
+  :                       :  #
+  ;                       :  #
+ 《》.·····················.《》 #
+                             #
+                             #
+asciiend,white], //Page 5 (red)
+^[ascii
+             |/)             #
+           o.-._             #
+          ´ /|`-`            #
+            `'               #
+                             #
+ Huge Mosquito               #
+  Element: None              #
+  Tags: Insect, Flying       #
+                             #
+ Deadwood Canyon is split by #
+ a wide, dark and calm river.#
+ The bank is populated by    #
+ large insects and dead trees#
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+6                            #
+asciiend,white], //Page 7
+^[ascii
+        /                    #
+       /(_,\ ___             #
+       ) - /´ -´\            #
+       `——´_,_,_/            #
+          <´<´ `-,           #
+                             #
+ Stone Scarab                #
+  Element: None              #
+  Tags: Insect               #
+  Immune To: Range           #
+                             #
+ Deadwood Canyon appears to  #
+ end in a waterfall ahead.   #
+ The Scarabs who sleep here  #
+ are carapaced in stone and  #
+ are immune to ranged weapons#
+                             #
+                             #
+                             #
+                             #
+                             #
+                            7#
+asciiend,white], //Page 8
+^[ascii
+              .   \|   ,     #
+              -\  _| |/      #
+    _\  /)      \/´ \/-´     #
+    O()/\    .__{(_)/} _/-   #
+       )/        \./´-'      #
+       '      `-\}  {        #
+                 {  }        #
+                 }  {        #
+                 {  }        #
+                //´\`\       #
+ Wasp                        #
+  Element: None              #
+  Tags: Insect, Flying       #
+                             #
+ Wasp Nest                   #
+  Element: None              #
+  Tags: Spawner              #
+  Immune To: Stun, Push      #
+                             #
+                             #
+                             #
+8                            #
+asciiend,white], //Page 9
+^[ascii
+                             #
+ There wasn't any description#
+ provided for these foes so  #
+ instead here's a poem.      #
+                             #
+                             #
+“ Wasps buzz in summer's     #
+  moonlit days,              #
+  Their stripes and flight a #
+  vibrant display,           #
+  Come autumn, they build    #
+  nests so strong,           #
+  A paper mache masterpiece  #
+  to belong ”                #
+                -ChatGPT     #
+                             #
+                             #
+                             #
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+                            9#
+asciiend,white], //Page 10
+^[ascii
+                             #
+《》·························《》#
+:      |          /         :#
+:-\!  /   |      |          :#
+:  \ '  | '    (/     / )   :#
+:   \|          \'|   '/    :#
+:    \`             `-´_.´  :#
+:    /(\    /) ;   /        :#
+:    \ `\  / -´    `- _,    :#
+:     \        /   ,´ `     :#
+:     |, _ . /'\  /         :#
+:     ' | ' |  |  |         :#
+:              /  /         :#
+:    _|,_| | ,/   |   ,--.  :#
+:   /_           _ \_/ /¯`\ :#
+:  `¯  ` ,-     ´ \   /     :#
+:      .  ,-´  `. \ ¯       :#
+:     _' /       ` `-       :#
+:     `-´                   :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 11
+^[ascii
+                             #
+ Xyloalgia, Residue of Leuce #
+  Element: None              #
+  Tags: boss, phase1         #
+  Immune To: Stun, Push,     #
+             Unmake          #
+                             #
+ When Leuce, founder of      #
+ Acropolis, failed to recover#
+ half of her Soul Stone she  #
+ devolved into a virtuous    #
+ white tree. Frozen high in  #
+ the city, her impurities    #
+ dripped from the sky,       #
+ coalescing into a seperate, #
+ torturous form.             #
+                             #
+                             #
+   .———————.  .———————————.  #
+   │ Hints │  │ Etymology │  #
+   '———————'  '———————————'  #
+                           11#
+asciiend,white], //Page 12
+^[ascii
+                             #
+《》·························《》#
+:            ,:´,_`--.      :#
+:           //´/,-'´ \`.    :#
+:         _/; //     _\`\   :#
+:       .´ \ |; <o> (• )|   :#
+:      / ,  )'|    (_\ ||   :#
+:     /  : /|||\`Vvv´ .||   :#
+:    (,  : \'|| `^^´ _'||   :#
+:    (.  : / |'  _.-´.\'|   :#
+:    (   : | '.-´ .´ ( \'   :#
+:     \  : '´ . ´    (  \   :#
+:      )  `-´ ___ -.  `,))  :#
+:     (    ´¯ ,  ) / -´//   :#
+:    _| - -- _/ / (  :.||   :#
+:   /_      (  (',,) ;.|'\  :#
+:  `¯  ` ,-  ),,) ´ ` '.`_`':#
+:      .  ,-´´´´ . \ ¯      :#
+:     _' /       ` `-       :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 13
+^[ascii
+                             #
+Poena, Mistress of Punishment#
+  Element: None              #
+  Tags: boss, phase2         #
+  Immune To: Unmake, Push    #
+                             #
+ Mirror: Debuffs applied to  #
+ Poena are applied back to   #
+ the source.                 #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+   .———————.  .———————————.  #
+   │ Hints │  │ Etymology │  #
+   '———————'  '———————————'  #
+                           13#
+asciiend,white], //Page 14
+^[ascii
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+“ Deep in the earth,         #
+           a cave of tar,    #
+   Spiders spin their        #
+                webs afar,   #
+    In darkness they         #
+           make their lair,  #
+     With only gooey         #
+             walls to stare ”#
+                             #
+                   -ChatGPT  #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend,white], //Page 15
+^[ascii
+                             #
+ 《》`·····················´《》 #
+  :    .--._.--,-. _. ,  ,:  #
+  :\` ; CAVES OF FEAR \,´ :  #
+  : \/     :         /    :  #
+  :  \     |        /     :  #
+  :   \    :       /      :  #
+  :    \   |\     /       :  #
+  :     \_/: `--./        :  #
+  :      \ |    /         :  #
+  :       \:\_./          :  #
+  :        |/ /           :  #
+  :        : /            :  #
+  :        |/             :  #
+  :        :              :  #
+  :        |              :  #
+  :        :.           _ :  #
+  :       /| `.      ,-/ ¯:  #
+  ;      /\|.-'`.  ,´     :  #
+ 《》.·····················.《》 #
+                             #
+                             #
+asciiend,white], //Page 16
+^[ascii
+                             #
+           ,-,               #
+         /∞|¯\               #
+                             #
+ Nail Biter                  #
+  Element: ∞                 #
+  Weakness: ❄                #
+  Tags: arachnid             #
+                             #
+ The Caves of Fear are       #
+ partially filled by a       #
+ sulfurous lake.             #
+ Not a deterrent for the many#
+ creepy crawlers who make of #
+ it their lair.              #
+                             #
+“ The air is thick           #
+     with the smell of tar,  #
+   But for the spiders,      #
+           it's not bizarre, #
+                             #
+16                           #
+asciiend,white], //Page 17
+^[ascii
+             _               #
+            ( )              #
+         /`∞|´\\             #
+        ´   '  ``            #
+                             #
+ Skin Peeler                 #
+  Element: ∞                 #
+  Weakness: ❄                #
+  Tags: arachnid             #
+                             #
+ Tar clumps occasionally drip#
+ in from the ceiling -       #
+ a produce of the tree roots #
+ above.                      #
+                             #
+                             #
+ - For they call             #
+    this place their home,   #
+   A place where they        #
+          can freely roam ”  #
+                    -ChatGPT #
+                           17#
+asciiend,white], //Page 18
+^[ascii
+             ___             #
+            ()`-.\           #
+       ,--. _`__(/           #
+      '´¯¯'∞.,)´)\           #
+       _,--_/ ` ` `          #
+       ¯¯¯´                  #
+                             #
+ Knee Chopper                #
+  Element: ∞                 #
+  Weakness: ❄                #
+  Tags: arachnid             #
+                             #
+ Applies a -1 Damage penalty #
+ when defeated at close range#
+                             #
+                             #
+  “ Also a scorpion          #
+           lives there too ” #
+                             #
+                 -ToastGPT   #
+                             #
+18                           #
+asciiend,white], //Page 19
+^[ascii
+             :               #
+             |               #
+            /'\              #
+           .:'`.             #
+           ::. :             #
+           `::;`.            #
+          /`  | ¯`.          #
+                             #
+ Not Caviar                  #
+  Element: ∞                 #
+  Weakness: ❄                #
+  Tags: arachnid, spawner    #
+  Immune To: Stun, Push      #
+                             #
+ A large sac of spider eggs. #
+ When destroyed spawns 3     #
+ spiders.                    #
+                             #
+                             #
+                             #
+                             #
+                           19#
+asciiend,white], //Page 20
+^[ascii
+                   _     __  #
+  _    __         |(    /_(  #
+  `\,,/.'         `.\V)/.'   #
+    "-'             `"-'     #
+                             #
+Wound Licker  &  Neck Warmer #
+         Element: ∞          #
+         Weakness: ❄         #
+         Tags: flying        #
+                             #
+Actually feels   Sees you as #
+sorry for the    a giant     #
+spikey tongue.   milkshake.  #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+20                           #
+asciiend,white], //Page 21
+^[ascii
+       ,-      ,--,          #
+      | (     /_,'           #
+      '._\//-/_'             #
+         `∞_.'               #
+                             #
+ Ceiling Decorator           #
+  Element: ∞                 #
+  Weakness: ❄, Ranged        #
+  Tags: boss, flying, ranged #
+  Immune To: Unmake          #
+                             #
+ 60% resistance to Vigor     #
+                             #
+“ Through the cave           #
+         of tar and webs,    #
+   Fluttering wings          #
+      disturb the cobwebs,   #
+    As bats navigate         #
+           through the air,  #
+     The spiders retreat     #
+              to their lair ”#
+                           21#
+asciiend,white], //Page 22
+^[ascii
+                             #
+《》·························《》#
+:   \  |  /   |    \  _/    :#
+:    \  \/.-'¯¡¯¯'-.\/    .':#
+:\    | /     |      \/¯)'  :#
+: \   \/.-'¯¯·¡·¯¯¯'-(_/`   :#
+:  \  /       |        \  .':#
+:   \/_.--'¯¯´ `¯¯'---._\/  :#
+:   /           _        \  :#
+:  /  _____/\  ||\  /|    \ :#
+: /  /,---.\\\ ||\\/_'--._ \:#
+:/  //  -´´\\\\||/¯_ /\ __`.:#
+: ´´    __ ,/¯¯¯\/|/\\--(\/ :#
+:    ,-°∞ )/\  //||/_\\-´\\ :#
+:      _/¯//\`´/´||¯ //   \\:#
+:        //  ¯¯  // (´      `#
+:        \\     (´   `      :#
+:         `)     `          :#
+:         ´                 :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 23
+^[ascii
+                             #
+ Bolesh, The Cunning         #
+  Element: ∞                 #
+  Weakness: ❄, Ranged        #
+  Tags:arachnid, boss, phase1#
+  Immune To: Stun, Push,     #
+             Unmake          #
+                             #
+ In a plot to defeat the     #
+ giant Pallas, Leuce split   #
+ her Soul Stone in two and   #
+ with one half evolved a     #
+ spider into the monstrous   #
+ Bolesh. Once her mission was#
+ complete, Bolesh fled       #
+ underground beyond detection#
+ of Acronian scouts, keeping #
+ the Stone to herself.       #
+   .———————.  .———————————.  #
+   │ Hints │  │ Etymology │  #
+   '———————'  '———————————'  #
+                           23#
+asciiend,white], //Page 24
+^[ascii
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+“ A world so small,          #
+             yet so vast,    #
+   A wonderland of life,     #
+              unsurpassed.   #
+    Each one with            #
+            a role to play,  #
+    In this magical world    #
+     that never goes astray ”#
+                             #
+                   -ChatGPT  #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend,white], //Page 25
+^[ascii
+                             #
+ 《》`·····················´《》 #
+  :    .-.                :  #
+  :   /MUSHROOM FOREST    :  #
+  :  /     \              :  #
+  : ( ,---. )             :  #
+  :  `-| |-'              :  #
+  :    | |                :  #
+  :    | |                :  #
+  :    | |                :  #
+  :    |,'¯`.       ,'¯o. :  #
+  :    / ()  `-.   / ()  \:  #
+  :_,-'     /¯\ \  `.___,':  #
+  :_   ,-.  `-' |   /   \ :  #
+  :_)  \_/__,::./   `---' :  #
+  :`.__,-'   |    \/,-.   :  #
+  :   |      \    (（_2 )  :  #
+  :   `-.____/     `---´  :  #
+  :                       :  #
+ 《》.·····················.《》 #
+                             #
+                             #
+asciiend,white], //Page 26
+^[ascii
+                             #
+        . , .---.            #
+        |/ /  __ \           #
+       ( )(  / _) )          #
+        `. `-\___/_,         #
+          `^-----^´          #
+                             #
+ Huge Snail                  #
+  Element: ♥                 #
+  Weakness: ∞                #
+                             #
+                             #
+ Known to leave its shell and#
+ inhabit the bodies of its   #
+ enemies.                    #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+26                           #
+asciiend,white], //Page 27
+^[ascii
+       O O ,'¯¯¯`.           #
+        ))/ ,--.  \          #
+       /¯\ /  _ \ |          #
+       Vv,\\ (__/ /          #
+         \ \_____/-/         #
+          `._____.'          #
+                             #
+ Epic Snail                  #
+  Element: ♥                 #
+  Weakness: ∞                #
+  Tags: slow                 #
+                             #
+ All too self-conscious of   #
+ its colossal behind.        #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                           27#
+asciiend,white], //Page 28
+^[ascii
+         -, _,-.             #
+          O/`/|-`            #
+                             #
+ Giant Ant                   #
+  Element: ♥                 #
+  Weakness: ∞                #
+  Tags: insect               #
+                             #
+ Either you're sick, or full #
+ of ANTi bodies.             #
+                             #
+“ The ants, they march       #
+     in disciplined lines,   #
+   Building tunnels and      #
+     homes that are divine,  #
+   Carrying food and         #
+    caring for their young,  #
+   Their hard work never     #
+           seems to be done ”#
+                             #
+                   -ChatGPT  #
+28                           #
+asciiend,white], //Page 29
+^[ascii
+             _               #
+           /:-'\             #
+          /:'   \            #
+         /::     \           #
+         '::._               #
+                             #
+ Ant Hill                    #
+  Element: ♥                 #
+  Weakness: ∞                #
+  Tags: insect, spawner      #
+  Immune To: Stun, Push      #
+                             #
+ The hills are alive…        #
+       with the sound of NOPE#
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                           29#
+asciiend,white], //Page 30
+^[ascii
+          , · ,              #
+         `     ´             #
+        -  ||   -            #
+         .     .             #
+          ´ · `              #
+                             #
+ Mr. Puff                    #
+  Element: ♥                 #
+  Weakness: ∞                #
+  Tags: boss, slow, explode, #
+        melee                #
+  Immune To: Unmake, Push    #
+                             #
+ Gives armour to nearby foes.#
+ Applies a Vigor debuff when #
+ defeated.                   #
+ Have you seen his little hat#
+ anywhere?                   #
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+30                           #
+asciiend,white], //Page 31
+^[ascii
+              ,~¸            #
+           .-`°°,`-.         #
+        έ`´  ζ´_);. )        #
+         `-´\·‾ ·;( ;        #
+             y r´ ´ω         #
+            ( ; `-.          #
+           έ_, `-´ω          #
+                             #
+ Sasquatch                   #
+                             #
+ He's in this game right? I'm#
+ pretty sure I saw him around#
+ here somewhere…             #
+                             #
+ I'm not just padding out for#
+ an extra page.              #
+                             #
+                             #
+                             #
+                             #
+                             #
+                           31#
+asciiend,white], //Page 32
+^[ascii
+                             #
+《》·························《》#
+:                           :#
+:                           :#
+:           .')¯¯`.         :#
+:       _,-'¯¯  ,-.\        :#
+:    .-'       (__' `._     :#
+:   / ,--.             `.   :#
+:  |  \_.'  /`-.    _,-. \  :#
+:  \.;::,_  `-._)  (   /  | :#
+:   ':. ': `--..___ `-'   / :#
+:     `"|         `--..-'   :#
+: /¯¯\  /          |_       :#
+: \ / /¯,  \   /    _¯\     :#
+:  \\/ /|  o   o    \`.\    :#
+:   \,' |           |  \`.  :#
+:      /   ('¯')     \ /  \ :#
+:      |    ¯¯¯      | \)_/ :#
+:      `-.____..__,--'      :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 33
+^[ascii
+                             #
+ Angry Shroom                #
+  Element: ♥                 #
+  Weakness: ∞                #
+  Tags: boss, phase1         #
+  Immune To: Stun, Push,     #
+             Unmake          #
+                             #
+ An ordinary mushroom, grown #
+ to epic proportions by a    #
+ Soul Stone. It hates all    #
+ intruders.                  #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+                           33#
+asciiend,white], //Page 34
+^[ascii
+                             #
+《》·························《》#
+:                    /¯`.   :#
+:                   / $(|   :#
+:                  / _  '   :#
+:                .´ (_)  `. :#
+:               (,::.,_ () ):#
+:       ____     `|    ¯`-´ :#
+:     .´ $  `.    |      |  :#
+:     |) _ ()|    |´  `  |  :#
+: /(_.' (_)  '._)\|o  o  |  :#
+: \______________/| <    |  :#
+:   /          `-.|      |  :#
+: .´            _ \ -    |  :#
+:/ |  o   o     |( \     |  :#
+: (|  ´ _ `     || |     \  :#
+:  \\          /.' |`'-.__`-:#
+:_(/ )._____. (/   |        :#
+:    `-´    `-´\)__/        :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 35
+^[ascii
+                             #
+      Enoki, Fungi to be with#
+                             #
+Morel, The Sporeadic         #
+                             #
+  Element: ♥                 #
+  Weakness: ∞                #
+  Tags: boss, phase2         #
+  Immune To: Unmake, Push,   #
+                             #
+            The              #
+ depressive  /   manic       #
+        sides of the         #
+        Angry Shroom.        #
+                             #
+                             #
+                             #
+                             #
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+                           35#
+asciiend,white], //Page 36
+^[ascii
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+“ The haunted halls,         #
+         a place of lore,    #
+   Where the living          #
+         dare not explore.   #
+    A world of fear,         #
+          a place of dread,  #
+     Where life and death    #
+        are tangled threads ”#
+                             #
+                   -ChatGPT  #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend,white], //Page 37
+^[ascii
+                             #
+ 《》`·····················´《》 #
+  :  |  |  /        \  |  :  #
+  :\_|__HAUNTED HALLS\_|  :  #
+  :______]'¯'-.      __'  :  #
+  :{____}      \   //-´\.-:  #
+  : │  │ .:::.  │_!´-´ ((_:  #
+  : │  │ ├┼╫┼┤  `--´--.)) :  #
+  : │ ││ ├┼╫┼┤  │ │_ _/'( :  #
+  : │ ││ ├┼╫┼┤  │ ¯¯`-´(  :  #
+  : │  │ ├┼╫┼┤  │_│    |  :  #
+  : │ ││ └┴╨┴┘  |_|    '  :  #
+  : │__│       [___]  /   :  #
+  :{____}            /____:  #
+  :                       :  #
+  :.-.~`¯¯-¯`-._          :  #
+  :             _ -`¯-¯¯`-:  #
+  :                       :  #
+  :¯-¯`-._                :  #
+ 《》.·····················.《》 #
+                             #
+                             #
+asciiend,white], //Page 38
+^[ascii
+                     _       #
+                   ,o_)      #
+                   "':_      #
+                  _.-/)\     #
+                 "`,-´_/     #
+                  '"   ;     #
+    _{)              `/      #
+   ''¯)              / \     #
+     /(           ,-' ,/     #
+                             #
+ Skeletimmy  &  Skeletony    #
+  Element: *                 #
+  Weakness: ♥, Magic         #
+                             #
+ Takes double damage from    #
+ magic.                      #
+                             #
+                             #
+                             #
+                             #
+                             #
+38                           #
+asciiend,white], //Page 39
+^[ascii
+                             #
+               \`-.-.-´/     #
+    .-.         ) \ / (      #
+   (* *)       _\ * * /_     #
+  ^´ ° `^      `   .   ´     #
+    \ (,         )   /.-)    #
+     `-'         '~...~'     #
+                             #
+      Booo  &   Big Booo     #
+  Element: *                 #
+  Weakness: ♥                #
+  Immune To: Physical        #
+                             #
+ Immune to physical attacks  #
+                             #
+                             #
+ “ Is this poetry thing      #
+   starting to get old yet? ”#
+                             #
+                   -Toast    #
+                             #
+                           39#
+asciiend,white], //Page 40
+^[ascii
+            ┌─┬┐             #
+            │†|│             #
+            │ |│             #
+           ´¯¯'`             #
+                             #
+ R.I.P.                      #
+  Element: ♥                 #
+  Weakness: ∞                #
+  Tags: spawner              #
+  Immune To: Stun, Push      #
+                             #
+ A tomestone made of stone   #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+40                           #
+asciiend,white], //Page 41
+^[ascii
+                             #
+R.I.Pieces           │¯¯¯|\  #
+ Element:            │(╬)|│  #
+ Weakness: ♥,        │ ║ |│  #
+         Physical    │   |│  #
+ Tags: boss,spawner ´¯¯¯¯'`  #
+ Immune To: Stun, Push,      #
+            Unmake           #
+ Without his divine hide, but#
+ sustained by the powerful   #
+ Ouroboros, Pallas retreated #
+ to the depths of an         #
+ underground palace. His     #
+ presence henceforth haunts  #
+ the galleries, as fragments #
+ of his innards continuously #
+ stream away and take forms  #
+ most foul.                  #
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+                           41#
+asciiend,white], //Page 42
+^[ascii
+                             #
+《》·························《》#
+:  _.---._                  :#
+: /       \                 :#
+:|.-  ,-   |__              :#
+:\ *)  *)  |\_/\            :#
+: )  ^`  (/(\ \-\           :#
+: `v"uuV`  //  |-|          :#
+:  |   <..<'  /-/  _______.-:#
+:  |    _ ,-.|-|.-(_.-----`-:#
+:  |   ( (   /\  / )        :#
+:  .   //(`._'`-' / )       :#
+:     // (`._/\`-' /        :#
+:    /(   `._/ `.-'         :#
+:   (v)      .-.\-\.-.      :#
+:   //      (  ( \-)  )     :#
+:  //        \  `-'  /_     :#
+:_//        ('`--^--'v )    :#
+:/'-`.        \(      )/    :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 43
+^[ascii
+ Pallas, The Skinless        #
+                             #
+  Element: *                 #
+  Weakness: ♥                #
+  Tags: boss, phase1         #
+  Immune To: Stun, Push,     #
+             Unmake*         #
+ Of Godly birth, Pallas once #
+ towered above all and sought#
+ to grow the world under his #
+ banner. Leuce understood his#
+ true weapon was not his     #
+ giant sword but his         #
+ impenetrable skin. She sent #
+ Bolesh to paralyze and flay #
+ Pallas, and in doing so     #
+ established Acropolis as    #
+ capital of the realm.       #
+   .———————.  .———————————.  #
+   │ Hints │  │ Etymology │  #
+   '———————'  '———————————'  #
+                           43#
+asciiend,white], //Page 44
+^[ascii
+                             #
+《》·························《》#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:    _.---._                :#
+:   /       \               :#
+:  |.-  ,-   |__            :#
+:  \ *)  *)( |_/\           :#
+:   )  ^`  _/(\\-\          :#
+:   `v'"'V`  // |-|         :#
+:    |   <..<' /-/          :#
+:       _ ,-. /-.-,_        :#
+: ,----( (   / |  ( )----,  :#
+: \ .¯¯¯ (`._'`_,' )¯¯¯, /  :#
+:  \ \   (`._/ \_,')  / /   :#
+:   ) `,  `._/ `_,' ,' (    :#
+《》··'/||··············||\`·《》#
+                             #
+                             #
+asciiend,white], //Page 45
+^[ascii
+ Pallas, The Legless         #
+                             #
+  Element: *                 #
+  Weakness: ♥                #
+  Tags: boss, phase2         #
+  Immune To: Stun, Push,     #
+             Unmake          #
+                             #
+Pallas' defeat marked the    #
+end of an era.               #
+The resulting power vacuum   #
+left in his wake had major   #
+impacts on the political     #
+structure of the dark world  #
+but also marked the beginning#
+of the decline for Acropolis.#
+      *Not the actual in-game#
+       description.          #
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+                           45#
+asciiend,white], //Page 46
+^[ascii
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+“ Deep beneath the soil      #
+       there lies a mine,    #
+   Of bronze and fire,       #
+        of toil and grime.   #
+    Slaves in chains,        #
+      their spirits broken,  #
+     Toil endlessly,         #
+      with no hope or token ”#
+                             #
+                   -ChatGPT  #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend,white], //Page 47
+^[ascii
+                             #
+ 《》`//···················´《》 #
+  ://                 ||  :  #
+  :\\   BOILING MINES ||  :  #
+  : \\__,-.           ||  :  #
+  :  `--´¯            ||  :  #
+  :                   ||  :  #
+  :   ,;;. O          ||  :  #
+  :  │¯¯¯¯│¯\         ||  :  #
+  :,_└()()┘_|\_,__,__/()\_:  #
+  :——/——/——/——/——/——//||,::  #
+  :                // |/ |:  #
+  :`--,-,__,'-,_/`-_,-:| |:  #
+  : | '|' | ' '| '| | || !:  #
+  :                       :  #
+  :  .-.           _      :  #
+  :               (_)     :  #
+  :         " ,           :  #
+  :        `_             :  #
+ 《》.·····················.《》 #
+                             #
+                             #
+asciiend,white], //Page 48
+^[ascii
+                             #
+                             #
+           /¯¯\              #
+           \O┘ )             #
+            |\(              #
+           / \ `             #
+                             #
+ Whip Controller             #
+  Element: φ                 #
+  Weakness: *                #
+  Tags: magic_resist, ranged #
+        humanoid             #
+                             #
+ They keep the Pushers       #
+ motivated.                  #
+ Takes half damage from magic#
+                             #
+                             #
+                             #
+                             #
+                             #
+48                           #
+asciiend,white], //Page 49
+^[ascii
+               ( __ )        #
+        ,-.     ¯\/¯         #
+         /     ,-´'-.        #
+        |     //\. ¯`)       #
+         \_,==´ /-´\"        #
+               ( `\ \        #
+                )/ )/        #
+                "  "         #
+ Dominotaur                  #
+  Element: φ                 #
+  Weakness: *                #
+  Tags: magic_resist, ranged,#
+        humanoid             #
+                             #
+ REALLY keeps the Pushers    #
+ motivated.                  #
+ Takes half damage from magic#
+                             #
+                             #
+                             #
+                             #
+                           49#
+asciiend,white], //Page 50
+^[ascii
+            '                #
+           :  ;              #
+            "(               #
+           /  \              #
+            `´               #
+ Fire Elemental              #
+  Element: φ                 #
+  Weakness: *                #
+  Tags: ranged               #
+                             #
+ Loves to flame others       #
+                             #
+“ Flames leap from geysers,  #
+       their heat intense,   #
+   As fire spirits dance,    #
+   their movements immense.  #
+    Their eyes are embers,   #
+     their forms so bright,  #
+ They watch the slaves toil, #
+      through day and night ”#
+                 -ChatGPT    #
+50                           #
+asciiend,white], //Page 51
+^[ascii
+           ___               #
+          /!'|\              #
+         ´\___/`             #
+          ´ ' `              #
+                             #
+ Flame Geyser                #
+  Element: φ                 #
+  Weakness: *                #
+  Tags: spawner              #
+  Immune To: Stun, Push      #
+                             #
+ You REALLY don't want to go #
+ down there.                 #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                           51#
+asciiend,white], //Page 52
+^[ascii
+   ¯\-┐     └O┘              #
+   _/-┘\   ./|\.             #
+       (  _|/ \|_            #
+        `=\'¯¯¯'/=--[¯¯¯¯¯¯¯]#
+          /`-|-´\    \  [ ]/ #
+         O   O   O    `-─-´  #
+          )  |  (            #
+                             #
+ Mine Walker                 #
+  Element: φ                 #
+  Weakness: *                #
+  Tags: magic_resist, machine#
+                             #
+ Takes half damage from magic#
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+52                           #
+asciiend,white], //Page 53
+^[ascii
+           ´¯)               #
+            (                #
+          .-"-.              #
+         /,    \             #
+         \    ;/O╛           #
+         │¯¯¯¯¯│¯\           #
+         └()-()┘ |\          #
+ Bomb Cart                   #
+  Element: φ                 #
+  Weakness: *                #
+  Tags: boss, slow, explode, #
+        melee, magic_resist, #
+        humanoid             #
+  Immune To: Unmake, Push    #
+                             #
+ Explodes upon contact or if #
+ defeated.                   #
+ Takes half damage from magic#
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+                           53#
+asciiend,white], //Page 54
+^[ascii
+                             #
+《》·························《》#
+:    .---.                  :#
+:  _/ \___\      _____      :#
+: (/  /   /     /     \     :#
+: /  /   /     | () ]  |    :#
+:/  / (\/    .-|      .---. :#
+:| /   \\_  /  /¯¯¯¯¯/ / `\\:#
+:\/___/|`,) \ (      \ ` ,'/:#
+:      \ \\.'`-\  `   `---' :#
+:       \ \\  / )'|`  /  |  :#
+:        \ \\'  |_ _ |  /   :#
+:  ~      \/\\ [____.' /   ~:#
+:            \\/  .' .'\    :#
+:        _    \.-'_.'  |    :#
+:       (_)   (_.'     /    :#
+:   " ,        |\\ _ _ |    :#
+:  ._           ¯\\ ¯ ¯     :#
+:          ~      \)        :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 55
+^[ascii
+ Bronze Guardian             #
+  Element: φ                 #
+  Weakness: *                #
+  Tags: boss, phase1, machine#
+  Immune To: Stun, Push,     #
+             Unmake, Chill   #
+ Intent on expanding their   #
+ mineral dominion, the Frost #
+ Torch Guild assembled an    #
+ awesome machine. With the   #
+ Fissure Stone at its core,  #
+ the self-repairing clockwork#
+ creation continuously       #
+ improved itself. Ultimately #
+ gaining sentience, it challe#
+ -nged the Guilds power, as  #
+ they crumbled under their   #
+ own bureaucratic weight.    #
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+                           55#
+asciiend,white], //Page 56
+^[ascii
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+“ The icy ridge,             #
+   only ice and snow ahead.  #
+  where danger roams,        #
+    and the brave doth tread.#
+  For those freed slaves,    #
+          their final hope,  #
+   Tragically lost on this   #
+       insurmountable slope ”#
+                             #
+  -I had to tweak this one a #
+   bit more than usual.      #
+   That's why it sucks.      #
+                             #
+                             #
+                             #
+                             #
+asciiend,white], //Page 57
+^[ascii
+                             #
+ 《》`·····················´《》 #
+  :                   _,-.:  #
+  :       ICY RIDGE  ( (¯¯:  #
+  : _ ,-,--._             :  #
+  :( (¯ ¯¯¯) )            :  #
+  :                .:'`\  :  #
+  :             .:´   _,-.:  #
+  :·^ ·   . _.:'´ .:'´    :  #
+  :                       :  #
+  :                       :  #
+  :  )`¯\                 :  #
+  : /  O>|                :  #
+  :|` /¯ \                :  #
+  :/ />  ´|               :  #
+  ::.:. :'`           _   :  #
+  :                  /':. :  #
+  :                _/  ':.:  #
+  :               /':. ¯'::  #
+ 《》.·····················.《》 #
+                             #
+                             #
+asciiend,white], //Page 58
+^[ascii
+                             #
+                             #
+          _.---._            #
+         /.´\"/`-\           #
+         |\     /|           #
+          \|   |/            #
+                             #
+ Ki Eater                    #
+  Element: ❄                 #
+  Weakness: φ                #
+  Tags: slow                 #
+                             #
+ Steals @1 each time it      #
+ attacks.                    #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+58                           #
+asciiend,white], //Page 59
+^[ascii
+           _  _              #
+          _)`-)\_            #
+        /´_     _`\          #
+       /.´  `"´  `.\         #
+       | >       < |         #
+       | \       / |         #
+        \|       |/          #
+ Ki Gobbler                  #
+  Element: ❄                 #
+  Weakness: φ                #
+  Tags: slow                 #
+                             #
+ Steals @1 each time it      #
+ attacks.                    #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                           59#
+asciiend,white], //Page 60
+^[ascii
+            _.--.            #
+       __.-´,--. `.          #
+      (  o.´    ) !          #
+       `"´ ,--_´  `-.        #
+          /`-( \ ,-( \       #
+         /.´  `.\   `.\      #
+        < |  , | >   | >     #
+        | \  ' / |   / |     #
+         \|    |/    |/      #
+ Ki Slurper                  #
+  Element: ❄                 #
+  Weakness: φ                #
+                             #
+ Applies a frost debuff and  #
+ Steals @1 each time it      #
+ attacks.                    #
+                             #
+                             #
+                             #
+                             #
+                             #
+60                           #
+asciiend,white], //Page 61
+^[ascii
+                 ¡           #
+     /|          |\          #
+   `/| \,      `/| \7        #
+    \o_/        \o_/         #
+                             #
+ Ice Elemental & Elite Ice…  #
+  Element: ❄                 #
+  Weakness: φ                #
+  Tags: ranged               #
+                             #
+ They're losing their cool   #
+ over you.                   #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                           61#
+asciiend,white], //Page 62
+^[ascii
+                     ,´/     #
+ Ice Wall           /^|      #
+  Element: ❄       | ´!      #
+  Weakness: φ      |'/\      #
+  Immune To: Stun .|  /\     #
+             Push :! ´ ,'/\  #
+                  :. \  /  \ #
+                   ::´\ \  /|#
+                    :     / |#
+   /|  Ice Pillar    :.'   `|#
+  / |\  Element: ❄    :. ´\ !#
+ | ´||  Weakness: φ   ':. .:'#
+ | / \  Tags: spawner   `'´  #
+,|/| |: Immune To: Stun,     #
+'::. :'            Push      #
+                             #
+ Melts losing 50 hitpoints   #
+ per second.                 #
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+62                           #
+asciiend,white], //Page 63
+^[ascii
+     ,                       #
+     |\   Giant Ice Elemental#
+  . /' \ ,    Element: ❄     #
+  |` '  ´|_   Weakness: φ    #
+ \'  ·   ;/_  Tags: boss,    #
+ \ `;   ´ ,´        ranged   #
+ <  O  ,  >   Immnue To: Push#
+  \_`  _.'      Unmake, Chill#
+    ¯¯¯                      #
+ Ki makes a long journey,    #
+ starting at the world founta#
+-in, filtering through the   #
+ world and up the mountain,  #
+ before condensing into these#
+ elementals. Here, at the    #
+ edge of existence, an       #
+ ecosystem thrives on the    #
+ remnaints of that journey.  #
+ They are hungry for more Ki.#
+                             #
+                             #
+                           63#
+asciiend,white], //Page 64
+^[ascii
+                             #
+《》·························《》#
+:                           :#
+:           ,-              :#
+:          /(__             :#
+:         (_   )_ /\        :#
+:   .^ ^-  )¯ ´  V / ^ ^.   :#
+: <´      (•`´• ) /      `> :#
+:<  {     {,-,`´ (      }  >:#
+/   /`-/   `.,.-'´   \-´\   :#
+   |   |             |   |  :#
+_\ |    \           /    | /_#
+_| /     `"•"´ `"•"´     \ |_#
+-(/        )       /      \)-#
+:         / `.__  ´ ).      :#
+:        .\__/  \__/  \     :#
+:       /   _\     )_  `.   :#
+:      (_(_(__)   (__)_)_)  :#
+:                           :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 65
+^[ascii
+ Hrímnir                     #
+  Element: ❄                 #
+  Weakness: φ                #
+  Tags: boss, phase1,        #
+        humanoid             #
+  Immune To: Stun, Push,     #
+             Unmake, Poison  #
+ Formed by the fusion of     #
+ three creatures, Hrímnir    #
+ found purpose in following  #
+ Raudr, bearer of the Torch. #
+ Bound in loyalty, Hrímnir   #
+ and Raudr filled the power  #
+ void left by the fall of    #
+ Pallas. The council of Five,#
+ vying for control of The    #
+ Torch, encased Hrímnir in a #
+ permafrost prison.          #
+   .———————.  .———————————.  #
+   │ Hints │  │ Etymology │  #
+   '———————'  '———————————'  #
+                           65#
+asciiend,white], //Page 66
+^[ascii
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+“ The cultists sing          #
+    and dance in a trance,   #
+   As they worship Nagaraja  #
+      in a hypnotic stance,  #
+    Its slithering form      #
+          a sight to behold, #
+     In the temple where     #
+       the stories are told ”#
+                             #
+                    -ChatGPT #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend,white], //Page 67
+^[ascii
+                             #
+ 《》`·····················´《》 #
+  : |     |_.´  |  │  │ ││:  #
+  : |_.,-'THE TEMPLE  │ ││:  #
+  :´   |    | .´  |│  │,││:  #
+  :    |_,.-'´|   |│  │∞││:  #
+  :-:'´   |   |  ,'│  │(││:  #
+  : |     |,.-'`|  │  │)││:  #
+  :-'-·¡'´  |   |  │  │ ││:  #
+  :    |    |  _!·¡│  !|││:  #
+  :-.-·''¡'´ ¯|   |│     │:  #
+  : |    |    |   |│     │:  #
+  :-'--.-'--.-'-.-'│     │:  #
+  :    |    |   |  │     │:  #
+  :-.--·...,|_  |  │     │:  #
+  : |    |    |¯`':│     │:  #
+  :-'-..,!._  |   |│     │:  #
+  :_   |    |¯`':.!│     │:  #
+  :.´ ¯`'--.!_  |┌─┴─────┴:  #
+ 《》.·····················.《》 #
+                             #
+                             #
+asciiend,white], //Page 68
+^[ascii
+                       _     #
+  Cult Guard         _{))    #
+   Element: ∞       (∞( \┼───#
+   Weakness: ❄       ¯( !_   #
+   Tags: humanoid,     `¯    #
+         cult                #
+                             #
+ Suspects this is a multi-   #
+ level marketing scheme.     #
+                             #
+   ___                       #
+  [___]       Bell Ringer    #
+    ║{))       Element: ∞    #
+    ║=´¡       Weakness: ❄   #
+    ║( '._     Tags: humanoid#
+    ' ¯´¯            cult    #
+                             #
+An accomplished percussionist#
+ fallen on hard times.       #
+                             #
+                             #
+68                           #
+asciiend,white], //Page 69
+^[ascii
+                             #
+ Poison Adept           ,    #
+  Element: ∞         ∞_/(_   #
+  Weakness: ❄        |{\\    #
+  Tags: humanoid,    |-´ )   #
+   cult, ranged      |/__\   #
+                      `  ´   #
+ Started off with air        #
+ fresheners                  #
+                             #
+  ,_          Cult Sorcerer  #
+  {\\          Element: ∞    #
+  ( `\         Weakness: ❄   #
+  (`o`-._      Tags: humanoid#
+   ¯¯¯¯¯        cult, ranged #
+                             #
+ Always called upon to       #
+ rearrange furniture.        #
+                             #
+                             #
+                             #
+                           no#
+asciiend,white], //Page 70
+^[ascii
+                             #
+ Cult Marksman        _      #
+  Element: ∞         {))     #
+  Weakness: ❄      {══╤)     #
+  Tags: cult,        ( '._   #
+ ranged, humanoid     ¯´¯    #
+                             #
+ No description.             #
+                             #
+                             #
+                   _         #
+ Worm Rider       {))        #
+  Element: ∞     _/ \┼───    #
+  Weakness: ❄ _.´-(_(──.___  #
+  Tags: cult (o__.────._))_) #
+    humanoid                 #
+                             #
+ Low tunnels can be          #
+ particularly challenging.   #
+                             #
+                             #
+70                           #
+asciiend,white], //Page 71
+^[ascii
+                             #
+                 .-.         #
+Toupee Snatcher '-´)) | /)   #
+ Element: ∞       //  |/ )   #
+ Weakness: ❄     ((_.-´_¯'.  #
+ Tags: serpent,   `--´    `) #
+       cult            _.-´  #
+                             #
+ Top of the noodle danger    #
+ scale.                      #
+                             #
+                             #
+ .-.          Ground Serpent #
+'-´))           Element: ∞   #
+  //            Weakness: ❄  #
+ ((___.- ¯¯'.   Tags: serpent#
+  `--.-'´   `)        cult   #
+            ´                #
+  Free hugs.                 #
+                             #
+                             #
+                           71#
+asciiend,white], //Page 72
+^[ascii
+        ___    _             #
+       |`¯´|  {))            #
+       |_.'| _/ |            #
+       (___)( / '._          #
+              `¯¯            #
+                             #
+                             #
+ Serpent Handler             #
+  Element: ∞                 #
+  Weakness: ❄                #
+  Tags: humanoid, cult,      #
+        spawner              #
+  Immune To: Stun, Push      #
+                             #
+ Is getting real tired of the#
+ innuendo.                   #
+                             #
+                             #
+                             #
+                             #
+                             #
+72                           #
+asciiend,white], //Page 73
+^[ascii
+                   ,-.       #
+Acronian Cultist   )o))      #
+ Element: ∞       /`/ (      #
+ Weakness: ❄     / :   \     #
+ Tags: boss,    ('\   /`┼══──#
+   humanoid,    :  \ (       #
+ Immune To:     ∞  |` \      #
+  Unmake, Push, '  !,__`--._ #
+  Vigor                      #
+                             #
+ Once a squire to Leuce's    #
+ personal guard, Fael became #
+ disillusioned after their   #
+ leader's devolution. Unable #
+ to navigate the quickly     #
+ shifting political reality, #
+ Fael left the city, taking  #
+ only a sharp blade and a    #
+ poison talisman - a daily   #
+ reminder of the loss caused #
+ by Bolesh's betrayal.       #
+                           73#
+asciiend,white], //Page 74
+^[ascii
+      ☆ THE JANITOR ☆        #
+♪ Nagaraja, the    | _       #
+supreme serpent    |{))      #
+will lead us into  !´ )      #
+a new world ♫     _|/ \-,    #
+                  ´'`¯`´     #
+♪ For Raudr will return and  #
+see all the errors done in   #
+his stead ♫                  #
+                             #
+♪ he will wail, a wail so    #
+loud and long that the world #
+will tremble ♫               #
+                             #
+♪ with the great tremble, the#
+ground and sky will move ♫   #
+                             #
+♪ move, until the Stream of  #
+the Silent unites with       #
+Deadwood River ♫             #
+                             #
+74                           #
+asciiend,white, //Page 74
+^ascii
+#
+#
+#
+#
+#
+#
+######Raudr
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,red, //Page 74
+^ascii
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+##################Stream of
+the Silent
+#
+#
+#
+asciiend,green], //Page 75
+^[ascii
+♪ in this union, all will    #
+turn a bright green ♫        #
+                             #
+♪ from this green, Acropolis # 
+shall fall from the sky ♫    #
+                             #
+♪ upon this fall, acronians  #
+will see Raudr and fight a   #
+great battle ♫               #
+                             #
+♪ those who battle, will be a#
+feast for the supreme serpent#
+                             #
+♪ with this feast, Nagaraja  #
+will grow, and grow until it #
+swallows the Moons! ♫        #
+                             #
+♪ inside Nagaraja            #
+    a world will form anew. ♫#
+♪ Oh great Nagaraja!         #
+  We await The Great Feast! ♫#
+                           75#
+asciiend,white, //Page 74
+^ascii
+#
+##############green
+#
+############green
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,green, //Page 74
+^ascii
+#
+#
+#
+#
+#
+#
+#
+#########Raudr
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,red], //Page 76
+^[ascii
+                             #
+《》·························《》#
+:        _____              :#
+:     .´,.,_  `'-.          :#
+:     \`  \ `.    `'-.      :#
+:         /  _`.      `.    :#
+:        /  ´x) \       \   :#
+:       /   `   |        \  :#
+:     .´,.---.  |         \ :#
+:    ( (_,    `/   /      | :#
+:     `--',(_.´  ,´       | :#
+:          `.__.-´        / :#
+:          .´            /  :#
+:        ,´            .´   :#
+:       /            ,´     :#
+:      /            /       :#
+:     .            /        :#
+:     |            |        :#
+:     |            |        :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 77
+^[ascii
+ Nagaraja, Eater of the Torch#
+  Element: ∞                 #
+  Weakness: ❄                #
+  Tags: boss, phase1, serpent#
+  Immune To: Stun, Push,     #
+             Unmake,         #
+ Upon controlling the Frost  #
+ Torch, the council of Five  #
+ commissioned a Temple to    #
+ house the luminous artifact #
+ and serve as capital edifice#
+ to their Guild. One moon, a #
+ theif stole the Mind Stone  #
+ from Acropolis and hid it   #
+ deep in the Temple. A hungry#
+ serpent swallowed the Stone,#
+ then The Torch, then anyone #
+ in its vicinity.            #
+   .———————.  .———————————.  #
+   │ Hints │  │ Etymology │  #
+   '———————'  '———————————'  #
+                           77#
+asciiend,white], //Page 78
+^[ascii
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+“ On the edge of the world,  #
+where the sky meets the land,#
+   There stands a plateau,   #
+    a rugged and wild strand,#
+ The rocks on the plateau    #
+        are a story untold,  #
+  Of the ebb and flow        #
+     of the years so old ”   #
+                             #
+                  -ChatGPT   #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend,white], //Page 79
+^[ascii
+                             #
+ 《》`·····················´《》 #
+  :.  _,._             .  :  #
+  : ,´ ,ROCKY PLATEAU     :  #
+  :/  /        .-.-`¯¯-¯`-:  #
+  :|  '  .      `` - -- -`:  #
+  :\   `.__,/             :  #
+  : `._  _,´       .      :  #
+  : .  ¯¯    .            :  #
+  :     .               . :  #
+  :             .         :  #
+  : .      .              :  #
+  :                      .:  #
+  :´¯\ /`-'¯\ ,·´¯^-, /¯'¯:  #
+  :                   /\  :  #
+  :                 /¯ :\ :  #
+  :                /   ::¯:  #
+  :           o           :  #
+  :                       :  #
+ 《》.·····················.《》 #
+                             #
+                             #
+asciiend,white], //Page 80
+^[ascii
+  Acronian Scout     ),_ ____#
+  Element: none      `o/(  -´#
+  Weakness: none    ,/_\ );  #
+  Tags: boss,       /  /\    #
+    humanoid,      / -´ _)_  #
+  Immune To:      L    / .´  #
+   Unmake, Push,       ; (   #
+                      /   \  #
+Since the fall of Pallas and # 
+the dissolution of the Frost #
+Torch Guild, Acropolis has   #
+stood uncontested. Its army, #
+once grandiose, diminished   #
+into a force for internal    #
+order. The scouts play a     #
+vital role in connecting the #
+capital's interests to the   #
+greater dark world and have  #
+been preserved. They are obed#
+-ient to the chain of command#
+but still loyal to Leuce.    #
+80                           #
+asciiend,white], //Page 81
+^[ascii
+            .-.              #
+         _  `-.    _         #
+        ( `    )  ´ )        #
+         `'--/¯\--'´         #
+            /`°´\            #
+         :.´     `.:         #
+                             #
+ Dysangelos, Bearer of Bad   #
+             News            #
+                             #
+ Dysangelos is a unique      #
+ acropolite who delivers     #
+ urgent messages within the  #
+ cloud city and occasionally #
+ elsewhere in the dark world.#
+ When not working Dysangelos #
+ enjoys stargazing, alchemy  #
+ and stone skipping.         #
+        .———————————.        #
+        │ Etymology │        #
+        '———————————'        #
+                           81#
+asciiend,white], //Page 82
+^[ascii
+                             #
+《》·························《》#
+:                           :#
+:                           :#
+:           ___             :#
+:          /.-,\            :#
+:   .--.  (´  o´            :#
+:  (:¯`.\  \`.        .-.   :#
+:   `o  \`. ) \      //o'   :#
+:        `.´__ `-.,-´/      :#
+:  _    .´)(o_) .--'´  _    :#
+: (o'_.´.-\,-, _'._   o,\   :#
+:  `---´   `--´ `-.`._.'/   :#
+:                  `---´    :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 83
+^[ascii
+                             #
+Dysangelos, Bearer of Stones #
+  Element: ❄                 #
+  Weakness: φ                #
+  Tags: boss, phase1,        #
+  Immune To: Stun, Push,     #
+             Unmake,         #
+                             #
+ Dysangelos evolved after    #
+ acquiring 9 powerful Soul   #
+ Stones. Once a messenger to #
+ Acropolis, Dysangelos aims  #
+ to establish sole rule of   #
+ the cloud city after the    #
+ tenth and final Soul Stone  #
+ is assimilated.             #
+                             #
+                             #
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+                           83#
+asciiend,white], //Page 84
+^[ascii
+《》·························《》#
+:           ___             :#
+:          /.-,\            :#
+:   .--.  (´  *´            :#
+:  (:¯`.\  \`.        .-.   :#
+:   `♥  \`. ) \      //φ'   :#
+:        `.´__ `-.,-´/      :#
+:  _    .´)(o_) .--'´  _    :#
+: (∞'_.´.-\/=) _'._   ❄,\   :#
+:  `---´  ( (-´ `-.`._.'/   :#
+:          ` `     `---´    :#
+《》·························《》#
+Dysangelos, One with the     #
+            Elements         #
+ Element: any                #
+ Weakness: any               #
+ Tags: boss, phase2,         #
+ Immune To: Stun, Push,Unmake#
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+84                           #
+asciiend,white], //Page 85
+^[ascii
+《》··.--.······_.--´    /···《》#
+:  /    `. .´     .-'¯¯¯¯¯¯':#
+: _|   \  \!.  --(_    ,-   :#
+:/  `. |  ´           (   -::#
+:  _   /,   ____     \/`-.  :#
+: ( `-´_| <´(_) `>   '`___) :#
+:`-- .´ \  `.,.-´      `---´:#
+:   _|              /     \ :#
+: /  `.  `.__.___.´`,--.  | :#
+: |   _   !         /  _   /:#
+:  \ ( `-´          \ ( `-´ :#
+《》··`.`._············`.`._·《》#
+Dysangelos, Perfected        #
+                             #
+ Element: ❄                 #
+ Weakness: φ                 #
+ Tags: boss, phase3,         #
+ Immune To: Stun, Push,Unmake#
+         .———————.           #
+         │ Hints │           #
+         '———————'           #
+                           85#
+asciiend,white], //Page 86
+^[ascii
+                             #
+                             #
+"You are a powerful Stonefolk#
+ Perhaps even more than Raudr#
+ -- The only Stonefolk before#
+ you to ever rival a God.    #
+                             #
+..It seems you originate from#
+ a world of light. How is    #
+ that possible?              #
+                             #
+..what is more, it revealed  #
+ your colour, but you look   #
+ white to me"                #
+                  -Pallas    #
+                             #
+"The ancients spoke of a doom#
+-bringer who will convince   #
+the great Nagaraja to consume#
+not the world, but himself"  #
+               -The Initiate #
+86                           #
+asciiend,#b1b1b1, //Page 86 (red)
+^ascii
+#
+#
+#
+########################Raudr#
+asciiend,red, //Page 86 (white)
+^ascii
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#white
+#
+#
+#
+#
+#
+#
+#
+86
+asciiend,white], //Page 87
+^[ascii
+                             #
+"Sins of the past devolved   #
+ you into mineral form.      #
+ However, the Sight Stone    #
+ awakened you once more.     #
+                             #
+ ...Perhaps I can find this  #
+ Light realm you seem to     #
+ remember."                  #
+                             #
+ ...Those are your memories, #
+ revealed to me by the Sight #
+ Stone when I selected you   #
+ atop the Plateau, intriguing#
+               -Dysangelos   #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                           87#
+asciiend,#b1b1b1], //Page 88
+^[ascii
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+“ In realms beyonnd          #
+           mortal sight,     #
+   Where Gods and            #
+            men colide,      #
+    A tapestry of            #
+          wonderous might,   #
+     Where destinies reside ”#
+                             #
+                  -ChatGPT   #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend,white], //Page 89
+^[ascii
+                             #
+ 《》`·····················´《》 #
+  :                       :  #
+  :     OTHER ENTITIES    :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+  :                       :  #
+ 《》.·····················.《》 #
+                             #
+                             #
+asciiend,white], //Page 90
+^[ascii
+《》—————————————————————————《》#
+│Leuce, Founder of Acropolis│#
+'———————————————————————————'#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:                           :#
+:       .———————————.       :#
+《》······│ Etymology │······《》#
+        '———————————'        #
+                             #
+asciiend,white, //Page 90
+^ascii
+#
+#Leuce
+asciiend,cyan, //Page 90
+^ascii
+#
+#
+#
+#
+#######,#\#,.-######│/
+######Y###/###¦#│#,-´#y
+####\#\_//,###/#,.-´‾\_
+###-_  _/#¦#¦/#/#######_
+#####\  \/     │/##-#-#_`.,#
+#     `-_        / ,.-. ‾## ##
+#        \       |/ ,-´     ##
+#         │   ¦    /        ##
+#         │    ¦   │        ##
+#         ¦    ¦   │        ##
+#         ;   ¦    h        ##
+#        /        ¦ \_      ##
+#      _/  .´  _.´    \     ##
+# _.-´   _/            `-._ ##
+#
+#
+#
+#
+asciiend,#cd853f, //Page 90
+^ascii
+#
+#
+#
+#
+#######,#\#,.-######│/
+##########/#######,-´#y
+######\_/#,###/#,###‾\_
+###-_  ###¦####/#######_
+######  \/     #/##-#-#_##,#
+#     `#_        # ###. ### ##
+#        #       |# #-´     ##
+#         #   ¦    #        ##
+#         #    #   │        ##
+#         ¦    ¦   #        ##
+#         ;   ¦    #        ##
+#        /        ¦ #_      ##
+#      ##  .´  _##    \     ##
+# ##-´   _/            `-._ ##
+#
+#
+#
+#
+asciiend,#ffdead, //Page 90 #8B4513
+^ascii
+#
+#
+#############%%
+#######%#%#&%#&%#&##&#%
+#####%%#&#%###&#&&#%##&%
+###&%####&##%&#########%&#%
+##%&#######&%&##########&&
+#%&##&############%%&#&#%%&
+##%&#############%&#%#&####&
+#########################&%
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,green], //Page 91
+^[ascii
+                             #
+Leuce founded Acropolis which#
+served as the capital of the #
+dark world. When the Giant   #
+Pallas began to threaten her #
+domain she split her Soul    #
+Stone and used one half to   #
+empower a spider which became#
+known as "Bolesh". Her plan  #
+was successful at defeating  #
+Pallas but she lost the ki   #
+stone when Bolesh refused to #
+give it up and retreated.    #
+Without the other half she   #
+devolved into a white tree   #
+and her impurities dripped   #
+down and formed "Xyloalgia". #
+Acropolis was now in decline #
+and some acropolites became  #
+disillusioned with the crumbl#
+-ing political order.        #
+                           91#
+asciiend,white], //Page 92
+^[ascii
+.———————————————————————————.#
+│Raudr, Bearer of the Torch │#
+'———————————————————————————'#
+                             #
+Raudr was a legendary half - #
+stone folk who bore the Frost#
+Torch for the guild by that  #
+same name.                   #
+The Frost Torch guild rose to#
+prominance after the fall of #
+Pallas filling the power     #
+vaccum in its wake.          #
+                             #
+Hrímnir served under Raudr   #
+and was loyal to him but he  #
+was eventually trapped in a  #
+permafrost prison by The     #
+Council of Five.             #
+                             #
+                             #
+                             #
+92                           #
+asciiend,white], //Page 93
+^[ascii
+                             #
+The Frost Torch Guild also   #
+expanded its domain into the #
+bronze mines and constructed #
+the Bronze Guardian to secure#
+                             #
+its position but this back-  #
+fired when the Guardian then #
+gained sentience and asserted#
+its own rule over the mines. #
+                             #
+The Frost Torch Guild was    #
+rapidly collapsing under its #
+own bureaucratic weight and  #
+Raudr then fled to the under-#
+world where he has remained  #
+in exile since.              #
+                             #
+        .———————————.        #
+        │ Etymology │        #
+        '———————————'        #
+                           93#
+asciiend,white], //Page 94
+^[ascii
+   .—————————————————————.   #
+   │ The Council of Five │   #
+   '—————————————————————'   #
+                             #
+The Council of Five was a    #
+group consisting of 5 members#
+each of which served as an   #
+"emissary" to their respectiv#
+elements, of which we so far #
+only know 2:                 #
+ Hans, emissary of Æther     #
+ Uulaa, emissary of Fire     #
+                             #
+Its unclear whether this was #
+a branch within The Frost    #
+Torch's bureaucracy or if it #
+was a seperate organisation  #
+altogether but it was stated #
+on the discord by standard   #
+that they did have control   #
+over the mines at some point.#
+94                           #
+asciiend,white], //Page 95
+^[ascii
+                             #
+The Temple of Nagaraja was   #
+initially constucted after   #
+the Council gained possession#
+of the Frost Torch. It was   #
+constructed to house the     #
+artifact and serve as the    #
+capital edifice to the Guild.#
+The Guild lost the temple one#
+night when the mindstone was #
+stolen and hidden within the #
+temple and a serpent came    #
+upon it and consumed it.     #
+The serpent, now empowered by#
+the Stone then consumed the  #
+Torch and anyone else in the #
+vicinity.                    #
+The Council, now without     #
+control of the mines, nor the#
+Temple was disbanded.        #
+                             #
+                           95#
+asciiend,white], //Page 96
+^[ascii
+《》—————————————————————————《》#
+:│ Hans, Emissary of Æther │:#
+:'—————————————————————————':#
+:            .-.            :#
+:           /_  \           :#
+:          /.:\  \          :#
+:         /:::|_  .         :#
+:         \ |:::) |         :#
+:          \|::/  |         :#
+:        ,-´\:|    `--.     :#
+:       /    )|   ´    \    :#
+:       | /  \|         \   :#
+:       | |   !    \     \  :#
+:        \'.        `.   |  :#
+:         `.`.        \  /  :#
+:           \ \       | /   :#
+:            `-\      |´    :#
+:               !     |     :#
+:              /      |     :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 97
+^[ascii
+                             #
+Hans was the founding member #
+of the Council of Five before#
+it was disbanded.            #
+                             #
+He operates the small shop in#
+the mushroom forest. His     #
+ability to teleport affords  #
+him the capablity to operate #
+in such a remote location.   #
+                             #
+He has the stature of an     #
+Acronian, he is invisible and#
+his dialogue suggests that he#
+knew Leuce before her down - #
+fall.                        #
+At the time of Pallas' defeat#
+he was still dwelling in the #
+underworld, however he formed#
+the council soon after.      #
+                             #
+                           97#
+asciiend,white], //Page 98
+^[ascii
+《》—————————————————————————《》#
+:│ Uulaa, Emissary of Fire │:#
+:'—————————————————————————':#
+:---.                       :#
+:~ ~ \                      :#
+:~ ~ /`-                    :#
+:---´ '.  ,-;"',-.          :#
+:! ' \   ( (- -\  \         :#
+:         \,`ε.´`._\        :#
+:        __./  ,\__         :#
+:     ,´(,-(. / `-,)`.      :#
+:   -/ ~ ~ ~ ~ ~ ~ ~ /`-·   :#
+:   ,\~ ~ ~ ~ ~ ~ ~ / `.    :#
+:    ,`------------´ \    . :#
+:   ´ /  ' |  !   `\  . :' .:#
+:                      .  , :#
+:                       "(  :#
+:                      /  \ :#
+:                       `´  :#
+《》·························《》#
+                             #
+                             #
+asciiend,white], //Page 99
+^[ascii
+                             #
+Uulaa the Ember-eye was once #
+a member in the Council of   #
+Five.                        #
+                             #
+When the Council disbanded   #
+she retreated to deep into a #
+hidden hotspring cave.       #
+There she spends her exile   #
+collecting ki crystals and   #
+rare loot.                   #
+                             #
+                             #
+Presumably the cinderwisps   #
+that also dwell in that cave #
+just get to look at the hot- #
+springs unenthusiastically.  #
+                             #
+                             #
+                             #
+                             #
+                           99#
+asciiend,white], //Page 100
+^[ascii
+《》····.——————————————.·····《》#
+:   [ │ The Dark One │    ] :#
+:   ] '——————————————' /¯¯'¯:#
+: /¯'¯¯\ ]             \)* *:#
+: )O,O(/ [              `,",:#
+:  ~~'¯  ]                [ :#
+:   ]    [                ] :#
+:   V    ]                [ :#
+:        V                ] :#
+:                         V :#
+:                           :#
+:                           :#
+:                           :#
+:            '              :#
+:            i              :#
+:                           :#
+:   ,                  i    :#
+:   i                       :#
+:                           :#
+《》·························《》#
+                             #
+                             #
+asciiend,white, //Page 100
+^ascii
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#############'
+############,#-_
+##########,' ъ э‾-._
+####,##,' Ц      ю  ‾-_
+#####,' д           ж  |
+#####|г              Ф | 
+#
+#
+#
+asciiend,red], //Page 101
+^[ascii
+                             #
+ Little is thus far known    #
+ about the Dark One except   #
+ that he is old. The only    #
+ being old enough to recall  #
+ the events of the first era.#
+                             #
+ He resides in the underworld#
+ and demands sacrifice.      #
+                             #
+ "..Temporary, but most neces#
+-sary, Like flea removal, or #
+ the annual sacrifice to The #
+ Dark One that festers in the#
+ ætherdeep."                 #
+                    - Hans   #
+ (Quoted from the now removed#
+  quest "Bad Buisness")      #
+                             #
+                             #
+                             #
+                          101#
+asciiend,white], //Page 102
+^[ascii
+《》··.———————————————————.··《》#
+:   │ The World Crystal │   :#
+:   '———————————————————'   :#
+:       \         /         :#
+:            _              :#
+:   `       /|\      ,      :#
+:          / | \            :#
+:         /  |  \           :#
+:  -     /__/_\__\    -     :#
+:        \  \ /  /          :#
+:   ,     \  Y  /      .    :#
+:          \ | /            :#
+:           \|/             :#
+:      /     ‾     \        :#
+:                           :#
+:                           :#
+:            |              :#
+:                           :#
+:                           :#
+《》·························《》#
+                             #
+                             #
+asciiend,white, //Page 102
+^ascii
+#
+#
+#
+#
+#############_
+############/|\
+###########/ | \
+##########/  |  \
+#########/__/_\__\
+#########\  \ /  /
+##########\  Y  /
+###########\ | /
+############\|/
+#############‾
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,purple, //Page 102
+^ascii
+#
+#
+#
+##############`
+###############)
+#############
+#########,-
+########(
+#########\
+##########`._
+#############‾`-.
+################´
+###########(
+############`
+#############\
+##############)
+#############´
+#
+#
+#
+#
+#
+asciiend,#9932cc], //Page 103 #9400d3
+^[ascii
+                             #
+At the base of the world,    #
+light from the sun shines    #
+through the world crystal.   #
+Like a prism, light was then #
+broken into 6 bands, or      #
+threads: Cyan, Yellow, Green,#
+Blue, Red, and Ki. In the    #
+first age, when the world    #
+gained conscience it became  #
+confused and frightened. It  #
+saw the 6 threads coming out #
+of itself and tried to remove#
+them. Cyan and Yellow were   #
+weak and broke off easily.   #
+Cyan being the weakest,      #
+shattered into the 10 Soul   #
+Stones. Green (referred collo#
+-quially as the Stream of the#
+Silent) was strong and the   #
+world wasn't able to pull it #
+                          103#
+asciiend,white, //Page 103
+^ascii
+#
+#
+#
+#
+#
+#
+#########Cyan
+#
+#
+#
+#
+#
+#
+######Cyan
+#
+Cyan
+#
+#
+#
+#
+#
+#
+asciiend,cyan, //Page 103
+^ascii
+#
+#
+#
+#
+#
+#
+###############Yellow
+#
+#
+#
+#
+#
+#
+###############Yellow
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,yellow, //Page 103
+^ascii
+#
+#
+#
+#
+#
+#
+#######################Green
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+########Green
+################Stream of the#
+Silent
+#
+#
+asciiend,green, //Page 103
+^ascii
+#
+#
+#
+#
+#
+#
+#
+Blue
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,blue, //Page 103
+^ascii
+#
+#
+#
+#
+#
+#
+#
+######Red
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,red, //Page 103
+^ascii
+#
+#
+#
+############World Crystal
+#
+#
+#
+###############Ki
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,purple], //Page 104
+^[ascii
+                             #
+out. Blue and Red had a will #
+of their own and wanted to be#
+removed. Ki is invisible and #
+flows all around, upwards    #
+through the world, enriching #
+all materials with essence,  #
+evolving the materials into  #
+the many forms. Enchantments #
+as with all items, people and#
+memories, come through the   #
+World Crystal (also known as #
+the World Fountain) as the Ki#
+that materializes, flowing   #
+upwards with the force of the#
+Green thread. To Capture this#
+immense value, Acropolis was #
+established. Built on top of #
+the Green thread and held up #
+by its vertical force.       #
+Creatures of the dark world  #
+104                          #
+asciiend,white, //Page 104
+^ascii
+#
+#####Blue
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,blue, //Page 104
+^ascii
+#
+##############Red
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,red, //Page 104
+^ascii
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+Green
+#
+#
+####Green
+#
+#
+#
+asciiend,green, //Page 104
+^ascii
+#
+#
+#
+#########Ki
+#
+#
+#
+#
+#
+#
+#
+World Crystal
+####World Fountain#########Ki
+#
+#
+#
+#
+#
+#
+#
+#
+#
+asciiend,purple], //Page 105
+^[ascii
+                             #
+are not aware of what happen-#
+-ed in this first age.       #
+                             #
+  Except for the Dark One... #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                          105#
+asciiend,white], //Page 90
+^[ascii
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+“ In realms of               #
+      knowledge's embrace,   #
+   Where wisdom's            #
+        paths intertwine,    #
+    There lies a humble,     #
+            guiding space,   #
+     An index,               #
+          a treasure divine ”#
+                             #
+                  -ChatGPT   #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend,white]]
+
+
+var Index = [[ascii
+        «  Index  »          #
+ This index references tags  #
+ held by the entity. In some #
+ cases there is an asterix   #
+ denouting that the subject  #
+ does not have that tag but  #
+ has been included regardless#
+                             #
+acronian       boss          #
+ -Cultist       -Angry Shroom#
+ -Dysangelos*   -Bolesh      #
+ -Leuce*        -Bronze Guard#
+ -Scout         -Dysangelos  #
+                -Hrímnir     #
+arachnid        -Nagaraja    #
+ -Bolesh        -Pallas      #
+ -Knee Chopper  -Poena       #
+ -Nail Biter    -Xyloalgia   #
+ -Not Caviar                 #
+ -Skin Peeler                #
+                             #
+                             #
+asciiend,white], //Page 2
+^[ascii
+boss (mini)*     explode     #
+ -Acr. Cultist    -Mr Puff   #
+ -Acr. Scout      -Bomb Cart #
+ -Bomb Cart                  #
+ -Ceiling Dec.   flying      #
+ -Giant I.E       -Ceil. Dec.#
+ -Mr Puff         -Neck Warm.#
+ -R.I.Peaces      -Wound Lick#
+ -Wasp Nest*      -Mosquito  #
+                  -Wasp      #
+cult                         #
+ -Bell Ringer    humanoid    #
+ -Cult Guard      -Acr. Cult.#
+ -C. Sorcerer     -Acr. Scout#
+ -Poison Adept    -Bomb Cart #
+ -C. Marksman     -Hrímnir   #
+ -Ground Serpent  -Dominotaur#
+ -Toupee Snatch.  -Whip Cont.#
+ -Worm Rider      -C. Marksm.#
+                  -Serp. Hand#
+                  -Worm Rider#
+                             #
+asciiend,white], //Page 3
+^[ascii
+humanoid        -Mine Walker #
+ -C. Guard                   #
+ -B. Ringer    magic_vulnerab#
+ -Poison Ad.    -Skeletimmy  #
+ -C. Sorcerer   -Skeletony   #
+                             #
+insect         melee         #
+ -Ant           -Bomb Cart   #
+ -Ant Hill      -Mr Puff     #
+ -Mosquito                   #
+ -Scarab       ranged        #
+ -Wasp          -Ceiling Dec.#
+                -Dominotaur  #
+machine         -Whip Control#
+ -Bronze Guard. -Fire Element#
+ -Mine Walker   -Giant Ice E.#
+                -Ice Element.#
+magic_resist    -C. Marksman #
+ -Bomb Cart     -C. Sorcerer #
+ -Dominotaur    -Poison Adept#
+ -Whip Control.              #
+                             #
+asciiend,white], //Page 4
+^[ascii
+serpent          spawner     #
+ -Ground Serpent  -Ant Hill  #
+ -Toupee Snatch.  -Flame Gys.#
+ -Nagaraja        -Giant I.E.#
+                  -Ice Pillar#
+slow              -Not Caviar#
+ -Big A** Snail   -R.I.P     #
+ -Bomb Cart       -R.I.Peaces#
+ -Ki Eat/Gobbler  -Serp. Hand#
+ -Mr Puff         -Wasp Nest #
+        « Immunities »       #
+chill           range        #
+ -Bronze Guard.  -Scarab     #
+ -Giant I.E.                 #
+                             #
+physical    stun             #
+ -Booo       -Any spawner    #
+ -Big Booo    (Except G.I.E) #
+             -Any major boss #
+poison        (Except Poena &#
+ -Hrímnir    -Ice Wall       #
+                             #
+asciiend,white], //Page 5
+^[ascii
+                             #
+unmaking       vigor         #
+ -Any boss      -Acr. Cultist#
+                -Ceiling Dec.#
+unpushable     (Resistant but#
+ -Any Spawner     not immune)#
+ -Any major boss             #
+ -Acr. Cultist               #
+ -Acr. Scout                 #
+ -Bomb Cart                  #
+ -Ice Wall                   #
+ -Mr Puff                    #
+                             #
+        « Weaknesses »       #
+ In the interest of saving   #
+ time I won't list elemental #
+ weaknesses.                 #
+                             #
+physical         range       #
+ -R.I.Peaces      -Bolesh    #
+                  -Ceil. Dec.#
+                             #
+asciiend,white]]
+
+//////////////////////////////////////////////////////////////Hints//////////////////////////////////////////////////
+
+var Hints = [ascii
+                             #
+ The Wasp nest spawns at a   #
+ rather quick rate so you may#
+ want a fast weapon.         #
+ Note however that the nest  #
+ does not techincally have a #
+ boss tag which means it is  #
+ vulnerable to unmaking if   #
+ you would rather favour that#
+ option.                     #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 1
+^ascii
+                             #
+ Xyloalgia's attack can be   #
+ dodged with a well timed    #
+ dash.                       #
+ He also has no element so   #
+ you may need to put in some #
+ additional thought into your#
+ choice of weapon.           #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 2
+^ascii
+                             #
+ Peona can be out-ranged if  #
+ you stand at a range of 23. #
+ Any weapon equipped to your #
+ right hand, including two   #
+ handed weapons gains +1 to  #
+ its range.                  #
+                             #
+ There is also a brief       #
+ instance where she loses her#
+ reflection buff when she    #
+ strikes so if you use that  #
+ window of opportunity then  #
+ you can stun lock her.      #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 3
+^ascii
+                             #
+ Bolesh deals less damage    #
+ with her ranged attacks than#
+ she does with her bite but  #
+ if you time it well then you#
+ can dash in and deal some   #
+ damage during her 3rd attack#
+                             #
+ She will wait a moment to   #
+ apply a strength buff to her#
+-self and then when she      #
+ commits to a bite you can   #
+ dash back to dodge it.      #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 4
+^ascii
+                             #
+ There's nothing too complex #
+ about Angry Shroom's first  #
+ phase.                      #
+ Use hammers to get through  #
+ the shield when you can and #
+ dash back when he strikes.  #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 5
+^ascii
+                             #
+ Many players find Enoki's   #
+ peashooter to be quite a    #
+ challenge but in this phase #
+ they lose their immunity to #
+ stun so an effective        #
+ strategy is to equip a      #
+ compound shield, ideally one#
+ with a little bit of stun   #
+ duration enchanted on it to #
+ interrupt Enoki's attacks.  #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 6
+^ascii
+                             #
+ R.I.Peaces has a weakness to#
+ physical which from my tests#
+ seems to indicate that it   #
+ recieves 7x more damage from#
+ physical weapons which is   #
+ somewhat helpful considering#
+ how the ghosts it summons in#
+ front of it are completely  #
+ immune to physical...       #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 7
+^ascii
+                             #
+On early levels his arm is   #
+able to be unmade after he   #
+swings it.                   #
+                             #
+This also means that if you  #
+use a chill staff on him then#
+it will appear as though the #
+timing on his strike is      #
+somewhat random but that's   #
+due to the fact that staves  #
+only have 50% splash and so  #
+your chill stacks will only  #
+have a random chance of      #
+actually slowing his attack. #
+                             #
+                             #
+                             #
+asciiend, //Page 8
+^ascii
+                             #
+ It is possible to dodge his #
+ attack with even a well     #
+ timed quarterstaff dash. The#
+ debuff it applies will      #
+ decrease your attack range. #
+                             #
+ Other than that it's helpful#
+ to use splash weapons to    #
+ deal with the summoned foes.#
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 9
+^ascii
+                             #
+The Bronze Guardian gets a   #
+very high shield regeneration#
+rate at the higher levels and#
+so you're basically required #
+to bring a stone potion.     #
+The bulk of your damage will #
+come from using twin hammers #
+when you can so you'll want  #
+to maximise your time up     #
+close.                       #
+That means dodging early and #
+dashing in as soon as you can#
+                             #
+He's immune to chill as well #
+so he's much less vulnerable #
+to smite damage due to the   #
+fact that that removes the   #
+majority of the possible     #
+number of stacks you can     #
+apply to him.                #
+                             #
+asciiend, //Page 10
+^ascii
+                             #
+ The Ice Wall and the Ice    #
+ Pillars are perhaps the foes#
+ with the highest base HP in #
+ the game that are also      #
+ vulnerable to unmaking so if#
+ there were ever a time to   #
+ invest into unmaking rather #
+ than damage, now would be it#
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 11
+^ascii
+Hrímnir is quite a tricky    #
+boss because there's not as  #
+many clear options on how to #
+fight him.                   #
+However on low difficulties  #
+it is possible to cheese him.#
+If you equip a shovel you're #
+able to walk so close to him #
+that his snowballs will miss #
+                             #
+On later difficulties he will#
+react by blowing you back if #
+you get within 2 range but   #
+this can still be exploited  #
+because when he does this he #
+won't summon an ice wall so  #
+if you can first damage him  #
+below the 1/3 or 2/3 HP      #
+threshold and then walk close#
+he will cancel his normal    #
+blowback with a non-walling  #
+reactionary blowback.        #
+asciiend, //Page 12
+^ascii
+                             #
+Nagaraja's poison stacking   #
+will effect which weapons are#
+most effective on him. Any   #
+weapon that relies on fast   #
+low damage attacks will be   #
+severely impacted compared to#
+slower high damage attacks.  #
+                             #
+It is possible to dodge a lot#
+of the projectiles with good #
+dodge scripting but cooldowns#
+will still be an issue and   #
+you also have to be wary of  #
+his stone drop attack which  #
+will have a range of 10.     #
+                             #
+Also be wary if using the BFG#
+because if Naga tastes you   #
+just as you're on the back-  #
+swing then you'll always get #
+eaten.                       #
+asciiend, //Page 13
+^ascii
+                             #
+ Dysangelos' first phase is  #
+ relatively straightforward  #
+ he's vulnerable to fire so  #
+ hit him with fire. Short    #
+ swords are generally the    #
+ best DPS weapons on a single#
+ target.                     #
+ You can't dodge his giga -  #
+ blast in this phase so just #
+ kill him before he does it. #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 14
+^ascii
+                             #
+ In this phase he will switch#
+ between the elements so you #
+ need to have weapons of all #
+ types to deal maximal damage#
+                             #
+ This also has the added     #
+ benefit of counteracting his#
+ debuffs if you use the      #
+ opposing element on him.    #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 15
+^ascii
+                             #
+ Ideally you'll want to dodge#
+ both his stun attack and his#
+ giga-beam attack however you#
+ may have difficulties with  #
+ the cooldown on your mind   #
+ stone. If you make sure to  #
+ stack some chill on him then#
+ that'll give your mindstone #
+ time to reset between uses. #
+                             #
+ I haven't tested his new    #
+ adaptive defense yet.       #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 16
+^ascii
+                             #
+ If you're able to build up  #
+ enough armour prior to      #
+ engaging with Mr Puff then  #
+ the fastest method to clear #
+ is to simply charge forward #
+ and let him explode.        #
+                             #
+ The snail in front is just a#
+ regular "Epic Snail" but it #
+ also has the boss tag which #
+ makes it immune to unmaking.#
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 17
+^ascii
+                             #
+ With adequate timing it's   #
+ possible to trigger his     #
+ explosion and back away with#
+ a mindstone dash.           #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend]
+
+///////////////////////////////////////////////////Etymology//////////////////////////////////////////////////////////
+var Etymology = [ascii
+                             #
+ "Xyloalgia" comes from Latin#
+                             #
+ It means Wood pain. This is #
+ because Xyloalgia is in     #
+ constant pain.              #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 1
+^ascii
+                             #
+ "Poena" is a Latin name that#
+ translates to "punishment"  #
+ or "penalty". In ancient    #
+ Roman mythology, Poena was  #
+ personified as the goddess  #
+ of punishment and vengeance.#
+ She was often associated    #
+ with retribution and the    #
+ consequences of wrongdoing. #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 2
+^ascii
+Pallas was one of the        #
+Gigantes who opposed the     #
+Olympian gods in their battle#
+for supremacy known as the   #
+Gigantomachy. The Gigantomachy#
+was a war between the Gigantes#
+and the Olympian Gods led by #
+Zeus. Pallas, along with his #
+brethren, waged war against  #
+the gods, seeking to overthrow#
+them and take control of Mount#
+Olympus.                     #
+Pallas engaged in combat with#
+Athena, the Goddess of wisdom#
+and war. Pallas and Athena   #
+fought fiercely, but in the  #
+end, Athena killed Pallas.   #
+In some versions of the myth,#
+Pallas was decapitated and his#
+skin was used to make Athena's#
+aegis.                       #
+                             #
+asciiend, //Page 3
+^ascii
+                             #
+ In Norse mythology, Hrímnir #
+ was a jötunn (giant) known  #
+ in the poem "Grottasöngr",  #
+ In this poem, the giantess  #
+ Grotti's slave girl, Móðguðr#
+ speaks of her fear of Hrímnir#
+ describing him as a fierce  #
+ giant with a terrifying     #
+ appearance.                 #
+ The name Hrímnir comes from #
+ the Old Norse word "hrím",  #
+ which means "rime" or       #
+ "hoarfrost".                #
+                             #
+                             #
+                             #
+                             #
+asciiend, //Page 4
+^ascii
+                             #
+ "Nagaraja" is a term that   #
+ originates from Sanskrit, an#
+ ancient langauge of India.  #
+ It means "naga" (snake) and #
+ "raja" (king).              #
+ In Hindu mythology, Nagaraja#
+ is a divine serpent deity   #
+ who holds a significant role#
+ These serpent deities are   #
+ often depicted as majestic  #
+ and powerful beings, often  #
+ associated with protection  #
+ and wisdom.                 #
+ They are believed to reside #
+ in underground realms,      #
+ palaces, or beneath sacred  #
+ bodies of water.            #
+asciiend, //Page 5
+^ascii
+                             #
+ Dysangelos, comes from the  #
+ Greek "dys-" and "angelos". #
+                             #
+ "Dys-" is a prefix that used#
+ to indicate something is    #
+ abnormal, difficult, or     #
+ dysfunctional.              #
+                             #
+ "Angelos" means "messenger" #
+ or "angel".                 #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+        #############        #
+        #############        #
+asciiend, //Page 5
+^ascii
+                             #
+ "Leuce" is a name that comes#
+ from a Greco-Roman myth.    #
+                             #
+ Leuce was described as a    #
+ nymph and as the daughter of#
+ the Titan Oceanus.          #
+ Hades fell in love with her #
+ and abducted her into the   #
+ underworld. When she died   #
+ Hades turned her into a     #
+ white poplar tree.          #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+        #############        #
+        #############        #
+asciiend, //Page 5
+^ascii
+                             #
+"Raudr" comes from Old Norse #
+sometimes spelt as "Rauðr".  #
+                             #
+It means "red" or "ruddy".   #
+In Norse mythology, the      #
+colour red holds significance#
+and is often associated with #
+concepts such as passion,    #
+blood, fire, and war. It is  #
+commonly linked to powerful  #
+and intense figures, such as #
+warriors, gods, and super -  #
+natural beings.              #
+                             #
+                             #
+                             #
+                             #
+asciiend,ascii
+                             #
+The name "Bolesh" is almost a#
+reversal of the name "Shelob"#
+Shelob is a monsterous giant #
+spider that appears in "The  #
+Lord of the Rings" by JRR    #
+Tolkien.                     #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+                             #
+#
+#
+asciiend]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Page 0 Corner : 13,1
+Page 1 Corner : 45,1
+   Chapters
+    1  - Deadwood Forest
+    2 - Caves of Fear  
+    3 - Mushroom Forest
+    4 - Haunted Halls
+    5 - Boiling Mines
+    6 - Icy Ridge    
+    7 - The Temple  
+    8 - Rocky Plateau
+    9 - Other Entities
+    10 - Index
+*/
+var Data = [
+^[], //Page 0
+^[[54,65,5,5,0,2,"Introduction"],[54,68,6,6,1,0,"Deadwood Forest"],[54,66,7,7,2,0,"Caves of Fear"],[54,68,8,8,3,0,"Mushroom Forest"],[54,66,9,9,4,0,"Haunted Halls"],[54,66,10,10,5,0,"Boiling Mines"],[54,62,11,11,6,0,"Icy Ridge"],[54,63,12,12,7,0,"The Temple"],[54,66,13,13,8,0,"Rocky Plateau"],[54,67,14,14,9,0,"Other Entities"],[54,58,17,17,10,0,"Index"]], //Page 1
+^[], //Page 2
+^[], //Page 3
+^[], //Page 4
+^[], //Page 5
+^[[21,34,9,9,10,2,"Insect, Flying"]], //Page 6
+^[[53,58,10,10,10,2,"Insect"],[58,62,11,11,10,4,"Range"]], //Page 7
+^[[21,34,14,14,10,2,"Insect, Flying"], [21,27,18,18,10,3,"Spawner"], [26,35,19,19,10,4,"Stun, Push"]], //Page 8
+^[], //Page 9
+^[], //Page 10
+^[[53,56,5,5,10,4,"boss"],[58,68,6,6,10,4,"Stun, Push\nUnmake"]], //Page 11
+^[], //Page 12
+^[[53,56,5,5,10,4,"boss"],[58,68,6,6,10,4,"Unmake, Push"]], //Page 13
+^[], //Page 14
+^[], //Page 15
+^[[21,28,9,9,10,0,"arachnid"]], //Page 16
+^[[53,60,10,10,10,0,"arachnid"]], //Page 17
+^[[21,28,12,12,10,0,"arachnid"]], //Page 18
+^[[53,60,13,13,10,0,"arachnid"],[63,69,13,13,10,3,"spawner"],[58,67,14,14,10,3,"Stun, Push "]], //Page 19
+^[[28,34,10,10,10,2,"flying"]], //Page 20
+^[[60,67,9,9,10,4,"Ranged"],[53,72,10,10,10,1,"boss, flying, ranged"],[58,63,11,11,10,3,"Unmake"]], //Page 21
+^[], //Page 22
+^[[52,65,6,6,10,0,"arachnid, boss"],[58,68,7,7,10,4,"Stun, Push\nUnmake"],[52,57,11,11,4,7,"Pallas"],[49,56,18,18,8,2,"Acronian scouts"],[60,65,5,5,10,4,"Range"]], //Page 23
+^[], //Page 24
+^[], //Page 25
+^[], //Page 26
+^[[53,56,12,12,10,4,"slow"]], //Page 27
+^[[21,26,8,8,10,2,"insect"]], //Page 28
+^[[53,58,11,11,10,2,"insect"],[61,67,11,11,10,4,"spawner"],[58,67,12,12,10,4,"Stun, Push "]], //Page 29
+^[[21,24,11,11,10,1,"boss"],[27,30,11,11,10,3,"slow"],[33,39,11,11,10,1,"explode"],[21,25,12,12,10,2,"melee"],[26,37,13,13,10,4,"Unmake, Push"]], //Page 30
+^[], //Page 31
+^[], //Page 32
+^[[53,56,6,6,10,0,"boss"],[58,67,7,8,10,4,"Stun, Push\nUnmake"]], //Page 33
+^[], //Page 34
+^[[53,56,9,9,10,0,"boss"],[58,69,10,10,10,4,"Unmake, Push"]], //Page 35
+^[], //Page 36
+^[], //Page 37
+^[[28,32,14,14,10,2,"Magic"]], //Page 38
+^[[58,65,13,13,10,4,"Physical"]], //Page 39
+^[[21,27,10,10,10,3,"spawner"],[26,35,11,11,10,3,"Stun, Push "]], //Page 40
+^[[52,56,7,7,10,0,"boss"],[54,61,6,6,10,4,"Physical"],[57,67,8,9,10,4,"Stun, Push\nUnmake"]], //Page 41
+^[], //Page 42
+^[[53,57,6,6,10,0,"boss"],[58,68,7,8,10,4,"Stun, Push\nUnmake*"],[46,51,16,16,2,8,"Bolesh"]], //Page 43
+^[], //Page 44
+^[[53,57,6,6,10,0,"boss"],[58,68,7,8,10,4,"Stun, Push\nUnmake"]], //Page 45
+^[], //Page 46
+^[], //Page 47
+^[[21,32,12,12,10,2,"magic_resist"],[35,40,12,12,10,2,"ranged"],[21,28,13,13,10,2,"humanoid"]], //Page 48
+^[[53,64,13,13,10,2,"magic_resist"],[67,72,13,13,10,2,"ranged"],[53,60,14,14,10,2,"humanoid"]], //Page 49
+^[[21,26,10,10,10,2,"ranged"]], //Page 50
+^[[53,59,10,10,10,4,"spawner"],[58,67,11,11,10,4,"Stun, Push "]], //Page 51
+^[[21,41,13,13,10,2,"magic_resist, machine"]], //Page 52
+^[[53,72,12,14,10,1,"Hang on a sec, lemme just\nreference EVERY DAMN\npage of the index!"],[58,69,15,15,10,4,"Unmake, Push"]], //Page 53
+^[], //Page 54
+^[[53,57,5,5,10,0,"boss"],[58,70,6,7,10,4,"Stun, Push\nUnmake, Chill"]], //Page 55
+^[], //Page 56
+^[], //Page 57
+^[[21,24,12,12,10,4,"slow"]], //Page 58
+^[[53,56,12,12,10,4,"slow"]], //Page 59
+^[], //Page 60
+^[[53,58,10,10,10,2,"ranged"]], //Page 61
+^[[26,29,6,7,10,4,"Stun\nPush"],[32,35,15,16,10,4,"Stun\nPush"],[27,33,14,14,10,4,"spawner"]], //Page 62
+^[[65,68,6,6,10,1,"boss"],[65,70,7,7,10,3,"ranged"],[70,73,8,8,10,4,"Push"],[61,73,9,9,10,4,"Unmake, Chill"]], //Page 63
+^[], //Page 64
+^[[53,56,5,5,10,0,"boss"],[53,60,6,6,10,1,"humanoid"],[58,71,7,8,10,4,"Stun, Push\nUnmake, Poison"]], //Page 65
+^[], //Page 66
+^[], //Page 67
+^[[22,29,6,7,10,1,"humanoid\ncult"],[34,41,16,17,10,1,"humanoid\ncult"]], //Page 68
+^[[53,60,6,6,10,1,"humanoid"],[48,59,7,7,10,1,"cult, ranged"],[66,73,15,15,10,1,"humanoid"],[61,72,16,16,10,1,"cult, ranged"]], //Page 69
+^[[21,25,6,6,10,1,"cult"],[14,29,7,7,10,2,"ranged, humanoid"],[21,25,16,16,10,1,"cult"],[17,24,17,17,10,2,"humanoid"]], //Page 70
+^[[52,58,7,7,10,3,"serpent"],[52,55,8,8,10,1,"cult"],[67,73,17,17,10,3,"serpent"],[67,70,18,18,10,1,"cult"]], //Page 71
+^[[21,34,12,12,10,1,"humanoid, cult"],[21,27,13,13,10,1,"spawner"],[26,35,14,14,10,4,"Stun, Push"]], //Page 72
+^[[48,58,6,7,10,4,"####boss\nhumanoid"],[47,58,9,10,10,4,"Unmake, Push\nVigor"],[49,54,22,22,2,8,"Bolesh"]], //Page 73
+^[], //Page 74
+^[], //Page 75
+^[], //Page 76
+^[[53,57,5,5,10,0,"boss"],[58,70,6,7,10,4,"Stun, Push\nUnmake"]], //Page 77
+^[], //Page 78
+^[], //Page 79
+^[[17,24,5,6,10,4,"####boss\nhumanoid"],[16,27,8,8,10,4,"Unmake, Push"],[31,36,10,10,4,7,"Pallas"]], //Page 80
+^[], //Page 81
+^[], //Page 82
+^[[53,57,5,5,10,0,"boss"],[58,70,6,7,10,4,"Stun, Push\nUnmake"]], //Page 83
+^[[20,23,18,18,10,0,"boss"],[25,41,19,19,10,4,"Stun, Push,Unmake"]], //Page 84
+^[[52,56,18,18,10,0,"boss"],[57,73,19,19,10,4,"Stun, Push,Unmake"]], //Page 85
+^[], //Page 86
+^[], //Page 87
+^[], //Page 88
+^[], //Page 89
+^[], //Page 90
+^[], //Page 91
+^[], //Page 92
+^[], //Page 93
+^[], //Page 94
+^[], //Page 95
+^[], //Page 96
+^[], //Page 97
+^[], //Page 98
+^[], //Page 99
+^[], //Page 100
+^[], //Page 101
+^[], //Page 102
+^[], //Page 103
+^[], //Page 104
+^[], //Page 105
+^[], //Page 106
+^[[47,53,11,11,7,7,"Cultist"],[47,57,12,12,8,4,"Dysangelos*"],[47,51,14,14,8,2,"Scout"],[47,52,17,17,2,8,"Bolesh"],[47,58,18,18,2,4,"Knee Chopper"],[47,56,19,19,2,2,"Nail Biter"],[47,56,20,20,2,5,"Not Caviar"],[47,57,21,21,2,2,"Skin Peeler"],[62,73,11,11,3,9,"Angry Shroom"],[62,73,11,11,3,9,"Angry Shroom"],[62,67,12,12,2,8,"Bolesh"],[62,73,13,13,5,8,"Bronze Guardian"],[62,71,14,14,8,4,"Dysangelos"],[62,68,15,15,6,8,"Hrímnir"],[62,69,16,16,7,10,"Nagaraja"],[62,67,17,17,4,7,"Pallas"],[62,66,18,18,1,8,"Poena"],[62,70,19,19,1,6,"Xyloalgia"]], //Page 91
+^[[15,26,3,3,7,7,"Acronian Cultist"],[15,24,4,4,8,2,"Acronian Scout"],[15,23,5,5,5,7,"Bomb Cart"],[15,26,6,6,2,7,"Ceiling Decorator"],[15,24,7,7,6,7,"Giant Ice Elemental"],[15,21,8,8,3,6,"Mr Puff"],[15,24,9,9,4,5,"R.I.Peaces"],[15,24,10,10,1,4,"Wasp Nest*"],[15,25,13,13,7,2,"Bell Ringer"],[15,24,14,14,7,2,"Cult Guard"],[15,25,15,15,7,3,"Cult Sorcerer"],[15,26,16,16,7,3,"Poison Adept"],[15,25,17,17,7,4,"Cult Marksman"],[15,28,18,18,7,5,"Ground Serpent"],[15,28,19,19,7,5,"Toupee Snatcher"],[15,24,20,20,7,4,"Worm Rider"],[32,38,3,3,3,6,"Mr Puff"],[32,40,4,4,5,7,"Bomb Cart"],[32,41,7,9,2,6,"Ceiling Decorator\nNeck Warmer\nWound Licker"],[32,39,10,10,1,2,"Mosquito"],[32,35,11,11,1,4,"Wasp"],[32,41,14,14,7,7,"Acronian Cultist"],[32,41,15,15,8,2,"Acronian Scout"],[32,40,16,16,5,7,"Bomb Cart"],[32,38,17,17,6,8,"Hrímnir"],[32,41,18,19,5,2,"Dominotaur\nWhip Controller"],[32,41,20,22,7,4,"Cult Marksman\nSerpent Handler\nWorm Rider"]], //Page 92
+^[[47,57,3,6,7,2,"Cult Guard\nBell Ringer\nPoison Adept\nCult Sorcerer"],[47,54,9,10,3,4,"Ant\nAnt Hill"],[47,54,11,12,1,2,"Mosquito\nScarab"],[47,50,13,13,1,4,"Wasp"],[47,59,16,16,5,8,"Bronze Guardian"],[47,57,17,17,5,6,"Mine Walker"],[47,55,20,20,5,7,"Bomb Cart"],[47,58,21,22,5,2,"Dominotaur\nWhip Controller"],[62,72,2,2,5,6,"Mine Walker"],[62,71,5,6,4,2,"Skeletimmy\nSkeletony"],[62,70,9,9,5,7,"Bomb Cart"],[62,68,10,10,3,6,"Mr Puff"],[62,73,13,13,2,7,"Ceiling Decorator"],[62,73,14,15,5,2,"Dominotaur\nWhip Controller"],[62,73,16,16,5,4,"Fire Elemental"],[62,73,17,17,6,7,"Giant Ice Elemental"],[62,73,18,18,6,5,"Ice Elementals"],[62,73,19,19,7,4,"Cult Marksman"],[62,73,20,21,7,3,"Cult Sorcerer\nPoison Adept"]], //Page 93
+^[[15,28,3,3,7,5,"Ground Serpent"],[15,28,4,4,7,5,"Toupee Snatcher"],[15,22,5,5,7,10,"Nagaraja"],[15,27,8,8,3,2,"Big A** Snail"],[15,23,9,9,5,7,"Bomb Cart"],[15,28,10,10,6,2,"Ki Eater/Gobbler"],[15,21,11,11,3,6,"Mr Puff"],[15,27,14,14,5,8,"Bronze Guardian"],[15,24,15,15,6,7,"Giant Ice Elemental"],[15,22,18,19,4,3,"Booo\Big Booo"],[15,21,22,22,6,8,"Hrímnir"],[32,39,3,3,3,5,"Ant Hill"],[32,41,4,4,5,5,"Flame Geyser"],[32,41,5,6,6,7,"Giant Ice Elemental\nIce Pillar"],[32,41,7,7,2,5,"Not Caviar"],[32,41,8,9,4,4,"R.I.P\nR.I.Peaces"],[32,41,10,10,7,6,"Serpent Handler"],[32,40,11,11,1,4,"Wasp Nest"],[31,36,14,14,1,3,"Scarab"],[27,41,20,21,10,0,"Any major boss\n(Except Poena &\nthe phase2 Mushrooms)"],[27,34,22,22,6,6,"Ice Wall"]], //Page 94
+^[[47,58,9,9,7,7,"Acronian Cultist"],[47,56,10,10,8,2,"Acronian Scout"],[47,55,11,11,5,7,"Bomb Cart"],[47,54,12,12,6,6,"Ice Wall"],[47,53,13,13,3,6,"Mr Puff"],[47,56,21,21,4,5,"R.I.Peaces"],[62,73,4,4,7,7,"Acronian Cultist"],[62,73,5,5,2,7,"Ceiling Decorator"],[64,69,21,21,2,8,"Bolesh"],[64,73,22,22,2,7,"Ceiling Decorator"]], //Page 95
+^[], //Page 96
+^[], //Page 97
+^[], //Page 98
+^]
+
+
+/*Format for the buttons is as follows: 
+[ x-min , x-max , y-min, y-max , Referrence Number , Button Type ]
+Referrence refers to which item of the Hints/Etymology list you want.
+Button type = 
+ 0 - for Hints
+ 1 - for Etymology
+*/
+var Buttons = [
+^[], //Page 0
+^[], //Page 1
+^[], //Page 2
+^[], //Page 3
+^[], //Page 4
+^[], //Page 5
+^[], //Page 6
+^[], //Page 7
+^[], //Page 8
+^[[54,62,20,22,0,0]], //Page 9
+^[], //Page 10
+^[[48,56,20,22,1,0],[59,71,20,22,0,1]], //Page 11
+^[], //Page 12
+^[[48,56,20,22,2,0],[59,71,20,22,1,1]], //Page 13
+^[], //Page 14
+^[], //Page 15
+^[], //Page 16
+^[], //Page 17
+^[], //Page 18
+^[], //Page 19
+^[], //Page 20
+^[], //Page 21
+^[], //Page 22
+^[[48,56,20,22,3,0],[59,71,20,22,8,1]], //Page 23
+^[], //Page 24
+^[], //Page 25
+^[], //Page 26
+^[], //Page 27
+^[], //Page 28
+^[], //Page 29
+^[[22,30,20,22,16,0]], //Page 30
+^[], //Page 31
+^[], //Page 32
+^[[54,62,20,22,4,0]], //Page 33
+^[], //Page 34
+^[[54,62,20,22,5,0]], //Page 35
+^[], //Page 36
+^[], //Page 37
+^[], //Page 38
+^[], //Page 39
+^[], //Page 40
+^[[54,62,20,22,6,0]], //Page 41
+^[], //Page 42
+^[[48,56,20,22,7,0],[59,71,20,22,2,1]], //Page 43
+^[], //Page 44
+^[[54,62,20,22,8,0]], //Page 45
+^[], //Page 46
+^[], //Page 47
+^[], //Page 48
+^[], //Page 49
+^[], //Page 50
+^[], //Page 51
+^[], //Page 52
+^[[54,62,20,22,17,0]], //Page 53
+^[], //Page 54
+^[[54,62,20,22,9,0]], //Page 55
+^[], //Page 56
+^[], //Page 57
+^[], //Page 58
+^[], //Page 59
+^[], //Page 60
+^[], //Page 61
+^[[22,30,20,22,10,0]], //Page 62
+^[], //Page 63
+^[], //Page 64
+^[[48,56,20,22,11,0],[59,71,20,22,3,1]], //Page 65
+^[], //Page 66
+^[], //Page 67
+^[], //Page 68
+^[], //Page 69
+^[], //Page 70
+^[], //Page 71
+^[], //Page 72
+^[], //Page 73
+^[], //Page 74
+^[], //Page 75
+^[], //Page 76
+^[[48,56,20,22,12,0],[59,71,20,22,4,1]], //Page 77
+^[], //Page 78
+^[], //Page 79
+^[], //Page 80
+^[[53,65,20,22,5,1]], //Page 81
+^[], //Page 82
+^[[54,62,20,22,13,0]], //Page 83
+^[[22,30,20,22,14,0]], //Page 84
+^[[54,62,20,22,15,0]], //Page 85
+^[], //Page 86
+^[], //Page 87
+^[], //Page 88
+^[], //Page 89
+^[[21,33,20,22,6,1]], //Page 90
+^[], //Page 91
+^[], //Page 92
+^[[53,65,20,22,7,1]], //Page 93
+^[], //Page 94
+^[], //Page 95
+^[], //Page 96
+^[], //Page 97
+^[], //Page 98
+^[], //Page 99
+^[], //Page 100
+^[], //Page 101
+^[], //Page 102
+^[], //Page 103
+^[], //Page 104
+^[], //Page 105
+^[], //Page 106
+^[], //Page 107
+^[], //Page 108
+^[], //Page 109
+^[], //Page 110
+^[], //Page 110
+^[], //Page 111
+^[], //Page 112
+^[], //Page 113
+^[], //Page 114
+^[], //Page 115
+^[], //Page 116
+^[], //Page 117
+^[], //Page 118
+^[], //Page 119
+^[], //Page 120
+^]

@@ -1,0 +1,35 @@
+//----- bonsai timer -----\\
+//By:Ditsaid v1.0
+var seconds=0
+var minutes=0
+var tc
+seconds=(totaltime/30)%60
+minutes=totaltime/1800
+?loc.bestTime<totaltime
+ tc=#red
+:
+ tc=#white
+>`4,16,@tc@,@minutes@:@seconds@:@totaltime%30@
+
+>`1,8,#green,ascii
+###.--.
+#.'(•).).
+(•(()•)'•)
+#'(•))•)'
+###'###'
+asciiend
+>`1,15,#FF6300,ascii
+［＂＂＂＂＂＂＂＂＂＂］
+#\########/
+##＂＂＂＂＂＂＂＂
+asciiend
+>`1,12,#7B4221,ascii
+####|(|
+####|)|
+###/)/^\
+asciiend
+>`1,9,#red,ascii
+####•#.
+#•###•##•
+###•##•
+asciiend

@@ -1,0 +1,47 @@
+// by SkeletonShoes
+// Loosely based on FreeChestTracker by Cancerorus Potatoes
+var chestindex=1
+var display_highlight=false
+
+func draw_indicator(x,y,index)
+ var xi=x+6*index
+ var yi=y+3*index
+ >`@xi@,@yi@,#ff0000,▼
+
+func read_screen(x,y,index)
+ var xi=x+6*index
+ var yi=y+3*index
+ var b=＂Oo-＂=draw.getsymbol(xi,yi)
+ ?display_highlight
+  ?b
+   draw.bg(xi,yi,#003f00)
+  :
+   draw.bg(xi,yi,#7f0000)
+ return b
+
+var swapindex=-1
+func detect_swap(x,y,i)
+  ?read_screen(x,y,i)
+    ?swapindex!i
+      swapindex=i
+      ?chestindex=i
+        chestindex=i+1
+      :?chestindex=i+1
+        chestindex=i
+  :?swapindex=i
+    swapindex=-1
+
+func track_chest()
+ var x=screen.w/2-3
+ var y=screen.h/2-7
+
+ ?pos.x>=52
+  detect_swap(x,y,0)
+  detect_swap(x,y,1)
+
+  for i = 0 .. 2
+   ?read_screen(x,y-6,i)
+    chestindex=i
+
+  draw_indicator(x-1,y-5,chestindex)
+

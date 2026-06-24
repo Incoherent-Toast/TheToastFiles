@@ -1,0 +1,92 @@
+var LoopTimers = ["Na","Na","Na"]
+var LastTime = "Na"
+var SetTime = 0
+
+var Colours = ["[color=#FFFFFF]","[color=#00FFFF]","[color=#CCCC00]","[color=#20bb20]"]
+var LocName = Colours[(loc.stars-1)/5] + string.Join(" ",string.Split(loc, loc.id, " ", true) ) + "[/color]"
+var text
+var Labels = "Screen:\nTime:\nAverage:\nBest:"
+var TextTitle
+var TextLabels
+var TextData
+var Scorebox
+var SideBar
+var PanelClip = new Components/PanelClip
+var Init = true
+
+
+func CreateUI(_UI,X,Y,W,H)
+  _UI.x = X
+  _UI.y = Y
+  _UI.w = W
+  _UI.h = H
+  _UI.anchor = top_left
+  _UI.dock = top_left
+  return _UI
+
+var SwitchVar = false
+var SwitchButton
+var BoxHeight = 6
+func Switch()
+  SwitchVar = !SwitchVar
+  ?SwitchVar
+    Labels = "Current:\nBest\nPast Runs:"
+    BoxHeight = 7
+  :
+    Labels = "Screen:\nTime:\nAverage:\nBest:"
+    BoxHeight = 6
+  TextLabels.text = Labels
+  Scorebox.h = BoxHeight
+
+func ScoreDisplay()
+  ?loc.loop
+    LoopTimers.Insert(0,SetTime+1)
+    LoopTimers.RemoveAt(3)
+    LastTime = LoopTimers[0]
+
+  ?totaltime = 1
+    Init = true
+
+  SetTime = totaltime
+  ?SwitchVar
+    text = string.Format("
+^{0} ({1})\n
+^{2}\n
+^##{3}\n
+^##{4}\n
+^##{5}
+^", totaltime, time.FormatCasual(totaltime), loc.besttime, LastTime, LoopTimers[1], LoopTimers[2])
+  :
+    text = string.Format("
+^{1}\n
+^{1} ({2})\n
+^{3}\n
+^{5}
+^", screen.i, totaltime, time.FormatCasual(totaltime), loc.averagetime, LastTime, loc.besttime)
+
+  ?Init
+    Init = false
+    Scorebox =  CreateUI(ui.AddPanel(), 20, 1, 20, BoxHeight) //20
+    TextTitle =  CreateUI(ui.AddText(LocName), 0 ,0 ,20 ,1)
+    TextLabels = CreateUI(ui.AddText(Labels), 1, 1, 18, 4)
+    TextData =  CreateUI(ui.AddText(""), 10, 1, 15, 4)
+    SwitchButton = CreateUI(ui.AddButton(), 20 ,0 ,1 ,1)
+    SwitchButton.SetDown(Switch)
+    SwitchButton.text = "*"
+    Scorebox.Add(SwitchButton)
+    Scorebox.Add(TextTitle)
+    Scorebox.Add(TextLabels)
+    Scorebox.Add(TextData)
+    Scorebox.color = #330033
+
+    TextTitle.anchor = top_center
+    TextTitle.dock = top_center
+    TextTitle.align = center
+    TextData.align = left
+    TextLabels.align = left
+    //PanelClip.SetLeftPanel(Scorebox, 30, 6, 0, 0, 10)
+
+  //PanelClip.UpdateLeftPanel()
+  TextData.text = text
+
+ScoreDisplay()

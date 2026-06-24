@@ -1,15 +1,22 @@
-var MaxListLength = 5
+var MaxListLength = 6
 
 var CheckingDamage  = true
-var CheckingHealing = true
-var CheckingDebuffs = true
-var CheckingFoeBuffs= true
+var CheckingHealing = false
+var CheckingDebuffs = false
+var CheckingFoeBuffs= false
+
+
 
 /*///////////////////////////////////
-StateLister v4
+FoeStateTracker v4.1
 
 This is a simple script that will list the last 5 previous enemy states and times.
-You can adjust the number of states that are retained with the variable above.
+You can adjust the number of states that are retained with the variable MaxListLength.
+
+```````````````````
+import UI/FoeStateTracker
+.MaxListLength = 10
+````````````````````
 
 This version will also track other events and display them with reference to foe state and time.
 Currently it tracks:
@@ -23,7 +30,7 @@ Currently it tracks:
 
 var StateList = []
 var StateListText
-var CurrentStateText
+var TimeListText
 var StateListBox
 var init = true
 var Mobile = sys.isMobile
@@ -33,8 +40,11 @@ var EventRecorder = []
 var EventDisplayText
 var DebuffCount = 0
 var FoeBuffCount = 0
-var SettingsButton
+var DragButton
 var Label
+var ToggleDragging = false
+var XSet = storage.Get("X",0)
+var YSet = storage.Get("Y",7)
 var StyleInvisible = ui.AddStyle("
 ^###
 ^###
@@ -49,40 +59,59 @@ func Create_UI_Element(UI,X,Y,W)
   UI.anchor = top_left
   return UI
 
+var z
 ?totaltime = 1 | init
   init = false
   EventRecorder.Clear()
-  StateListBox = Create_UI_Element( ui.AddPanel(), 1,7,9)
+  StateList.Clear()
+  StateListBox = Create_UI_Element( ui.AddPanel(), XSet,YSet,9)
   StateListBox.h = 2+MaxListLength
 
-  Label = Create_UI_Element( ui.AddText("  Foe:\n State##Time\n"),-6,-1,20)
+  z = ""
+  for a = 1..MaxListLength
+    z += "\n│"
+  Label = Create_UI_Element( ui.AddText("S : T"+z),-5,0,20)
   Label.align = center
+  Label.color = #808080
 
-  StateListText = Create_UI_Element( ui.AddText(),2,2,20)
+  StateListText = Create_UI_Element( ui.AddText(),1,1,20)
   StateListText.align = left
 
-  CurrentStateText =  Create_UI_Element( ui.AddText(),2,1,20)
-  CurrentStateText.align = left
+  TimeListText =  Create_UI_Element( ui.AddText(),5,1,20)
+  TimeListText.align = left
 
   EventDisplayText =  Create_UI_Element( ui.AddText(),0,2+MaxListLength,99)
   EventDisplayText.align = left
 
-  SettingsButton = Create_UI_Element( ui.AddButton(),-1,-1,3)
-  SettingsButton.h = 1
-  SettingsButton.text = "[≡]"
-  SettingsButton.style = StyleInvisible
-  //SettingsButton.SetPressed()
+  DragButton = Create_UI_Element( ui.AddButton() ,-1,0,3)
+  DragButton.h = 1
+  DragButton.text = "ʘ"
+  DragButton.style = StyleInvisible
+  DragButton.SetDown(DragToggle)
 
   StateListBox.Add(Label)
   StateListBox.Add(StateListText)
-  StateListBox.Add(CurrentStateText)
+  StateListBox.Add(TimeListText)
   StateListBox.Add(EventDisplayText)
-  StateListBox.Add(SettingsButton)
+  StateListBox.Add(DragButton)
 
-  var PanelClip = new Components/PanelClip
-  PanelClip.SetLeftPanel(StateListBox,40,19, -1, -1, 11)
+func ClearStorage()
+  storage.Delete("X")
+  storage.Delete("Y")
 
-PanelClip.UpdateLeftPanel()
+func DragToggle()
+  ToggleDragging = true
+
+?ToggleDragging
+  ?key ! "primary"
+    ToggleDragging = false
+    storage.Set("X",XSet)
+    storage.Set("Y",YSet)
+  :
+    XSet = math.Clamp(input.x, 0, screen.w)
+    YSet = math.Clamp(input.y, 1, screen.h-1)
+    StateListBox.x = XSet
+    StateListBox.y = YSet
 
 var Math
 func CheckDamage()
@@ -122,15 +151,20 @@ func CheckFoeBuffs()
 ?CheckingFoeBuffs
   CheckFoeBuffs()
 
-func UpdateText()
-  var TempText = ""
+func UpdateTimeText()
+  var Times = ""
   for i =0..StateList.Count()-1
-    ?i > 0
-      TempText = TempText + StateList[i][0] + "," + StateList[i][1] + "\n"
-  StateListText.text = TempText
+    Times += StateList[i][1] + "\n"
+  TimeListText.text = Times
 
-func UpdateCurrentStateText()
-  CurrentStateText.text = foe.state + "," + foe.time
+func UpdateStateText()
+  var States = ""
+  for i =0..StateList.Count()-1
+    States += StateList[i][0] + "\n"
+  StateListText.text = States
+
+func UpdateTimeListText()
+  TimeListText.text = foe.state + "," + foe.time
 
 func UpdateEventDisplay()
   var TempText = ""
@@ -145,19 +179,26 @@ func CheckEventTimers()
 
 func CheckListMax()
   ?StateList.Count() > MaxListLength
-    StateList.RemoveAt(MaxListLength)
+    for a = MaxListLength..StateList.Count()-1
+      StateList.RemoveAt(MaxListLength)
 
 ?StateList.Count()
   ?foe.state ! StateList[0][0]
     StateList.Insert(0,[foe.state,foe.time])
     CheckListMax()
-    UpdateText()
+    UpdateStateText()
+    UpdateTimeText()
   :?foe.time ! StateList[0][1]
     StateList[0].Emplace(1,foe.time)
-    UpdateCurrentStateText()
+    UpdateTimeText()
 :?foe.distance < 30
   StateList.Add([foe.state,foe.time])
-  UpdateText()
+  UpdateStateText()
+  UpdateTimeText()
+
+?StateListBox.h ! 2+MaxListLength
+  StateListBox.Recycle()
+  init = true
 
 ?EventRecorder.Count()
   CheckEventTimers()

@@ -1,0 +1,70 @@
+/*
+Edi's custom ui ¤ by EdisniDaed
+v1.0
+EdisniDaed wanted a simple ui that wasn't too
+intrusive, while also providing good info. That
+is this, there isn't easy access customization
+unfortunately.
+*/
+var EntityInfoArt = checkLocation2() 
+
+var EntityInfoArt1 = ascii
+.-----=[FOE≡BASE≡STATS]=---
+|##########################
+|##########################
+|##########################
+'--------------------------
+asciiend
+
+var EntityInfoArt2 = ascii
+----------=[OTHER≡STATS]=-.
+#########|################|
+#########|################|
+#########|################|
+--------------------------'                   #
+asciiend
+
+?EntityInfoArt
+ >`19,22,#02E63A,@EntityInfoArt1@
+ >`46,22,#02E63A,@EntityInfoArt2@
+ ?foe.distance < 25
+  >`20,23,Name: @foe.name@
+  >`20,24,Armor: [@foe.armor@] 
+  ^Health: @foe.hp@/@foe.maxhp@
+
+  ?foe = stone | foe = scout |foe=soldier
+   >`20,25,Element: stone 
+   ^Weakness: none
+  ?foe = poison
+   >`20,25,Element: poison 
+   ^Weakness: ice
+  ?foe = vigor
+   >`20,25,Element: vigor 
+   ^Weakness: poison
+  ?foe = aether
+   >`20,25,Element: aether 
+   ^Weakness: vigor
+  ?foe = fire
+   >`20,25,Element: fire 
+   ^Weakness: aether
+  ?foe = ice
+   >`20,25,Element: 
+   ^ice Weakness: fire
+  ?foe = Dysangelos perfected
+   >`20,25,Element: all 
+   ^Weakness: all      
+
+  >`56,23,State: @foe.state@ 
+  >`56,24,StateTime: @foe.time@
+  >`56,25,Distance: @foe.distance@
+
+func checkLocation2() 
+  ?loc = ＂uulaa_shop＂ |
+  ^loc = ＂cross_deadwood_river＂ |
+  ^loc = ＂cross_bridge＂ |
+  ^loc = ＂waterfall＂ |
+  ^loc = ＂undead_crypt_intro＂ |
+  ^loc.isQuest //legends
+    return false
+  
+  return true

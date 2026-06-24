@@ -1,0 +1,38 @@
+
+
+
+var Canvas = null
+var ColourFunction = null
+var ColourList = null
+
+func SetBoth(x,y,FG,BG)
+  Canvas.Set(x,y, ColourList[FG],ColourList[BG],"#")
+  >Setting Both!
+
+func SetBG(x,y,FG,BG)
+  Canvas.SetBG(x,y, ColourList[BG])
+  >Setting BG!
+
+func SetFG(x,y,FG,BG)
+  Canvas.SetFG(x,y, ColourList[FG])
+  >Setting FG!
+
+func SetColourFunction(FG,BG)
+  ?FG = -1 & BG = -1
+    ColourFunction = null
+  :?FG = -1
+    ColourFunction = SetBG
+  :?BG = -1
+    ColourFunction = SetFG
+  :
+    ColourFunction = SetBoth
+
+func SetTile(x,y,FG,BG)
+  ?ColourFunction
+    ColourFunction(x,y,FG,BG)
+
+/*
+canvas.SetFG(int,int, color)
+canvas.SetBG(int,int, color)
+canvas.Set(int,int, fg,str)
+*/
