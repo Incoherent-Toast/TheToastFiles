@@ -1,0 +1,69 @@
+//Rainbowifier v1.0
+//By Toast
+var ColourList = ["[color=#91E60A]",
+^"[color=#A1DB04]",
+^"[color=#B1CE01]",
+^"[color=#C0C000]",
+^"[color=#CEB101]",
+^"[color=#DBA104]",
+^"[color=#E6910A]",
+^"[color=#EF8011]",
+^"[color=#F66F1A]",
+^"[color=#FC5F25]",
+^"[color=#FF4F32]",
+^"[color=#FF4040]",
+^"[color=#FF324F]",
+^"[color=#FC255F]",
+^"[color=#F61A6F]",
+^"[color=#EF1180]",
+^"[color=#E60A91]",
+^"[color=#DB04A1]",
+^"[color=#CE01B1]",
+^"[color=#C000C0]",
+^"[color=#B101CE]",
+^"[color=#A104DB]",
+^"[color=#910AE6]",
+^"[color=#8011EF]",
+^"[color=#6F1AF6]",
+^"[color=#5F25FC]",
+^"[color=#4F32FF]",
+^"[color=#4040FF]",
+^"[color=#324FFF]",
+^"[color=#255FFC]",
+^"[color=#1A6FF6]",
+^"[color=#1180EF]",
+^"[color=#0A91E6]",
+^"[color=#04A1DB]",
+^"[color=#01B1CE]",
+^"[color=#00C0C0]",
+^"[color=#01CEB1]",
+^"[color=#04DBA1]",
+^"[color=#0AE691]",
+^"[color=#11EF80]",
+^"[color=#1AF66F]",
+^"[color=#25FC5F]",
+^"[color=#32FF4F]",
+^"[color=#40FF40]",
+^"[color=#4FFF32]",
+^"[color=#5FFC25]",
+^"[color=#6FF61A]",
+^"[color=#80EF11]",
+^"[color=#91E60A]"]
+
+var ListMax = ColourList.Count()
+var Following = 0
+var TimeSet = totaltime
+var TempFollowing = 0
+
+func NextShade(IncrimentShade)
+  ?IncrimentShade
+    Following++
+    TimeSet = totaltime
+    TempFollowing = 0
+    return ColourList[(Following)%ListMax]
+  ?TimeSet < totaltime
+    TimeSet = totaltime
+    TempFollowing = 0
+  :
+    TempFollowing++
+  return ColourList[(Following+TempFollowing)%ListMax]

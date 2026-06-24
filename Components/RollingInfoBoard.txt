@@ -1,0 +1,51 @@
+//Rolling Info Board
+
+var Init = true
+var BoardPanel
+var BoardList = []
+var MovingPanel
+var TotalDisplaysWidth = 0
+var Invis = ui.AddStyle("#########")
+
+
+func GenerateBoard()
+  BoardPanel = ui.AddPanel()
+  BoardPanel.dock = top_left
+  BoardPanel.anchor = top_left
+  BoardPanel.x = 20
+  BoardPanel.w = 50
+  BoardPanel.h = 9
+  BoardPanel.clip = true
+
+  MovingPanel = ui.AddPanel()
+  MovingPanel.style = Invis
+  MovingPanel.dock = top_left
+  MovingPanel.anchor = top_left
+
+  BoardPanel.Add(MovingPanel)
+
+func AddDisplay(Panel, Width, PivotX, PivotY)
+  Panel.x = TotalDisplaysWidth + PivotX
+  Panel.y = PivotY + 1
+  TotalDisplaysWidth += Width
+  MovingPanel.Add(Panel)
+  BoardList.Add([Panel, Width])
+
+func UpdateBoard()
+  var Panel = BoardList[0][0]
+  var Width = BoardList[0][1]
+
+  ?Panel.absoluteX + Width < 20
+    Panel.x += math.Max(100, TotalDisplaysWidth) //+ Width
+    BoardList.Add(BoardList[0])
+    BoardList.RemoveAt(0)
+
+?(loc.begin & Init) | loc.loop
+  Init = false
+  TotalDisplaysWidth = 0
+  BoardList.Clear()
+  GenerateBoard()
+:?BoardList.Count()
+  ?time%2
+    MovingPanel.x --
+    UpdateBoard()

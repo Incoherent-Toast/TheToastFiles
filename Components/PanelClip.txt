@@ -1,0 +1,78 @@
+var TopPanel
+var TmaxH
+var TminH
+var TH
+var TX
+var TY
+
+var BottomPanel
+var LeftPanel
+var RightPanel
+var StyleInvisible = ui.AddStyle("#########")
+var LmaxW
+var LminW
+var LH
+var LX
+var LY
+var ScreenW = screen.w
+
+func SetLeftPanel(Child, Max_W, Max_H, X,Y, Min_W)
+  LeftPanel = ui.AddPanel()
+  LeftPanel.style = StyleInvisible
+  LmaxW = Max_W
+  LH = Max_H
+  LminW = Min_W
+  LX = Child.x + X
+  LY = Child.y + Y
+  LeftPanel.clip = true
+  LeftPanel.ax = Child.ax
+  LeftPanel.ay = Child.ay
+  LeftPanel.dx = Child.dx
+  LeftPanel.dy = Child.dy
+  LeftPanel.x = LX
+  LeftPanel.y = LY
+  Child.x = 0 - X
+  Child.y = 0 - Y
+  LeftPanel.Add(Child)
+
+//screen.FromWorldX(pos.x)
+
+func UpdateLeftPanel()
+  var Px = screen.FromWorldX(pos.x)
+  var Py = screen.FromWorldZ(pos.z)
+
+  ?Py < LeftPanel.y + LH + 2 & Py > LeftPanel.y
+    LeftPanel.w = math.Max( LminW, math.Min(Px-LX-3,LmaxW) )
+    LeftPanel.x = math.Min( LX , Px - LeftPanel.w - 3)
+    LeftPanel.h = LH
+  :
+    LeftPanel.w = LmaxW
+    LeftPanel.x = LX
+    LeftPanel.h = LH
+
+
+func SetTopPanel(Child, Max_W, Max_H, X,Y, Min_H)
+  TopPanel = ui.AddPanel()
+  TopPanel.style = StyleInvisible
+  TmaxH = Max_H
+  TH = Max_H
+  TminH = Min_H
+  TX = Child.x + X
+  TY = Child.y + Y
+  TopPanel.w = Max_W
+  TopPanel.clip = true
+  TopPanel.ax = Child.ax
+  TopPanel.ay = Child.ay
+  TopPanel.dx = Child.dx
+  TopPanel.dy = Child.dy
+  TopPanel.x = TX
+  TopPanel.y = TY
+  Child.x = 0 - X
+  Child.y = 0 - Y
+  TopPanel.Add(Child)
+
+func UpdateTopPanel()
+  var Pz = input.y //screen.FromWorldZ(pos.z)
+  TopPanel.h = math.Max( TminH, math.Min(Pz-TX-3 , TmaxH) )
+  TopPanel.x = math.Min( TX , Pz - TopPanel.h - 3)
+  //TopPanel.w = TW

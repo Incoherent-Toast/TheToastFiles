@@ -68,7 +68,17 @@ func ReturnEnchTypeList(Affix)
 
 func DisplayStats(Affix,ElePointer,Star,EnchantLevel,EnchTypePointer,f)
   var BasePointer = [Star,0,0,Star,Star,Star]
-  BasePointer[EnchTypePointer] += EnchantLevel
+
+  var EnchantLevel1 = EnchantLevel[0]
+  var EnchTypePointer1 = EnchTypePointer[0]
+
+  var EnchantLevel2 = EnchantLevel[1]
+  var EnchTypePointer2 = EnchTypePointer[1]
+
+  BasePointer[EnchTypePointer1] += EnchantLevel1
+  
+  ?EnchTypePointer2 ! EnchTypePointer1
+    BasePointer[EnchTypePointer2] += EnchantLevel1
 
   var AS_List = f.GetAS(Base_AS, AS_Reduction[BasePointer[2]])
   var AS = AS_List[0] + AS_List[1] + AS_List[2]

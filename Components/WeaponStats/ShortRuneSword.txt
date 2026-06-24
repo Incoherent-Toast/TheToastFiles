@@ -72,12 +72,25 @@ func HealAverage(AS,HealChance)
 
 func DisplayStats(Affix,ElePointer,Star,EnchantLevel,EnchTypePointer,f)
   var BasePointer = [Star,0,Star,Star,Star,Star,Star]
+  var EnchantLevel1 = EnchantLevel[0]
+  var EnchTypePointer1 = EnchTypePointer[0]
 
-  ?EnchTypePointer = 3 | EnchTypePointer = 4
-    BasePointer[3] += EnchantLevel
-    BasePointer[4] += EnchantLevel
+  var EnchantLevel2 = EnchantLevel[1]
+  var EnchTypePointer2 = EnchTypePointer[1]
+
+  ?EnchTypePointer1 = 3 | EnchTypePointer1 = 4
+    BasePointer[3] += EnchantLevel1
+    BasePointer[4] += EnchantLevel1
   :
-    BasePointer[EnchTypePointer] += EnchantLevel
+    BasePointer[EnchTypePointer1] += EnchantLevel1
+  
+  ?EnchTypePointer2 ! EnchTypePointer1
+    ?EnchTypePointer2 = 3 | EnchTypePointer2 = 4
+     ?!(EnchTypePointer1 = 3 | EnchTypePointer1 = 4)
+      BasePointer[3] += EnchantLevel2
+      BasePointer[4] += EnchantLevel2
+    :
+      BasePointer[EnchTypePointer2] += EnchantLevel2
 
   var AS_List = f.GetAS(Base_AS, AS_Reduction[BasePointer[2]])
   var AS = AS_List[0] + AS_List[1] + AS_List[2]

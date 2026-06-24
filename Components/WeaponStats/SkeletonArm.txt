@@ -24,7 +24,7 @@ var EnchTypeList = ["0- Attack Speed   "]
 
 
 func DisplayStats(Affix,ElePointer,Star,EnchantLevel,EnchTypePointer,f)
-  var AS_List = f.GetAS(Base_AS, AS_Reduction[EnchantLevel])
+  var AS_List = f.GetAS(Base_AS, AS_Reduction[EnchantLevel[0]])
   var AS = AS_List[0] + AS_List[1] + AS_List[2]
   var Dps = f.CalcDPS(Damage[Star-5], 0, AS, 0, 1, 1)
 

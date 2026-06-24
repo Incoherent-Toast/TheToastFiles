@@ -1,0 +1,27 @@
+var array = []
+var pointer
+
+func Set(List)
+  array = List
+  pointer = 0
+  return this
+
+func Constrain(value)
+  return math.Abs(array.Count()+ value) % array.Count()
+
+func SetPointer(value)
+  pointer = Constrain(value)
+  return this
+
+func Incr(value)
+  ?array.Count()
+    pointer = Constrain(pointer + value)
+    return array[pointer]
+
+func Get(value)
+  ?array.Count()
+    return array[Constrain(value)]
+
+func GetRelative(value)
+  ?array.Count()
+    return array[Constrain(pointer+value)]

@@ -1,0 +1,250 @@
+
+
+
+
+var f = new Games/Fishing/FishingGame
+var TempVar
+
+var InitPlayerAnimationsOrigin
+var MotherPanel
+var BorderPanel
+var WindowWidth = 30
+var Invis = ui.AddStyle("#########")
+var XSet = storage.Get("X",screen.w - WindowWidth)
+var YSet = storage.Get("Y",1)
+var DragButton
+var ToggleDragging = false
+
+
+func DragToggle()
+  ToggleDragging = !ToggleDragging
+
+func MakeUI(UI, x,y,w,h)
+  UI.x = x
+  UI.y = y
+  UI.w = w
+  UI.h = h
+  UI.dock = top_left
+  UI.anchor = top_left
+  return UI
+
+
+func InitPlayerAnimationsLocal()
+  InitPlayerAnimationsOrigin()
+  
+  BorderPanel.Add(f.playerAnimRoot)
+  
+  //play bearer_super_attack 200
+
+func Init()
+  MotherPanel = MakeUI(ui.AddPanel(), XSet,YSet, WindowWidth, 14)
+  MotherPanel.style = Invis
+  MotherPanel.clip = true
+
+  BorderPanel = MakeUI(ui.AddPanel(), 0, 1, WindowWidth, 10)
+  BorderPanel.style = -10
+  MotherPanel.Add(BorderPanel)
+
+  DragButton = MakeUI( ui.AddButton() ,-1,1,3,1)
+  DragButton.text = "ʘ"
+  DragButton.style = Invis
+  DragButton.SetDown(DragToggle)
+  MotherPanel.Add(DragButton)
+  return true
+
+var Initialized = Init()
+
+func UpdatePlayerAnimPositionLocal()
+  f.playerAnimRoot.x = math.FloorToInt(screen.FromWorldX(pos.x) * 1.0 / screen.w * WindowWidth)
+  f.playerAnimRoot.y = 6 //screen.FromWorldZ(pos.z - pos.y) -4
+
+func DrawOLocal(x, y)
+  //x = x - f.fish.rodPivotX
+  x = f.playerAnimRoot.x - f.fish.rodPivotX + MotherPanel.x + x
+  y = f.playerAnimRoot.y - f.fish.rodPivotY + MotherPanel.y + y
+  >`@x@,@y@,@f.fish.color@,@f.fish.art@
+
+func ResultShowLocal(fish, isRecord)
+  f.resultDialog.panel.visible = true
+  ResultText.text = string.Format("{0}\n{1}\n\nWeight: {2}kg", fish.name, fish.art, fish.weight)
+  
+var ResultText
+func ResultInitLocal()
+  f.resultDialog.panel = MakeUI(ui.AddPanel(), 18,1,18,10)
+  f.resultDialog.panel.visible = false
+  f.resultDialog.panel.dock = top_left 
+  f.resultDialog.panel.anchor = top_center
+  MotherPanel.Add(f.resultDialog.panel)
+
+  ResultText = ui.AddText("hi")
+  ResultText.h = 10
+  ResultText.w = 16
+  ResultText.y = 2
+  ResultText.align = center
+  ResultText.anchor = center_center
+  ResultText.dock = center_center
+
+  var TopBar = ui.AddText(ascii
+         /\         
+ _       \/       _
+( ─────/\/\/\───── )
+ ¯¯¯¯¯¯######¯¯¯¯¯¯
+asciiend)
+  TopBar.dock = top_center
+  TopBar.w = 20
+  TopBar.h = 4
+  var BotBar = ui.AddText(ascii
+#______######______#
+(_─────\/\/\/─────_)
+         /\         
+         \/         
+asciiend)
+  BotBar.dock = bottom_center
+  BotBar.w = 20
+  BotBar.h = 4
+  
+  f.resultDialog.panel.Add(ResultText)
+  f.resultDialog.panel.Add(TopBar)
+  f.resultDialog.panel.Add(BotBar)
+
+func AddMenuUILocal()
+  ?f.playButton = null
+    var button = MakeUI(ui.AddButton(), -3,10,10,3) 
+    button.anchor = top_right
+    button.dock = top_right
+    button.text = te.xt(Play)
+    button.SetPressed(f.OnPlayPressed)
+    f.playButton = button
+    MotherPanel.Add(button)
+
+func Logo_Init(versionStr)
+  f.logo.panel = MakeUI(ui.AddPanel(), 0,3,1,1) 
+  f.logo.panel.visible = false
+  f.logo.panel.dock = top_right
+  f.logo.panel.anchor = top_right
+  MotherPanel.Add(f.logo.panel)
+
+  var versionNumber = ui.AddText()
+  versionNumber.visible = true
+  versionNumber.w = 16
+  
+  ?te.language = "ZH-CN"
+    var imgStr = ascii
+###┌-.####┌-.#######┌-.#######.-,##.-,
+#┌-┘ └-.--┘ └--. ┌--┘ └--.  .' /_ / /___
+#'-. .-'--. .--' '--. .--'.'.---´/ ,--. |
+##.' '. __| |__    ,' '. └-´|‾‾‾|`´   | |
+#; . .-┘  ___  |  / . . .   _| |_ \`. | |
+└-´| | | |   | | ' /| |\ \ |_   _| \/ | |
+###| | | └---┘ |└-´ | | `-┘  | |_  ___| |
+###'-'#|.-----.|    '-'      '__/  '.__/
+##############                #
+asciiend
+    var img = ui.AddAnim(imgStr)
+    img.visible = true
+    f.logo.panel.Add(img)
+    img.x = 23
+    img.y = 1
+
+    f.logo.panel.Add(versionNumber)
+    versionNumber.text = "阿尔法 v" + versionStr
+    versionNumber.x = 26
+    versionNumber.y = 10
+  :
+    var imgStrA = ascii
+╥─┐╥─╓─╖╥─┐╖╥╓╓─╖╓─╖╥─┐
+║ │╟─╟─╢║ │║║║║ ║║ ║║ │
+╨─┘╨─╨ ╨╨─┘╙╨╜╙─╜╙─╜╨─┘
+asciiend
+    var imgStrB = ascii
+╥──╥ ╓─╖╥ ╥ ╥ ╥─╖ ╥─┐
+╟─ ║ ╙─╖╟─╢ ║ ║ ║ ║ ╖
+╨  ╨ ╙─╜╨ ╨ ╨ ╨ ╨ ╨─╜
+asciiend
+    var img = ui.AddAnim(imgStrA)
+    img.visible = true
+    f.logo.panel.Add(img)
+    img.pivotX = -6
+    img.x = 22
+    img.y = -2
+
+    img = ui.AddAnim(imgStrB)
+    img.visible = true
+    f.logo.panel.Add(img)
+    img.pivotX = -9
+    img.x = 22
+    img.y = 1
+
+    f.logo.panel.Add(versionNumber)
+    versionNumber.text = "ALPHA v" + versionStr
+    versionNumber.x = 25
+    versionNumber.y = 10
+
+?loc.loop
+  f.rod = null
+  f.SetState("Hidden")
+  Initialized = Init()
+
+?loc.begin
+  TempVar = f.InitPlayerAnimations
+  f.InitPlayerAnimations = InitPlayerAnimationsLocal
+  InitPlayerAnimationsOrigin = TempVar
+  
+  f.UpdatePlayerAnimPosition = UpdatePlayerAnimPositionLocal
+
+  f.logo.Init = Logo_Init
+  
+  f.AddMenuUI = AddMenuUILocal
+  
+  f.resultDialog.Init  = ResultInitLocal
+  f.resultDialog.Show = ResultShowLocal
+
+  ui.root.visible = false
+  ui.root.clip = false
+  ui.root.style = Invis
+
+f.Update()
+
+?f.state = "Throwing" | f.state = "Waiting"
+  ?f.playerAnimRoot.x < 21
+    f.playerAnimRoot.x++
+  :?f.playerAnimRoot.x > 21
+    f.playerAnimRoot.x--
+
+:?f.state = "Menu" & time % 2 = 0
+  ?f.playerAnimRoot.x < 11
+    f.playerAnimRoot.x++
+  :?f.playerAnimRoot.x > 11
+    f.playerAnimRoot.x--
+
+:?f.state = "Catching"
+  f.fish.DrawO = DrawOLocal
+
+:?f.state = Success3 & f.stateTime = 0
+  f.resultDialog.panel.h = 0
+  //resultDialog
+
+
+?f.catchingPanel
+  f.catchingPanel.y = -5
+  BorderPanel.Add(f.catchingPanel)
+
+?f.resultDialog.panel
+  ?f.resultDialog.panel.h < 10
+    f.resultDialog.panel.h++
+
+Enable player
+Enable hud
+
+BorderPanel.style = 3 
+
+?ToggleDragging
+  XSet = math.Clamp(input.x, 0, screen.w-1)
+  YSet = math.Clamp(input.y-1, 0, screen.h-2)
+  MotherPanel.x = XSet
+  MotherPanel.y = YSet
+  ?key ! "primary"
+    ToggleDragging = false
+    storage.Set("X",XSet)
+    storage.Set("Y",YSet)
+

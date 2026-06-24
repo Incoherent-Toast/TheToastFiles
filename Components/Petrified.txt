@@ -1,0 +1,50 @@
+// Petrified (Song)
+// v1.0
+// By fruloo
+
+// Instructions:
+// Enter the Deadwood Waterfall location and let the song play
+
+var pitches = [0, 2, 4, 5, 7, 9, 11, 12]
+
+var song = [0, 1, 2, 1, 0, 2, 4, 1, 2, 0, 5, 4, 2, 3, 2, 1]
+var noteIndex = 0
+
+var bass = [0, 1, 4, 2, 0, 1, 5, 4]
+var bassIndex = 0
+
+var middleC = 261.63/2.4 // with adjustment factor
+
+func playNote(s)
+  var scaler = s * Math.pow(2.0, pitches[song[noteIndex]]/12.0)
+  play blade_glow @math.FloorToInt(middleC * scaler)@
+
+func playBass(s)
+  var scaler = s * Math.pow(2.0, pitches[bass[bassIndex]]/12.0)
+  play mask_summon_1 @math.FloorToInt(middleC * scaler)@
+
+var t = 0
+?string.Equals(loc.id, waterfall) & t >= 30
+  // Drums
+  ?t%48 = 0
+    play sword_hit 30
+  ?t%48 = 24
+    play yeti_attack_hit 35
+
+  // Melody
+  ?t%24 = 0
+    playNote(1.0)
+
+  // Bass
+  ?t%(24*4) = 3
+    playBass(0.25)
+  ?t%(24*4) = 1
+    playBass(0.167)
+
+  // Sequencer
+  ?t%24 = 4
+    noteIndex = (noteIndex + 1) % song.Count()
+  ?t%(24*4) = 4
+    bassIndex = (bassIndex + 1) % bass.Count()
+
+t++

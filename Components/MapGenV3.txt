@@ -1,0 +1,593 @@
+
+/*MapGenV3
+Version 1.0
+By CitrionDragon
+
+The map is generated using arrays.
+The arrays are then interpretted and draws the map onto a canvas.
+This canvas is the final product and holds the data for the map for use later.
+
+This script also has an example of how to interpret the data into a usable array for a game.
+
+Use WASD or arrow keys to move the maps
+Switch Button is to switch between the maps
+Generate is to generate a new map
+
+Change Room Count using the var below
+*/
+
+//0 room,1 width,2 height
+var room1=[
+[
+[["◘"]]
+],
+1,1]
+
+var room2=[
+[
+[["┌"],["┐"]],
+[["└"],["┘"]]
+],
+2,2]
+
+var testrooms=[room1]
+
+//0◘,1┌,2¯,3┐,4| ,5#,6 |,7└,8_,9┘,10[,11],12┌┐,13└┘
+//Tile Width:10 Tile Height:6
+var Tiles=[
+ascii
+██████████
+█        █
+█        █
+█        █
+█        █
+██████████
+asciiend,
+ascii
+██████████
+█         
+█         
+█         
+█         
+█         
+asciiend,
+ascii
+██████████
+          
+          
+          
+          
+          
+asciiend,
+ascii
+██████████
+         █
+         █
+         █
+         █
+         █
+asciiend,
+ascii
+█         
+█         
+█         
+█         
+█         
+█         
+asciiend,
+ascii
+          
+          
+          
+          
+          
+          
+asciiend,
+ascii
+         █
+         █
+         █
+         █
+         █
+         █
+asciiend,
+ascii
+█         
+█         
+█         
+█         
+█         
+██████████
+asciiend,
+ascii
+          
+          
+          
+          
+          
+██████████
+asciiend,
+ascii
+         █
+         █
+         █
+         █
+         █
+██████████
+asciiend,
+ascii
+██████████
+█         
+█         
+█         
+█         
+██████████
+asciiend,
+ascii
+██████████
+         █
+         █
+         █
+         █
+██████████
+asciiend,
+ascii
+██████████
+█        █
+█        █
+█        █
+█        █
+█        █
+asciiend,
+ascii
+█        █
+█        █
+█        █
+█        █
+█        █
+██████████
+asciiend
+]
+
+//0+1 -
+//0 X axis 2x2,1 Y axis 4x2
+var Doors=[
+ascii
+#██#
+#██#
+asciiend,
+ascii
+████
+████
+asciiend
+]
+
+var wall=ascii
+█████
+█████
+█████
+asciiend
+
+var empty=ascii
+     
+     
+     
+asciiend
+var wall2=ascii
+██
+██
+asciiend
+
+var empty2=ascii
+  
+  
+asciiend
+
+//Generational Array
+//20X22 tiles,
+//-9 to 10 X, -10 to 11 Y
+//GA[Row/Y][Collumn/X]
+var GA=[
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],["◘"],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+]
+
+//Stores the data about generated connections
+//0 - type,1 ↑↓→← direction,2 starting X,3 starting Y
+//Only one type for now, more can be added later
+var Connections=[]
+
+//0 X,1 Y,2 Directions
+var TileInfo=[[0,0,["N","E","S","W"]]]
+var BannedTiles=[]
+
+var storedrooms
+var roomsgenerated=25 //<------------------------Change the Number of Rooms Generated
+var roomcount
+var generating
+var saving
+var displaying
+var completed
+
+//Serves as the full map data, to be interpreted later
+var MapPanel
+var MapCanvas=[0,1,2,3,4,5,6,7,8,9]
+var mcount=0
+
+//
+var north=10
+var south=10
+var east=9
+var west=9
+
+//Converts normal coords to array coords (0,0 normal is 9,10 array)
+
+func CoordToArray(coord,axis)
+  ?axis="x"
+    return coord+9
+  :?axis="y"
+    return coord+10
+
+func CopyArray(array)
+  var copied=[]
+  for e : array
+    copied.Add(e)
+  return copied
+
+func SortArray(array)
+  var count=array.Count()
+  var sorted=[]
+  var lowest
+  var index
+  for c = 0..count-1
+    lowest=999
+    for n = 0..array.Count()-1
+      ?lowest>array[n]
+        lowest=array[n]
+        index=n
+    sorted.Add(array[index])
+    array.RemoveAt(index)
+  return sorted
+
+func BanTiles()
+  for tile = 0..TileInfo.Count()-1
+    ?TileInfo[tile][2].Count()>0
+      var remove=[]
+      for direction = 0..TileInfo[tile][2].Count()-1
+        ?TileInfo[tile][2][direction]="N"
+          ?TileInfo[tile][1]-1<-10
+            remove.Add("N")
+          :?GA[CoordToArray(TileInfo[tile][1],"Y")-1][CoordToArray(TileInfo[tile][0],"X")].Count()>0
+            remove.Add("N")
+        ?TileInfo[tile][2][direction]="E"
+          ?TileInfo[tile][0]+1>10
+            remove.Add("E")
+          :?GA[CoordToArray(TileInfo[tile][1],"Y")][CoordToArray(TileInfo[tile][0],"X")+1].Count()>0
+            remove.Add("E")
+        ?TileInfo[tile][2][direction]="S"
+          ?TileInfo[tile][1]+1>11
+            remove.Add("S")
+          :?GA[CoordToArray(TileInfo[tile][1],"Y")+1][CoordToArray(TileInfo[tile][0],"X")].Count()>0
+            remove.Add("S")
+        ?TileInfo[tile][2][direction]="W"
+          ?TileInfo[tile][0]-1<-9
+            remove.Add("W")
+          :?GA[CoordToArray(TileInfo[tile][1],"Y")][CoordToArray(TileInfo[tile][0],"X")-1].Count()>0
+            remove.Add("W")
+      ?remove.Count()>0
+        for r : remove
+          TileInfo[tile][2].RemoveAt(TileInfo[tile][2].IndexOf(r))
+    ?TileInfo[tile][2].Count()=0&BannedTiles.IndexOf(tile)<0
+      BannedTiles.Add(tile)
+  ?BannedTiles.Count()>1
+    BannedTiles=SortArray(BannedTiles)
+
+func GenerateFloor(rooms)
+  GA=[
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],["◘"],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+]
+  TileInfo=[[0,0,["N","E","S","W"]]]
+  Connections.Clear()
+  BannedTiles.Clear()
+  roomcount=roomsgenerated
+  storedrooms=CopyArray(rooms)
+  ?showarray.Count()>0
+    roompnl.Clear()
+    showarray.Clear()
+  currentc=0
+  completed=false
+  generating=true
+
+func GenerateRooms()
+  ?generating//&roomcount>0
+    BanTiles()
+    ?TileInfo.Count()-BannedTiles.Count()<=0
+      generating=false
+      saving=true
+      continue
+    var StartTile=rng%(TileInfo.Count()-BannedTiles.Count())
+    ?BannedTiles.Count()>0
+      for ban = 0..BannedTiles.Count()-1
+        ?StartTile>=BannedTiles[ban]
+          StartTile++
+    var Direction=TileInfo[StartTile][2][rng%TileInfo[StartTile][2].Count()]
+    var Room=storedrooms[rng%storedrooms.Count()]
+    ?Direction="N"
+      GA[CoordToArray(TileInfo[StartTile][1],"Y")-1][CoordToArray(TileInfo[StartTile][0],"X")].Add(Room[0][0][0][0])
+      TileInfo.Add([TileInfo[StartTile][0],TileInfo[StartTile][1]-1,["N","E","W"]])
+      Connections.Add(["-","↑",TileInfo[StartTile][0],TileInfo[StartTile][1]])
+    :?Direction="E"
+      GA[CoordToArray(TileInfo[StartTile][1],"Y")][CoordToArray(TileInfo[StartTile][0],"X")+1].Add(Room[0][0][0][0])
+      TileInfo.Add([TileInfo[StartTile][0]+1,TileInfo[StartTile][1],["N","E","S"]])
+      Connections.Add(["-","→",TileInfo[StartTile][0],TileInfo[StartTile][1]])
+    :?Direction="S"
+      GA[CoordToArray(TileInfo[StartTile][1],"Y")+1][CoordToArray(TileInfo[StartTile][0],"X")].Add(Room[0][0][0][0])
+      TileInfo.Add([TileInfo[StartTile][0],TileInfo[StartTile][1]+1,["E","S","W"]])
+      Connections.Add(["-","↓",TileInfo[StartTile][0],TileInfo[StartTile][1]])
+    :?Direction="W"
+      GA[CoordToArray(TileInfo[StartTile][1],"Y")][CoordToArray(TileInfo[StartTile][0],"X")-1].Add(Room[0][0][0][0])
+      TileInfo.Add([TileInfo[StartTile][0]-1,TileInfo[StartTile][1],["N","S","W"]])
+      Connections.Add(["-","←",TileInfo[StartTile][0],TileInfo[StartTile][1]])
+    TileInfo[StartTile][2].RemoveAt(TileInfo[StartTile][2].IndexOf(Direction))
+    roomcount--
+    ?roomcount<=0
+      generating=false
+      saving=true
+  :?saving
+    ToCanvas()
+  :?displaying
+    CreateMap()
+
+func ToCanvas()
+  for m = 0..MapCanvas.Count()-1
+    MapCanvas[m].Set(" ")
+  var tile
+  var ccount
+  var rcount
+  var datapos
+  var celldata
+  var x
+  var y
+  for r = 0..21
+    for c = 0..19
+      ?GA[r][c].Count()>0
+        ?north>r
+          north=r
+        ?south<r
+          south=r
+        ?east<c
+          east=c
+        ?west>c
+          west=c
+        ?GA[r][c][0]="◘"
+          tile=Tiles[0]
+        ccount=0
+        rcount=0
+        datapos=0
+        for cellcount = 0..(10*6)-1
+          celldata=string.Sub(tile,datapos,1)
+          ?celldata="█"
+            x=c*10+ccount
+            y=r*6+rcount
+            MapCanvas[(y/27)*2+(x/100)].Set(x%100,y%27,"█")
+          datapos=datapos+1
+          ccount++
+          ?ccount>9
+            ccount=0
+            rcount++
+            datapos=datapos+2
+  ?Connections.Count()>0
+    for c = 0..Connections.Count()-1
+      ?Connections[c][1]="↑"|Connections[c][1]="↓"
+        tile=Doors[1]
+      :?Connections[c][1]="→"|Connections[c][1]="←"
+        tile=Doors[0]
+      ccount=0
+      rcount=0
+      datapos=0
+      for cellcount = 0..(4*2)-1
+        celldata=string.Sub(tile,datapos,1)
+        ?celldata="█"
+          ?Connections[c][1]="↑"
+            x=CoordToArray(Connections[c][2],"X")*10+ccount+3
+            y=CoordToArray(Connections[c][3],"Y")*6+rcount-1
+          :?Connections[c][1]="→"
+            x=CoordToArray(Connections[c][2],"X")*10+ccount+8
+            y=CoordToArray(Connections[c][3],"Y")*6+rcount+2
+          :?Connections[c][1]="↓"
+            x=CoordToArray(Connections[c][2],"X")*10+ccount+3
+            y=CoordToArray(Connections[c][3],"Y")*6+rcount+5
+          :?Connections[c][1]="←"
+            x=CoordToArray(Connections[c][2],"X")*10+ccount-2
+            y=CoordToArray(Connections[c][3],"Y")*6+rcount+2
+          MapCanvas[(y/27)*2+(x/100)].Set(x%100,y%27," ")
+        datapos=datapos+1
+        ccount++
+        ?ccount>3
+          ccount=0
+          rcount++
+          datapos=datapos+2
+  saving=false
+  displaying=true
+
+var FloorArray=[]
+var showarray=[]
+var roompnl
+var totalc
+var currentc
+
+func CreateMap()
+  totalc=(east*10+9)-(west*10)
+  for c = 0..4
+    FloorArray.Add([]) //Add columns
+    for r = 0..(south*6+5)-(north*6)
+      FloorArray[currentc].Add([[],[],[]]) //Add Rows
+      var x
+      x=currentc+(west*10)
+      var y
+      y=r+(north*6)
+      var celldata
+      celldata=MapCanvas[(y/27)*2+(x/100)].Get(x%100,y%27)
+      ?celldata="█"
+        showarray.Add(CreateCell(currentc,r,wall2))
+        FloorArray[currentc][r][1].Add("wall")
+      :?celldata=" "
+        showarray.Add(CreateCell(currentc,r,empty2))
+        FloorArray[currentc][r][1].Add("")
+    currentc++
+  ?totalc<=currentc
+    displaying=false
+    completed=true
+
+func CreateCell(c,r,type)
+  var cell=ui.AddAnim(type)
+  cell.anchor=top_left
+  cell.dock=top_left
+  cell.x=c*2
+  cell.y=r*2
+  ?type=player_
+    cell.color=#cyan
+  :?type=foe_
+    cell.color=#red
+  :?type=heal
+    cell.color=#green
+  :?type=strength
+    cell.color=#magenta
+  :?type=speed
+    cell.color=#yellow
+  roompnl.Add(cell)
+  return cell
+
+func DisplayMap()
+  ?showarray.Count()>0
+    roompnl.Clear()
+    showarray.Clear()
+  ?FloorArray.Count()>0
+    for c = 0..FloorArray.Count()-1
+      for r = 0..FloorArray[c].Count()-1
+        ?FloorArray[c][r][0].Count()>0
+          ?FloorArray[c][r][0][0]="player"
+            showarray.Add(CreateCell(playerC,playerR,player_))
+          :?FloorArray[c][r][0][0]="foe"
+            showarray.Add(CreateCell(c,r,foe_))
+          :?FloorArray[c][r][0][0]="wall"
+            showarray.Add(CreateCell(c,r,wall2))
+        :?FloorArray[c][r][1].Count()>0
+          ?FloorArray[c][r][1][0]="heal"
+            showarray.Add(CreateCell(c,r,heal))
+          :?FloorArray[c][r][1][0]="strength"
+            showarray.Add(CreateCell(c,r,strength))
+          :?FloorArray[c][r][1][0]="speed"
+            showarray.Add(CreateCell(c,r,speed))
+
+var switchbtn
+func Switch()
+  roompnl.visible=!roompnl.visible
+
+var genbtn
+func MapGenV3()
+  GenerateFloor(testrooms)
+?loc.begin
+  MapPanel=ui.AddPanel()
+  MapPanel.anchor=top_left
+  MapPanel.dock=top_left
+  MapPanel.x=-50
+  MapPanel.y=-50
+  for m = 0..MapCanvas.Count()-1
+    MapCanvas[m]=ui.AddCanvas()
+    MapCanvas[m].anchor=top_left
+    MapCanvas[m].dock=top_left
+    MapCanvas[m].w=100
+    MapCanvas[m].h=27
+    MapCanvas[m].y=mcount*27
+    ?m%2=0
+      MapCanvas[m].x=0
+    :
+      MapCanvas[m].x=100
+      mcount++
+    MapCanvas[m].Set(" ")
+    MapPanel.Add(MapCanvas[m])
+  roompnl=ui.AddPanel()
+  roompnl.anchor=top_left
+  roompnl.dock=top_left
+  roompnl.x=30-3*5
+  roompnl.y=1-5*3
+  roompnl.style=ui.AddStyle("#########")
+  switchbtn=ui.AddButton()
+  switchbtn.anchor=bottom_left
+  switchbtn.dock=bottom_left
+  switchbtn.bcolor=#raina9
+  switchbtn.text="Switch"
+  switchbtn.tcolor=#rainff
+  switchbtn.SetPressed(Switch)
+  roompnl.style=ui.AddStyle("#########")
+  switchbtn=ui.AddButton()
+  switchbtn.anchor=bottom_left
+  switchbtn.dock=bottom_left
+  switchbtn.x=18
+  switchbtn.bcolor=#raina9
+  switchbtn.text="Generate"
+  switchbtn.tcolor=#rainff
+  switchbtn.SetPressed(MapGenV3)
+  GenerateFloor(testrooms)
+GenerateRooms()
+
+?!roompnl.visible
+  ?key=leftBegin
+    MapPanel.x=MapPanel.x+5
+  ?key=rightBegin
+    MapPanel.x=MapPanel.x-5
+  ?key=upBegin
+    MapPanel.y=MapPanel.y+5
+  ?key=downBegin
+    MapPanel.y=MapPanel.y-5
+:
+  ?key=leftBegin
+    roompnl.x=roompnl.x+5
+  ?key=rightBegin
+    roompnl.x=roompnl.x-5
+  ?key=upBegin
+    roompnl.y=roompnl.y+5
+  ?key=downBegin
+    roompnl.y=roompnl.y-5

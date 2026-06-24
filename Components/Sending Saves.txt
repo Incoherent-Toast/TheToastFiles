@@ -1,0 +1,7 @@
+/*Sending Saves*/
+
+func GimmeThemKeys()
+  return storage.Keys()
+
+func GimmeThisKey(string)
+  return storage.Get(string)

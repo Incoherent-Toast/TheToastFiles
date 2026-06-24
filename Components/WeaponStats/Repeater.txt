@@ -10,6 +10,8 @@ var Base_AS = [7,7,1]
 
 /*
 Repeater:
+  0 = Dmg
+  1 = Crit
   2 = Crit
 
 (Missing: dmg, crit2)
@@ -32,11 +34,25 @@ var EnchTypeList = ["0- Damage         ","1- Dual Crit      ","2- Dual Crit     
 
 func DisplayStats(Affix,ElePointer,Star,EnchantLevel,EnchTypePointer,f)
   var BasePointer = [Star,Star,Star]
-  ?EnchTypePointer > 0
-    BasePointer[1] += EnchantLevel
-    BasePointer[2] += EnchantLevel
+  var EnchantLevel1 = EnchantLevel[0]
+  var EnchTypePointer1 = EnchTypePointer[0]
+
+  var EnchantLevel2 = EnchantLevel[1]
+  var EnchTypePointer2 = EnchTypePointer[1]
+
+  ?EnchTypePointer1 > 0
+    BasePointer[1] += EnchantLevel1
+    BasePointer[2] += EnchantLevel1
   :
-    BasePointer[EnchTypePointer] += EnchantLevel
+    BasePointer[EnchTypePointer1] += EnchantLevel1
+  
+  ?EnchTypePointer2 ! EnchTypePointer1
+    ?EnchTypePointer2 > 1
+     ?EnchTypePointer1 < 1
+      BasePointer[1] += EnchantLevel2
+      BasePointer[2] += EnchantLevel2
+    :
+      BasePointer[EnchTypePointer2] += EnchantLevel2
 
   var AS_List = f.GetAS(Base_AS, AS_Reduction[Star])
   var AS = AS_List[0] + AS_List[1] + AS_List[2]

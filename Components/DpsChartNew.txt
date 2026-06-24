@@ -1,39 +1,3 @@
-/*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-  Dps Calc
-  Version: 1.0
-
-  This is a script to calculate the dps of various weapons under different situations. It may be subject to error.
-
-  The "WeaponStats" folder should be under Components. If you want to move it somewhere else you'll also need to 
-  alter the imports in "ScriptFunctions".
-
-  To run this on mobile (or PC if you want) you need to first "//" all your other imports 
-  and then you can use the following script.
-
-sys.SetFileUrl("https://raw.githubusercontent.com/Incoherent-Toast/TheToastFiles/main/")
-//import Components/Dps_Calc
-
-Run once and then remove the slashes in front of the import
-
-Things to add:
- - Unmaking chance blurb
- - ah heal average
- - Strength pot
- - Smite stuff?
- - Left hand?
- - other basic items?
- - double enchants?
- - Preset weapon juggles
- - Item Actives
- - more info on defensive stats
- - visual AS chart indicator
- - visual Colour enchant type indicator
-
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
-
-
-
-
 var f = import Components/WeaponStats/ScriptFunctions
 
 var DropDownBox
@@ -56,8 +20,6 @@ var EleDisplay
 var StarDisplay
 var EnchantDisplay
 var EnchTypeDisplay
-var EnchantDisplay2
-var EnchTypeDisplay2
 var AACButton
 var SwapButton
 var BurstButton
@@ -70,7 +32,8 @@ var WeaponArtBorder
 var MoonButton
 var LuckyCritButton
 var LuckyMultButton
-var TogglesText
+var LuckyText
+var LuckyBox
 var MotherPanel2
 var InfoText
 var InfoTextClipper
@@ -99,18 +62,6 @@ var DropDownBorder = ui.AddStyle("
 ^###
 ^│ │
 ^╘═╛")
-
-/*
-var UpperBox = ui.AddStyle("
-^┌—┐
-^│ │
-^├—┤")
-*/
-
-var LowerBox = ui.AddStyle("
-^├—┤
-^│ │
-^└—┘")
 
 var Invis = ui.AddStyle("
 ^###
@@ -147,12 +98,6 @@ func Tab3Pressed()
   MotherPanel.visible = false
   MotherPanel2.visible = false
 
-func Leave()
-  loc.Leave()
-
-func Inv()
-  ui.OpenInv()
-
 func Scroll_Right()
   ScreenPos = 1 - (32*3 - screen.w + 13)
 
@@ -163,11 +108,9 @@ func ToggleBerserk()
   ?f.Berserk = 0
     f.Berserk = 15
     BerserkButton.text = "Berserk: ʘ"
-    BerserkButton.tcolor = "#DDDDDD"
   :
     f.Berserk = 0
     BerserkButton.text = "Berserk: ☺"
-    BerserkButton.tcolor = "#555555"
   ?EnchTypeOptionList.Count()
     WeaponDisplayStats()
     ChartText.text = f.GetChart()
@@ -176,44 +119,39 @@ func ToggleMoon()
   ?f.Moon = 0
     f.Moon = 5
     MoonButton.text = "Moondial: ʘ"
-    MoonButton.tcolor = "#DDDDDD"
   :
     f.Moon = 0
     MoonButton.text = "Moondial: ☺"
-    MoonButton.tcolor = "#555555"
   ?EnchTypeOptionList.Count()
     WeaponDisplayStats()
     ChartText.text = f.GetChart()
 
+func UpdateLuckyText()
+  var a = "☺"
+  var b = "☺"
+  ?f.LuckyCrit
+    a = "ʘ"
+  ?f.LuckyMult
+    b = "ʘ"
+  LuckyText.text = "Lucky:\n##Crit: "+a+"\n##Mult: "+b
+
 func ToggleLuckyCrit()
   f.LuckyCrit = !f.LuckyCrit
-  ?f.LuckyCrit
-    LuckyCritButton.text = "Lucky C: ʘ"
-    LuckyCritButton.tcolor = "#DDDDDD"
-  :
-    LuckyCritButton.text = "Lucky C: ☺"
-    LuckyCritButton.tcolor = "#555555"
+  UpdateLuckyText()
   WeaponDisplayStats()
 
 func ToggleLuckyMult()
   f.LuckyMult = !f.LuckyMult
-  ?f.LuckyMult
-    LuckyMultButton.text = "Lucky M: ʘ"
-    LuckyMultButton.tcolor = "#DDDDDD"
-  :
-    LuckyMultButton.text = "Lucky M: ☺"
-    LuckyMultButton.tcolor = "#555555"
+  UpdateLuckyText()
   WeaponDisplayStats()
 
 func ToggleChill()
   ?f.Chill = 0
     f.Chill = -20
-    ChillButton.text = "Chill:   ʘ"
-    ChillButton.tcolor = "#DDDDDD"
+    ChillButton.text = "Chill: ʘ"
   :
     f.Chill = 0
-    ChillButton.text = "Chill:   ☺"
-    ChillButton.tcolor = "#555555"
+    ChillButton.text = "Chill: ☺"
   ?EnchTypeOptionList.Count()
     WeaponDisplayStats()
     ChartText.text = f.GetChart()
@@ -223,54 +161,45 @@ func UpdateWeap()
 
 func SetToggles()
   ?!f.WeaponSwap
-    SwapButton.text = "Swap:    ☺"
-    SwapButton.tcolor = "#555555"
+    SwapButton.text = "Swap:  ☺"
   ?!f.AAC
-    AACButton.text = "AAC:     ☺"
-    AACButton.tcolor = "#555555"
+    AACButton.text = "AAC:   ☺"
   ?!f.Burst
-    BurstButton.text = "Burst:   ☺"
-    BurstButton.tcolor = "#555555"
+    BurstButton.text = "Burst: ☺"
 
 func ToggleWeaponSwap()
   f.WeaponSwap = !f.WeaponSwap
   ?f.WeaponSwap
-    SwapButton.text = "Swap:    ʘ"
-    SwapButton.tcolor = "#DDDDDD"
+    SwapButton.text = "Swap:  ʘ"
     f.AAC = false
     f.Burst = false
     SetToggles()
   :
-    SwapButton.text = "Swap:    ☺"
-    SwapButton.tcolor = "#555555"
+    SwapButton.text = "Swap:  ☺"
   WeaponDisplayStats()
   ChartText.text = f.GetChart()
 
 func ToggleAAC()
   f.AAC = !f.AAC
   ?f.AAC
-    AACButton.text = "AAC:     ʘ"
-    AACButton.tcolor = "#DDDDDD"
+    AACButton.text = "AAC:   ʘ"
     f.Burst = false
     f.WeaponSwap = false
     SetToggles()
   :
-    AACButton.text = "AAC:     ☺"
-    AACButton.tcolor = "#555555"
+    AACButton.text = "AAC:   ☺"
   WeaponDisplayStats()
   ChartText.text = f.GetChart()
 
 func ToggleBurst()
   f.Burst = !f.Burst
   ?f.Burst
-    BurstButton.text = "Burst:   ʘ"
-    BurstButton.tcolor = "#DDDDDD"
+    BurstButton.text = "Burst: ʘ"
     f.AAC = false
     f.WeaponSwap = false
     SetToggles()
   :
-    BurstButton.text = "Burst:   ☺"
-    BurstButton.tcolor = "#555555"
+    BurstButton.text = "Burst: ☺"
   WeaponDisplayStats()
   ChartText.text = f.GetChart()
 
@@ -290,7 +219,7 @@ var EleDisplayToggle = false
 var EleDropDown
 var BigDebuff = "X"
 var LittleDebuff = "x"
-var EnchantLevel = [0,0]
+var EnchantLevel = 0
 
 //Element Display Needed
 
@@ -304,51 +233,7 @@ var TemporaryNumberCount
 var EnchTypeDisplayToggle
 var EnchTypeDropDown
 var EnchTypeOptionList = []
-var EnchTypePointer = [0,0]
-
-
-func CloseMenus(Ref)
-  ?DropDownToggle
-    WeaponDropdown.text = "-Select Weapon-  ▼"
-    RecycleWeapMenu()
-    return Ref ! 0
-  :?EleDisplayToggle
-    EleDisplayToggle = false
-    EleDropDown.Recycle()
-    return Ref ! 1
-  :?AffixDisplayToggle
-    AffixDisplayToggle = false
-    AffixDropDown.Recycle()
-    return Ref ! 2
-  :?StarDisplayToggle
-    StarDisplayToggle = false
-    StarDropDown.Recycle()
-    return Ref ! 3
-  :?EnchantDisplayToggle
-    EnchantDisplayToggle = false
-    NumberButtons.Clear()
-    EnchantDropDown.Recycle()
-    EnchantDisplay.text = "#+" + EnchantLevel[0]
-    EnchantDisplay2.visible = true
-    EnchTypeDisplay2.visible = true
-    return Ref ! 4
-  :?EnchTypeDisplayToggle
-    EnchTypeDisplayToggle = false
-    EnchTypeDropDown.Recycle()
-    EnchantDisplay2.visible = true
-    EnchTypeDisplay2.visible = true
-    return Ref ! 5
-  :?EnchantDisplayToggle2
-    EnchantDisplayToggle2 = false
-    NumberButtons.Clear()
-    EnchantDropDown2.Recycle()
-    EnchantDisplay2.text = "#+" + EnchantLevel[1]
-    return Ref ! 6
-  :?EnchTypeDisplayToggle2
-    EnchTypeDisplayToggle2 = false
-    EnchTypeDropDown2.Recycle()
-    return Ref ! 7
-  return true
+var EnchTypePointer = 0
 
 func GetAffix()
   ?AfflixCombineList[AffixPointer] = 1
@@ -370,20 +255,9 @@ func SelectEnchType(btn)
   for a = 0..EnchTypeOptionList.Count()-1
     ?btn = DropDownButtonList[a]
       EnchTypeDisplay.text = EnchTypeOptionList[a]
-      EnchTypePointer[0] = a
-      WeaponDisplayStats()
-      CloseMenus(-1)
-      return
-
-var EnchTypeDisplayToggle2
-var EnchTypeDropDown2
-
-func SelectEnchType2(btn)
-  for a = 0..EnchTypeOptionList.Count()-1
-    ?btn = DropDownButtonList[a]
-      EnchTypeDisplay2.text = EnchTypeOptionList[a]
-      EnchTypePointer[1] = a
-      CloseMenus(-1)
+      EnchTypePointer = a
+      EnchTypeDisplayToggle = false
+      EnchTypeDropDown.Recycle()
       WeaponDisplayStats()
       return
 
@@ -391,25 +265,15 @@ func EnchTypeDropMenu()
   ?f.Weapon = false
     >Select a weapon first!
     return
-  ?CloseMenus(5)
-    EnchantDisplay2.visible = false
-    EnchTypeDisplay2.visible = false
+  ?EnchTypeDisplayToggle
+    EnchTypeDisplayToggle = false
+    EnchTypeDropDown.Recycle()
+  :
     EnchTypeDisplayToggle = true
     EnchTypeDropDown = CreateUI(38,3, 21, 1, ui.AddPanel())
     EnchTypeDropDown.style = DropDownBorder
     MotherPanel.Add(EnchTypeDropDown)
     GenerateButtonList(EnchTypeOptionList,SelectEnchType,EnchTypeDropDown)
-
-func EnchTypeDropMenu2()
-  ?f.Weapon = false
-    >Select a weapon first!
-    return
-  ?CloseMenus(7)
-    EnchTypeDisplayToggle2 = true
-    EnchTypeDropDown2 = CreateUI(38,5, 21, 1, ui.AddPanel())
-    EnchTypeDropDown2.style = DropDownBorder
-    MotherPanel.Add(EnchTypeDropDown2)
-    GenerateButtonList(EnchTypeOptionList,SelectEnchType2,EnchTypeDropDown2)
 
 func UpdateEnchTypeOptions()
   ?AffixOptionList.Count() = 0
@@ -424,7 +288,7 @@ func UpdateEnchTypeOptions()
 
 func UpdateEnchTypeDisplay()
   UpdateEnchTypeOptions()
-  EnchTypeDisplay.text = EnchTypeOptionList[EnchTypePointer[0]%EnchTypeOptionList.Count()]
+  EnchTypeDisplay.text = EnchTypeOptionList[EnchTypePointer%EnchTypeOptionList.Count()]
 
 func SelectEle(btn)
   ?btn = DropDownButtonList[0]
@@ -455,14 +319,18 @@ func SelectEle(btn)
   UpdateAffixButton()
   UpdateEnchTypeDisplay()
   EleDisplay.text = EleOptionList[ElePointer]
+  EleDisplayToggle = false
   WeaponArt = f.Weapon.ReturnWeaponArt( EleOptionList[ElePointer] )
-  CloseMenus(-1)
+  EleDropDown.Recycle()
 
 func EleDropMenu()
   ?AffixOptionList.Count() = 0
     >No element options for selected weapon
     return
-  ?CloseMenus(1)
+  ?EleDisplayToggle
+    EleDisplayToggle = false
+    EleDropDown.Recycle()
+  :
     EleDisplayToggle = true
     EleDropDown = CreateUI(21,3, 3, 1, ui.AddPanel())
     EleDropDown.style = DropDownBorder
@@ -481,30 +349,18 @@ func EnterNumber(btn)
   ?PressCount = 2
     NumberConfirm()
 
-func EnterNumber2(btn)
-  for a = 0..NumberButtons.Count()-1
-    ?btn = NumberButtons[a]
-      ?PressCount
-        TemporaryNumberCount += a
-      :
-        TemporaryNumberCount += a*10
-        EnchantDisplay2.text = "##" + a
-  PressCount++
-  ?PressCount = 2
-    NumberConfirm2()
-
 func UpdateEnchantColor()
-  ?EnchantLevel[0] > 15
+  ?EnchantLevel > 15
     Colour = "#rainFF"
-  :?EnchantLevel[0] > 10
+  :?EnchantLevel > 10
     Colour = "#red"
-  :?EnchantLevel[0] > 6
+  :?EnchantLevel > 6
     Colour = "#blue"
-  :?EnchantLevel[0] > 3
+  :?EnchantLevel > 3
     Colour = "#green"
-  :?EnchantLevel[0] > 1
+  :?EnchantLevel > 1
     Colour = "#yellow"
-  :?EnchantLevel[0] = 1
+  :?EnchantLevel = 1
     Colour = "#cyan"
   :
     Colour = "#FFFFFF"
@@ -512,75 +368,47 @@ func UpdateEnchantColor()
 func NumberConfirm()
   ?PressCount = 1
     EnchantDisplay.text = "#+" + TemporaryNumberCount/10
-    EnchantLevel[0] = TemporaryNumberCount/10
+    EnchantLevel = TemporaryNumberCount/10
   :?PressCount = 2
     var a = math.Min(TemporaryNumberCount,21)
-    EnchantLevel[0] = a
+    EnchantLevel = a
     EnchantDisplay.text = "#+" + a
 
   UpdateEnchantColor()
   WeaponDisplayStats()
   TemporaryNumberCount = 0
-  CloseMenus(-1)
+  EnchantDisplayToggle = false
+  NumberButtons.Clear()
+  EnchantDropDown.Recycle()
 
-func NumberConfirm2()
-  ?PressCount = 1
-    EnchantDisplay2.text = "#+" + TemporaryNumberCount/10
-    EnchantLevel[1] = TemporaryNumberCount/10
-  :?PressCount = 2
-    var a = math.Min(TemporaryNumberCount,21)
-    EnchantLevel[1] = a
-    EnchantDisplay2.text = "#+" + a
-
-  //UpdateEnchantColor()
-  WeaponDisplayStats()
-  TemporaryNumberCount = 0
-  CloseMenus(-1)
-
-func CreateNumberButton(UI,x,y,Parent,Function)
+func CreateNumberButton(UI,x,y)
   UI.text = x+y*3+""
-  UI.SetPressed(Function)
-  Parent.Add(UI)
+  UI.SetPressed(EnterNumber)
+  EnchantDropDown.Add(UI)
   NumberButtons.Add(UI)
 
+
 func EnchantDropMenu()
-  ?CloseMenus(4)
+  ?EnchantDisplayToggle
+    EnchantDisplayToggle = false
+    NumberButtons.Clear()
+    EnchantDropDown.Recycle()
+    EnchantDisplay.text = "#+" + EnchantLevel
+  :
     EnchantDisplayToggle = true
     PressCount = 0
     TemporaryNumberCount = 0
-    EnchantDisplay2.visible = false
-    EnchTypeDisplay2.visible = false
     EnchantDropDown = CreateUI(32,3, 11, 11, ui.AddPanel())
     EnchantDropDown.style = DropDownBorder
     for y = 0..2
       for x = 0..2
-        CreateNumberButton(CreateUI(1+3*x,1+2*y, 3, 3, ui.AddButton()),x,y, EnchantDropDown, EnterNumber)
-    CreateNumberButton(CreateUI(1,7, 3, 3, ui.AddButton()),0,3, EnchantDropDown, EnterNumber)
+        CreateNumberButton(CreateUI(1+3*x,1+2*y, 3, 3, ui.AddButton()),x,y)
+    CreateNumberButton(CreateUI(1,7, 3, 3, ui.AddButton()),0,3)
     OkayButton = CreateUI(4,7, 6, 3, ui.AddButton())
     OkayButton.text = "Okay"
     OkayButton.SetPressed(NumberConfirm)
     EnchantDropDown.Add(OkayButton)
     MotherPanel.Add(EnchantDropDown)
-
-var EnchantDropDown2
-var EnchantDisplayToggle2 = false
-
-func EnchantDropMenu2()
-  ?CloseMenus(6)
-    EnchantDisplayToggle2 = true
-    PressCount = 0
-    TemporaryNumberCount = 0
-    EnchantDropDown2 = CreateUI(32,5, 11, 11, ui.AddPanel())
-    EnchantDropDown2.style = DropDownBorder
-    for y = 0..2
-      for x = 0..2
-        CreateNumberButton(CreateUI(1+3*x,1+2*y, 3, 3, ui.AddButton()),x,y, EnchantDropDown2, EnterNumber2)
-    CreateNumberButton(CreateUI(1,7, 3, 3, ui.AddButton()),0,3, EnchantDropDown2, EnterNumber2)
-    OkayButton = CreateUI(4,7, 6, 3, ui.AddButton())
-    OkayButton.text = "Okay"
-    OkayButton.SetPressed(NumberConfirm2)
-    EnchantDropDown2.Add(OkayButton)
-    MotherPanel.Add(EnchantDropDown2)
 
 func SelectStar(btn)
   for a = 0..StarOptionList.Count()-1
@@ -596,7 +424,10 @@ func SelectStar(btn)
       return
 
 func StarDropMenu()
-  ?CloseMenus(3)
+  ?StarDisplayToggle
+    StarDisplayToggle = false
+    StarDropDown.Recycle()
+  :
     StarDisplayToggle = true
     StarDropDown = CreateUI(27,3, 7, 1, ui.AddPanel())
     StarDropDown.style = DropDownBorder
@@ -637,7 +468,10 @@ func AffixDropMenu()
   ?AffixOptionList.Count() = 0
     >No affix options for selected weapon
     return
-  ?CloseMenus(2)
+  ?AffixDisplayToggle
+    AffixDisplayToggle = false
+    AffixDropDown.Recycle()
+  :
     AffixDisplayToggle = true
     AffixDropDown = CreateUI(24,3, 4, 1, ui.AddPanel())
     AffixDropDown.style = DropDownBorder
@@ -645,7 +479,10 @@ func AffixDropMenu()
     GenerateButtonList(AffixListGenerate(),SelectAffix,AffixDropDown)
 
 func WeaponDropMenu()
-  ?CloseMenus(0)
+  ?DropDownToggle
+    WeaponDropdown.text = "-Select Weapon-  ▼"
+    RecycleWeapMenu()
+  :
     WeaponDropdown.text = "-Select Weapon-  ▲"
     ?AffixDisplayToggle
       AffixDisplayToggle = false
@@ -661,7 +498,7 @@ func RecycleOptions(RecycleEle, RecycleAffix, RecycleEnch)
   ?RecycleEle & DisplayedOptions[0]
     >hi
   ?RecycleAffix & DisplayedOptions[1]
-    AffixDisplay.Recycle()
+    AffixtDisplay.Recycle()
   ?RecycleEnch & DisplayedOptions[2]
     >hi
 
@@ -729,12 +566,10 @@ func CheckItemString(itm)
   :?itm = "crossbow *"
     ?itm = "heavy_crossbow"
       f.Weapon = f.HeavyBow
-    :?itm = "repeating_crossbow"
-      f.Weapon = f.Repeater
     :
       f.Weapon = f.Crossbow
   :?itm = "wand *"
-    f.Weapon = f.RuneWand
+    f.Weapon = RuneWand
     AffixOptionList = ["D","d"]
     AfflixCombineList = [0,1]
     return
@@ -765,7 +600,7 @@ func CheckRightWeapon()
   var SplitList = string.Split(item.right,"*")
   StarPointer = int.Parse(SplitList[1])
   SplitList = string.Split( SplitList[SplitList.Count()-1] , "+", " ", true)
-  EnchantLevel[0] = int.Parse(SplitList[0])
+  EnchantLevel = int.Parse(SplitList[0])
   ElePointer = CheckEle(item.right)
   ?ElePointer < 5
     var Af = SplitList[1]
@@ -774,9 +609,9 @@ func CheckRightWeapon()
 
   var ID_Split = string.Split(item.right.id,":",true)
   ?ID_Split.Count() = 1
-    EnchTypePointer[0] = 0
+    EnchTypePointer = 0
   :
-    EnchTypePointer[0] = int.Parse(string.Split(ID_Split[1],"q",true)[0])
+    EnchTypePointer = int.Parse(string.Split(ID_Split[1],"q",true)[0])
 
   CheckItemString(item.right)
 
@@ -789,10 +624,10 @@ func CheckRightWeapon()
   StarDisplay.text = StarOptionList[StarPointer]
 
   UpdateEnchantColor()
-  EnchantDisplay.text = "#+" + EnchantLevel[0]
+  EnchantDisplay.text = "#+" + EnchantLevel
 
   EnchTypeOptionList = f.Weapon.ReturnEnchTypeList(Af)
-  EnchTypeDisplay.text = EnchTypeOptionList[EnchTypePointer[0]%EnchTypeOptionList.Count()]
+  EnchTypeDisplay.text = EnchTypeOptionList[EnchTypePointer%EnchTypeOptionList.Count()]
 
   ItemRight = item.right.id
   HandCheck = 2
@@ -903,7 +738,6 @@ func SelectWeapon2(btn)
       WeaponDisplayStats()
       return
 
-var FormerParent
 func GenerateButtonList(List,PressFunc,Parent)
   DropDownButtonList.Clear()
   Parent.h = List.Count()+2
@@ -914,9 +748,6 @@ func GenerateButtonList(List,PressFunc,Parent)
     b.style = Invis
     Parent.Add(b)
     DropDownButtonList.Add(b)
-
-var InvButton
-var LeaveButton
 
 ?loc.begin
   disable pause
@@ -937,7 +768,7 @@ var LeaveButton
   InfoTextClipper.Add(InfoText)
   MotherPanel2.Add(InfoTextClipper)
 
-  WeaponStats = CreateUI(21,6, screen.w-6, 10, ui.AddText("Select a weapon to display stats"))
+  WeaponStats = CreateUI(21,6, screen.w-6, 3, ui.AddText("Select a weapon to display stats"))
   WeaponStats.align = left
 
   WeaponArtBorder = CreateUI(2,4, 10, 6, ui.AddPanel())
@@ -946,7 +777,7 @@ var LeaveButton
   ChartParent.style = Lines
   ChartParent.clip = true
 
-  ChartText = CreateUI(1,1, 999 , 6, ui.AddText())
+  ChartText = CreateUI(1,1, 999 , 3, ui.AddText())
   ChartText.align = left
   ChartParent.Add(ChartText)
 
@@ -976,58 +807,43 @@ var LeaveButton
   EnchTypeDisplay = CreateUI(38,1, 21, 3, ui.AddButton())
   EnchTypeDisplay.text = ""
   EnchTypeDisplay.SetPressed(EnchTypeDropMenu)
-  
-  EnchantDisplay2 = CreateUI(33,3, 5, 3, ui.AddButton())
-  EnchantDisplay2.text = ""
-  EnchantDisplay2.SetPressed(EnchantDropMenu2)
-  EnchantDisplay2.style = LowerBox
-  EnchTypeDisplay2 = CreateUI(38,3, 21, 3, ui.AddButton())
-  EnchTypeDisplay2.text = ""
-  EnchTypeDisplay2.SetPressed(EnchTypeDropMenu2)
-  EnchTypeDisplay2.style = LowerBox
 
-  BerserkButton = CreateUI(screen.w-16,2, 10 , 1, ui.AddButton())
+  AACButton = CreateUI(screen.w-23,8, 8 , 1, ui.AddButton())
+  AACButton.text = "AAC:   ☺"
+  AACButton.SetPressed(ToggleAAC)
+  SwapButton = CreateUI(screen.w-23,9, 8 , 1, ui.AddButton())
+  SwapButton.text = "Swap:  ☺"
+  SwapButton.SetPressed(ToggleWeaponSwap)
+  BurstButton = CreateUI(screen.w-23,10, 8 , 1, ui.AddButton())
+  BurstButton.text = "Burst: ☺"
+  BurstButton.SetPressed(ToggleBurst)
+
+  BerserkButton = CreateUI(screen.w-29,0, 12 , 3, ui.AddButton())
   BerserkButton.text = "Berserk: ☺"
   BerserkButton.SetPressed(ToggleBerserk)
-  BerserkButton.tcolor = "#555555"
-  LuckyCritButton = CreateUI(screen.w-16,3, 10 , 1, ui.AddButton())
-  LuckyCritButton.text = "Lucky C: ☺"
-  LuckyCritButton.SetPressed(ToggleLuckyCrit)
-  LuckyCritButton.tcolor = "#555555"
-  LuckyMultButton = CreateUI(screen.w-16,4, 10 , 1, ui.AddButton())
-  LuckyMultButton.text = "Lucky M: ☺"
-  LuckyMultButton.SetPressed(ToggleLuckyMult)
-  LuckyMultButton.tcolor = "#555555"
 
-  AACButton = CreateUI(screen.w-16,6, 10 , 1, ui.AddButton())
-  AACButton.text = "AAC:     ☺"
-  AACButton.SetPressed(ToggleAAC)
-  AACButton.tcolor = "#555555"
-  SwapButton = CreateUI(screen.w-16,7, 10 , 1, ui.AddButton())
-  SwapButton.text = "Swap:    ☺"
-  SwapButton.SetPressed(ToggleWeaponSwap)
-  SwapButton.tcolor = "#555555"
-  BurstButton = CreateUI(screen.w-16,8, 10 , 1, ui.AddButton())
-  BurstButton.text = "Burst:   ☺"
-  BurstButton.SetPressed(ToggleBurst)
-  BurstButton.tcolor = "#555555"
-
-
-
-  ChillButton = CreateUI(screen.w-16,10, 10 , 1, ui.AddButton())
-  ChillButton.text = "Chill:   ☺"
+  ChillButton = CreateUI(screen.w-17,0, 10 , 3, ui.AddButton())
+  ChillButton.text = "Chill: ☺"
   ChillButton.SetPressed(ToggleChill)
-  ChillButton.tcolor = "#555555"
-  MoonButton = CreateUI(screen.w-17,11, 11 , 1, ui.AddButton())
+
+  LuckyBox  =  CreateUI(screen.w-29,3, 12 , 4, ui.AddPanel())
+  LuckyBox.color = #808080
+  LuckyText  = CreateUI(screen.w-29,3, 12 , 3, ui.AddText("Lucky:\n##Crit: ☺\n##Mult: ☺"))
+  LuckyText.align = left
+
+  LuckyMultButton = CreateUI(screen.w-29,5, 12 , 2, ui.AddButton())
+  LuckyMultButton.text = ""
+  LuckyMultButton.style = Invis
+  LuckyMultButton.SetPressed(ToggleLuckyMult)
+
+  LuckyCritButton = CreateUI(screen.w-29,3, 12 , 2, ui.AddButton())
+  LuckyCritButton.text = ""
+  LuckyCritButton.style = Invis
+  LuckyCritButton.SetPressed(ToggleLuckyCrit)
+
+  MoonButton = CreateUI(screen.w-17,3, 13 , 3, ui.AddButton())
   MoonButton.text = "Moondial: ☺"
   MoonButton.SetPressed(ToggleMoon)
-  MoonButton.tcolor = "#555555"
-
-  TogglesText  = CreateUI(screen.w-20,1, 12 , 10, ui.AddText("Potions:\n\n\n\nMethods:\n\n\n\nEffects:"))
-  TogglesText.align = left
-
-
-
 
   Tab1 = CreateUI(4,1, 15 , 3, ui.AddButton())
   Tab1.style = SelectTab
@@ -1047,18 +863,6 @@ var LeaveButton
   Tab3.text = "Random Tab 3"
   Tab3.SetPressed(Tab3Pressed)
 
-  InvButton = CreateUI(49,1, 15 , 3, ui.AddButton())
-  InvButton.style = 1
-  InvButton.bcolor = #FFFFFF
-  InvButton.text = "Inventory"
-  InvButton.SetPressed(Inv)
-
-  InvButton = CreateUI(screen.w-5,0, 5 , 3, ui.AddButton())
-  InvButton.style = 1
-  InvButton.bcolor = #FFFFFF
-  InvButton.text = "X"
-  InvButton.SetPressed(Leave)
-
   MotherPanel.Add(WeaponArtBorder)
   MotherPanel.Add(WeaponDropdown)
   MotherPanel.Add(EleDisplay)
@@ -1066,21 +870,20 @@ var LeaveButton
   MotherPanel.Add(StarDisplay)
   MotherPanel.Add(EnchantDisplay)
   MotherPanel.Add(EnchTypeDisplay)
-  MotherPanel.Add(EnchantDisplay2)
-  MotherPanel.Add(EnchTypeDisplay2)
   MotherPanel.Add(AACButton)
   MotherPanel.Add(SwapButton)
   MotherPanel.Add(BurstButton)
   MotherPanel.Add(WeaponStats)
   MotherPanel.Add(BerserkButton)
   MotherPanel.Add(ChillButton)
+  MotherPanel.Add(LuckyBox)
+  MotherPanel.Add(LuckyText)
   MotherPanel.Add(LuckyMultButton)
   MotherPanel.Add(LuckyCritButton)
   MotherPanel.Add(MoonButton)
   MotherPanel.Add(ChartParent)
   MotherPanel.Add(LeftButton)
   MotherPanel.Add(RightButton)
-  MotherPanel.Add(TogglesText)
 
 var ItemLeft //= item.left.id
 var ItemRight //= item.right.id
@@ -1115,4 +918,3 @@ RunPage()
 
 
 
-//>`0,10,#yellow,@EnchantLevel[0]@, @EnchantLevel[1]@\n@EnchTypePointer[0]@, @EnchTypePointer[1]@
