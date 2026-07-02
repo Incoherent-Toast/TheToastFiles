@@ -1,1 +1,16 @@
->hi
+var BaseCanvas
+var Trails = []
+var Colour = "#222200"
+
+
+func Init()
+  BaseCanvas = ui.AddCanvas()
+  BaseCanvas.w = 19
+  BaseCanvas.h = 9
+  BaseCanvas.blend = add
+
+var Startup = Init()
+?loc.loop
+  Startup = Init()
+
+BaseCanvas.SetBG()
