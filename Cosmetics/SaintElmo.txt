@@ -18,8 +18,11 @@ var Startup = Init()
 for a : Trails
   BaseCanvas.SetBG(a[0], a[1], "#000000")
 
+Trails.Clear()
 
 var _x
 var _y
 _x = Rand(0,19)
-BaseCanvas.SetBg(_x, Rand(0,9), colour)
+_y = Rand(0,9)
+Trails.Add([_x,_y])
+BaseCanvas.SetBg(_x, _y, colour)
