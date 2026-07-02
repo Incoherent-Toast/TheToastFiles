@@ -2,6 +2,8 @@ var BaseCanvas
 var Trails = []
 var Colour = "#222200"
 
+func Rand(min, max)
+  return rng % (max - min) + min
 
 func Init()
   BaseCanvas = ui.AddCanvas()
@@ -13,4 +15,7 @@ var Startup = Init()
 ?loc.loop
   Startup = Init()
 
-BaseCanvas.SetBG()
+for a : Trails
+  BaseCanvas.SetBG(a[0], a[1], "#000000")
+
+BaseCanvas.SetBg(Rand(0,19), Rand(0,9), colour)
