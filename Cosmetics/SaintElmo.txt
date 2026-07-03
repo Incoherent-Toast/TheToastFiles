@@ -1,6 +1,7 @@
 var BaseCanvas
-var Trails = []
-var Colour = "#222200"
+var Trails = ［］
+var Colour = ＂#929200＂
+Colour = ＂#A27F00＂
 
 func Rand(min, max)
   return rng % (max - min) + min
@@ -10,19 +11,35 @@ func Init()
   BaseCanvas.w = 19
   BaseCanvas.h = 9
   BaseCanvas.blend = add
+  BaseCanvas.SetBG(＂#000000＂)
+  BaseCanvas.SetFG(＂#000000＂)
 
 var Startup = Init()
 ?loc.loop
   Startup = Init()
 
+/*
 for a : Trails
-  BaseCanvas.SetBG(a[0], a[1], "#000000")
+  BaseCanvas.SetBG(a［0］, a［1］, ＂#000000＂)
 
-Trails.Clear()
+Trails.Clear()*/
 
+?Trails.Count()>3
+  BaseCanvas.SetBG(Trails［0］［0］,
+^Trails［0］［1］, ＂#000000＂)
+  Trails.RemoveAt(0)
+
+var v = 0.1
+var v1= 0.1
 var _x
 var _y
 _x = Rand(0,19)
+_x = math.RoundToInt(math.Sin(v)*8+9)
+
 _y = Rand(0,9)
-Trails.Add([_x,_y])
-BaseCanvas.SetBG(_x, _y, colour)
+_y = math.RoundToInt(math.Sin(v1)*4 + 4)
+
+v+=0.1
+v1+=0.15
+Trails.Add(［_x,_y］)
+BaseCanvas.SetBG(_x, _y, Colour)
